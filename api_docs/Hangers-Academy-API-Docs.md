@@ -36,7 +36,7 @@
 - Request
 
   - Method: GET
-  - URL: /api/servers/:servers_id/users
+  - URL: /api/servers/:server_id/users
   - Body: None
 
 - Successful Response
