@@ -73,7 +73,7 @@ Returns the details of a server specified by its id
 - Request
 
   - Method: GET
-  - URL: /api/servers/:id
+  - URL: /api/servers/:server_id
   - Body: None
 
 - Successful Response
