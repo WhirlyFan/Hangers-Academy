@@ -117,9 +117,7 @@ Updates and returns a channel
   {
     "id": 1,
     "name": "general",
-    "server_id": 1,
-    "created_at": "2021-11-19 20:39:36",
-    "updated_at": "2021-11-19 20:39:36"
+    "server_id": 1
   }
   ```
 

@@ -1,6 +1,7 @@
 ## Friends
 
 ### Get all friends by current user
+
 - Require Authentication: True
 
 - Request
@@ -69,6 +70,7 @@ Creates and returns a new friend
   ```
 
 * Error Response: Body validation error
+
   - LIKELY WON'T BE USED IN PRODUCTION
 
   - Status Code: 400
@@ -86,7 +88,6 @@ Creates and returns a new friend
     }
   }
   ```
-
 
 ### Delete a friend
 
