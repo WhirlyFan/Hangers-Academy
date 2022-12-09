@@ -1,7 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from datetime import datetime
-# from sqlalchemy.declarative import declarative_base
-# from sqlalchemy.schema import ForeignKey, Column, Table
 
 server_members = db.Table(
     "server_members",
