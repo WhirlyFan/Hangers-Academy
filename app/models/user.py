@@ -1,6 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from .servers import server_members
 
 
 class User(db.Model, UserMixin):
@@ -31,3 +32,7 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email
         }
+
+    servers = db.relationship("Server", secondary=server_members, back_populates="users")
+    messages = db.relationship("Message", back_populates="user")
+    friends = db.relationship("Friend")
