@@ -1,18 +1,18 @@
-from app.models import db, User, environment, SCHEMA
+from app.models import db, Friend, environment, SCHEMA
 
 
 # Adds a demo user, you can add other users here if you want
-def seed_users():
-    demo = User(
-        username='Demo', email='demo@aa.io', password='password')
-    marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
-    bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
+def seed_friends():
+    friendship1 = Friend(
+        user_id=1, friend_id=2)
+    friendship2 = Friend(
+        user_id=2, friend_id=1)
+    friendship3 = Friend(
+        user_id=1, friend_id=3)
+    friendship4 = Friend(
+        user_id=3, friend_id=1)
 
-    db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    db.session.add_all([friendship1, friendship2, friendship3, friendship4])
     db.session.commit()
 
 
@@ -22,11 +22,11 @@ def seed_users():
 # incrementing primary key, CASCADE deletes any dependent entities.  With
 # sqlite3 in development you need to instead use DELETE to remove all data and
 # it will reset the primary keys for you as well.
-def undo_users():
+def undo_friends():
     if environment == "production":
         db.session.execute(
-            f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+            f"TRUNCATE table {SCHEMA}.friends RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute("DELETE FROM users")
+        db.session.execute("DELETE FROM friends")
 
     db.session.commit()
