@@ -6,12 +6,12 @@ from .servers import server_members
 friends = db.Table(
     "friends",
     db.Model.metadata,
-    db.Column("user_id", db.Integer, db.ForeignKey("users.id"), primary_key=True),
-    db.Column("friend_id", db.Integer, db.ForeignKey("users.id"), primary_key=True)
+    db.Column("user_id", db.Integer, db.ForeignKey(
+        "users.id"), primary_key=True),
+    db.Column("friend_id", db.Integer, db.ForeignKey(
+        "users.id"), primary_key=True)
 )
 
-# print(dir(friends.columns.values))
-print((friends.columns))
 
 if environment == "production":
     friends.schema = SCHEMA
@@ -46,6 +46,8 @@ class User(db.Model, UserMixin):
             'email': self.email
         }
 
-    servers = db.relationship("Server", secondary=server_members, back_populates="members")
+    servers = db.relationship(
+        "Server", secondary=server_members, back_populates="members")
     messages = db.relationship("Message", back_populates="user")
-    friends = db.relationship("User", secondary=friends, cascade="all, delete", primaryjoin=(friends.c.user_id == id), secondaryjoin=(friends.c.friend_id == id), backref=db.backref("user_ids"))
+    friends = db.relationship("User", secondary=friends, cascade="all, delete", primaryjoin=(
+        friends.c.user_id == id), secondaryjoin=(friends.c.friend_id == id), backref=db.backref("user_ids"))
