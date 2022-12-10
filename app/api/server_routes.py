@@ -11,6 +11,9 @@ def get_server_channels(server_id):
     """
     Query for all channels in a specified server
     """
+    server = Server.query.get(server_id).to_dict()
+    channels = server['Channels']
+    return {"Channels": channels}
     
 
 @server_routes.route("/current")

@@ -12,6 +12,14 @@ class Channel(db.Model):
         add_prefix_for_prod("servers.id")), nullable=False)
     name = db.Column(db.String(30), default='general')
 
+    @property
+    def _name(self):
+        return self.name
+
+    @_name.setter
+    def _name(self, name):
+        self.name = name
+
     server = db.relationship("Server", back_populates="channels")
     messages = db.relationship("Message", cascade="all, delete-orphan", back_populates="channel")
 
