@@ -22,10 +22,12 @@ class Channel(db.Model):
 
     server = db.relationship("Server", back_populates="channels")
     messages = db.relationship("Message", cascade="all, delete-orphan", back_populates="channel")
-
+    
     def to_dict(self):
         return {
             'id': self.id,
             'server_id': self.server_id,
-            'name': self.name
+            'name': self.name,
+            "Server": self.server.to_dict(),
+            "Messages": [message.to_dict() for message in self.messages]
         }

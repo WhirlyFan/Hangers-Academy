@@ -40,7 +40,7 @@ def delete_channel(channel_id):
         return {
             "message": "Channel couldn't be found",
             "status_code": 404
-        }
+        }, 404
     else:
         db.session.delete(channel)
         db.session.commit()
