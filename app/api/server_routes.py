@@ -6,6 +6,17 @@ from app.models import db, User, Server
 server_routes = Blueprint("servers", __name__)
 
 
+@server_routes.route("/<int:server_id>/channels")
+@login_required
+def get_server_channels(server_id):
+    """
+    Query for all channels in a specified server
+    """
+    server = Server.query.get(server_id).to_dict()
+    channels = server['Channels']
+    return {"Channels": channels}
+    
+
 @server_routes.route("/current")
 @login_required
 def get_servers_current():
