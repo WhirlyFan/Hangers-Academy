@@ -10,7 +10,7 @@ class Channel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     server_id = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod("servers.id")), nullable=False)
-    name = db.Column(db.String(30), nullable=False)
+    name = db.Column(db.String(30), default='general')
 
     server = db.relationship("Server", back_populates="channels")
     messages = db.relationship("Message", cascade="all, delete-orphan", back_populates="channel")

@@ -1,8 +1,8 @@
-"""models
+"""empty message
 
-Revision ID: 7d6f9ae738d3
+Revision ID: 582d1be8c904
 Revises: 
-Create Date: 2022-12-09 17:43:25.203568
+Create Date: 2022-12-09 22:44:10.517044
 
 """
 from alembic import op
@@ -14,7 +14,7 @@ SCHEMA = os.environ.get('SCHEMA')
 
 
 # revision identifiers, used by Alembic.
-revision = '7d6f9ae738d3'
+revision = '582d1be8c904'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -52,7 +52,7 @@ def upgrade():
     op.create_table('channels',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('server_id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(length=30), nullable=False),
+    sa.Column('name', sa.String(length=30), nullable=True),
     sa.ForeignKeyConstraint(['server_id'], ['servers.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
