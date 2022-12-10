@@ -32,7 +32,7 @@ class Server(db.Model):
 
     members = db.relationship(
         "User", secondary=server_members, back_populates="servers")
-    channels = db.relationship("Channel", back_populates="server")
+    channels = db.relationship("Channel", cascade="all, delete", back_populates="server")
 
     def to_dict(self):
         return {
