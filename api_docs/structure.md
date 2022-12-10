@@ -18,7 +18,7 @@ B   -   -   -   app -   -   -   routes  -   -   -   init.py
 |                |
 |                .flaskenv
 |
-F   -   -   -   src -   -   -   components  -   -   -   
+F   -   -   -   src -   -   -   components  -   -   -
                                 |
                                 context
                                 |
