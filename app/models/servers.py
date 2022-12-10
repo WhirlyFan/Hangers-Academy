@@ -5,9 +5,9 @@ server_members = db.Table(
     "server_members",
     db.Model.metadata,
     db.Column("user_id", db.Integer, db.ForeignKey(
-        "users.id"), primary_key=True),
+        add_prefix_for_prod("users.id")), primary_key=True),
     db.Column("server_id", db.Integer, db.ForeignKey(
-        "servers.id"), primary_key=True),
+        add_prefix_for_prod("servers.id")), primary_key=True),
 )
 
 if environment == "production":
@@ -32,7 +32,8 @@ class Server(db.Model):
 
     members = db.relationship(
         "User", secondary=server_members, back_populates="servers")
-    channels = db.relationship("Channel", cascade="all, delete-orphan", back_populates="server")
+    channels = db.relationship(
+        "Channel", cascade="all, delete-orphan", back_populates="server")
 
     def to_dict(self):
         return {
