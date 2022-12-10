@@ -40,7 +40,7 @@ def undo():
     undo_users()
     undo_servers()
     undo_channels()
-    undo_friends()
+    # undo_friends()
     undo_messages()
     undo_servers()
     # Add other undo functions here
