@@ -48,4 +48,4 @@ class User(db.Model, UserMixin):
 
     servers = db.relationship("Server", secondary=server_members, back_populates="members")
     messages = db.relationship("Message", back_populates="user")
-    friends = db.relationship("User", secondary=friends, cascade="all, delete", primaryjoin=(friends.c.user_id == id), secondaryjoin=(friends.c.friend_id == id), backref=db.backref("user_ids"))s = db.relationship("User", secondary=friends, cascade="all, delete", foreign_keys=[(friends.c.user_id, User.id), (friends.c.friend_id, User.id)])
+    friends = db.relationship("User", secondary=friends, cascade="all, delete", primaryjoin=(friends.c.user_id == id), secondaryjoin=(friends.c.friend_id == id), backref=db.backref("user_ids"))
