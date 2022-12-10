@@ -17,39 +17,6 @@ if environment == "production":
     friends.schema = SCHEMA
 
 
-# class User(db.Model, UserMixin):
-#     __tablename__ = 'users'
-
-#     if environment == "production":
-#         __table_args__ = {'schema': SCHEMA}
-
-#     id = db.Column(db.Integer, primary_key=True)
-#     username = db.Column(db.String(40), nullable=False, unique=True)
-#     email = db.Column(db.String(255), nullable=False, unique=True)
-#     hashed_password = db.Column(db.String(255), nullable=False)
-
-#     @property
-#     def password(self):
-#         return self.hashed_password
-
-#     @password.setter
-#     def password(self, password):
-#         self.hashed_password = generate_password_hash(password)
-
-#     def check_password(self, password):
-#         return check_password_hash(self.password, password)
-
-#     def to_dict(self):
-#         return {
-#             'id': self.id,
-#             'username': self.username,
-#             'email': self.email
-#         }
-
-#     servers = db.relationship("Server", secondary=server_members, back_populates="members")
-#     messages = db.relationship("Message", back_populates="user")
-#     # friends = db.relationship("User", secondary=friends, cascade="all, delete", foreign_keys=[friends.c.user_id, friends.c.friend_id])
-#     friends = db.relationship("User", secondary=friends, cascade="all, delete", foreign_keys=[(friends.c.user_id, User.id), (friends.c.friend_id, User.id)])
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
@@ -81,5 +48,4 @@ class User(db.Model, UserMixin):
 
     servers = db.relationship("Server", secondary=server_members, back_populates="members")
     messages = db.relationship("Message", back_populates="user")
-
-    friends = db.relationship("User", secondary=friends, cascade="all, delete", primaryjoin=(friends.c.user_id == id), secondaryjoin=(friends.c.friend_id == id), backref=db.backref("user_ids"))
+    friends = db.relationship("User", secondary=friends, cascade="all, delete", primaryjoin=(friends.c.user_id == id), secondaryjoin=(friends.c.friend_id == id), backref=db.backref("user_ids"))s = db.relationship("User", secondary=friends, cascade="all, delete", foreign_keys=[(friends.c.user_id, User.id), (friends.c.friend_id, User.id)])
