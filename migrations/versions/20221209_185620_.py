@@ -1,8 +1,8 @@
 """models
 
-Revision ID: 7d6f9ae738d3
+Revision ID: b1387f74a801
 Revises: 
-Create Date: 2022-12-09 17:43:25.203568
+Create Date: 2022-12-09 18:56:20.968385
 
 """
 from alembic import op
@@ -14,7 +14,7 @@ SCHEMA = os.environ.get('SCHEMA')
 
 
 # revision identifiers, used by Alembic.
-revision = '7d6f9ae738d3'
+revision = 'b1387f74a801'
 down_revision = None
 branch_labels = None
 depends_on = None

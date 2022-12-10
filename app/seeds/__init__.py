@@ -3,7 +3,7 @@ from .users import seed_users, undo_users
 from .servers import seed_servers, undo_servers
 from .channels import seed_channels, undo_channels
 from .messages import seed_messages, undo_messages
-from .friends import seed_friends, undo_friends
+# from .friends import seed_friends, undo_friends
 
 from app.models.db import db, environment, SCHEMA
 
@@ -30,7 +30,7 @@ def seed():
     seed_servers()
     seed_channels()
     seed_messages()
-    seed_friends()
+    # seed_friends()
     # Add other seed functions here
 
 
