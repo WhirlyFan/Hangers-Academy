@@ -2,7 +2,7 @@
 
 ### Get all Servers that Current User is in
 
-Returns all the servers owned (created) by the current user.
+Returns all the servers that current user is apart of.
 
 - Require Authentication: True
 - Request
