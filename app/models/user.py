@@ -3,6 +3,16 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from .servers import server_members
 
+friends = db.Table(
+    "friends",
+    db.Model.metadata,
+    db.Column("user_id", db.Integer, db.ForeignKey("users.id"), primary_key=True),
+    db.Column("friend_id", db.Integer, db.ForeignKey("users.id"), primary_key=True)
+)
+
+if environment == "production":
+    friends.schema = SCHEMA
+
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -35,4 +45,4 @@ class User(db.Model, UserMixin):
 
     servers = db.relationship("Server", secondary=server_members, back_populates="members")
     messages = db.relationship("Message", back_populates="user")
-    friends = db.relationship("Friend", cascade="all, delete")
+    friends = db.relationship("User", secondary=friends, cascade="all, delete")

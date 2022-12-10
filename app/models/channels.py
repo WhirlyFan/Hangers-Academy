@@ -13,7 +13,7 @@ class Channel(db.Model):
     name = db.Column(db.String(30), nullable=False)
 
     server = db.relationship("Server", back_populates="channels")
-    messages = db.relationship("Message", cascade="all, delete", back_populates="channel")
+    messages = db.relationship("Message", cascade="all, delete-orphan", back_populates="channel")
 
     def to_dict(self):
         return {

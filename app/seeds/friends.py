@@ -1,4 +1,4 @@
-from app.models import db, Friend, environment, SCHEMA
+# from app.models import db, Friend, environment, SCHEMA
 
 
 # Adds a demo user, you can add other users here if you want
