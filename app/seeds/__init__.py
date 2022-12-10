@@ -23,7 +23,7 @@ def seed():
         undo_users()
         undo_servers()
         undo_channels()
-        undo_friends()
+        # undo_friends()
         undo_messages()
         undo_servers()
     seed_users()
