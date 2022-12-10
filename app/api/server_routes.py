@@ -2,6 +2,7 @@ from flask import Blueprint, request
 from flask_login import login_required, current_user
 from ..forms.server_form import CreateServer, UpdateServer
 from app.models import db, User, Server
+from .auth_routes import validation_errors_to_error_messages
 
 server_routes = Blueprint("servers", __name__)
 
@@ -85,22 +86,41 @@ def create_server():
 
         return create_server.to_dict()
 
-    return "Error Response Here"
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 
-@server_routes.route("/<int:server_id>/edit", methods=["PUT"])
+@server_routes.route("/<int:server_id>", methods=["PUT"])
 @login_required
 def update_server(server_id):
+    """
+    Update a Server
+    """
+
     form = UpdateServer()
     form["csrf_token"].data = request.cookies["csrf_token"]
 
     server = Server.query.get(server_id)
+    print(server)
 
     if server and form.validate_on_submit():
         data = form.data
-        server.name = (data["name"],)
-        server.server_img = (data["server_img"],)
-
+        server.name = data["name"]
+        server.server_img = data["server_img"]
         db.session.commit()
-        return
-    return "Unsuccessful Response"
+        return server.to_dict()
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 401
+
+
+@server_routes.route("/<int:server_id>", methods=["DELETE"])
+@login_required
+def delete_server(server_id):
+    """
+    Delete a Route
+    """
+    server = Server.query.get(server_id)
+    if not server:
+        return {"message": "Server couldn't be found"}, 404
+    else:
+        db.session.delete(server)
+        db.session.commit()
+        return {"message": "Successfully deleted"}
