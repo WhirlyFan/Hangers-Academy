@@ -34,6 +34,35 @@ Returns all the servers that current user is apart of.
   }
   ```
 
+### Get all Users by server id
+
+- Require Authentication: True
+
+- Request
+
+  - Method: GET
+  - URL: /api/servers/:server_id/users
+  - Body: None
+
+- Successful Response
+
+  - Status code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+  ```json
+  {
+    "Users": [
+      {
+        "id": 1,
+        "username": "WhirlyFan",
+        "email": "email@email.com"
+      }
+    ]
+  }
+  ```
+
 ### Get all servers
 
 - Request
@@ -143,7 +172,7 @@ Creates and returns a new server
 
   ```json
   {
-    "name": "AA Hangers",
+    "server_id": "AA Hangers",
     "private": "false",
     "server_img": "url"
   }
@@ -184,6 +213,35 @@ Creates and returns a new server
       "private": "Private status is required",
       "server_img": "Server image is required"
     }
+  }
+  ```
+
+  ### Create a server member for a server
+
+- Require Authentication: True
+
+- Request
+
+  - Method: POST
+  - URL: /api/servers/:server_id/users
+  - Body: 
+  ```json
+  {
+    "server_id": 1,
+    "user_id": 1,
+  }
+  ```
+
+- Successful Response
+
+  - Status code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+  ```json
+  {
+    "message": "Successfully added member to server"
   }
   ```
 
