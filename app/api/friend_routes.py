@@ -44,6 +44,11 @@ def add_friend():
 @friends_routes.route("/<int:friends_id>", methods=["DELETE"])
 @login_required
 def remove_friend(friends_id):
+    """
+    Query current user and friend,
+    remove friend from user's friend list in database
+    and respond with success message
+    """
     user = User.query.get(current_user.id)
     friend = User.query.get(friends_id)
 
