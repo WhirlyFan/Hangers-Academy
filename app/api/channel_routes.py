@@ -73,11 +73,13 @@ def create_channel():
 
 @channel_routes.route("/<int:channel_id>/messages", methods=["GET"])
 @login_required
-def get_channel_messages():
+def get_channel_messages(channel_id):
     """
     Get all messages for a channel
     """
-    channel_messages = Message.query.all()
-    print(channel_messages)
-    # channel_messages_to_dict = [channel_messages]
-    return
+    channel_messages = Message.query.filter(
+        Message.channel_id == channel_id).all()
+
+    return {
+        "Messages": [message.to_dict() for message in channel_messages]
+    }
