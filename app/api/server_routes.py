@@ -2,7 +2,7 @@ from flask import Blueprint, request
 from flask_login import login_required, current_user
 from ..forms.server_form import CreateServer, UpdateServer
 from app.models import db, User, Server
-from .auth_routes import validation_errors_to_error_messages
+from .auth_routes import validation_errors_to_error_messages, authorized
 
 server_routes = Blueprint("servers", __name__)
 
@@ -100,8 +100,10 @@ def update_server(server_id):
     form["csrf_token"].data = request.cookies["csrf_token"]
 
     server = Server.query.get(server_id)
-    print(server)
 
+    if not authorized(server.owner_id):
+        return {"error": "You do not own this server"}, 401
+    
     if server and form.validate_on_submit():
         data = form.data
         server.name = data["name"]
