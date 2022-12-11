@@ -100,7 +100,7 @@ def update_server(server_id):
     form["csrf_token"].data = request.cookies["csrf_token"]
 
     server = Server.query.get(server_id)
-    print(server)
+    # print(server)
 
     if server and form.validate_on_submit():
         data = form.data

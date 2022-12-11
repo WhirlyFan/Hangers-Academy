@@ -24,3 +24,9 @@ class CreateMessage(FlaskForm):
         "Message Content", validators=[DataRequired(), message_check]
     )
     channel_id = IntegerField("Channel_id", validators=[DataRequired(), channel_check])
+
+
+class UpdateMessage(FlaskForm):
+    message_content = StringField(
+        "Message Content", validators=[DataRequired(), message_check]
+    )
