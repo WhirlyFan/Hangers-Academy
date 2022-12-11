@@ -61,7 +61,7 @@ class Server(db.Model):
             "private": self.private,
             "server_img": self.server_img,
             # "Channels": [channel.to_dict() for channel in self.channels],
-            # "Members": [member.to_dict() for member in self.members],
+            "Members": [member.to_dict() for member in self.members],
             "created_at": self.created_at,
             "updated_at": self.updated_at,
         }
