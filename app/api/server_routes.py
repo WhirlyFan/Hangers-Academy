@@ -103,7 +103,7 @@ def update_server(server_id):
 
     if not authorized(server.owner_id):
         return {"error": "You do not own this server"}, 401
-    
+
     if server and form.validate_on_submit():
         data = form.data
         server.name = data["name"]
