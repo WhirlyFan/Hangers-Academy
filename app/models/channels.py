@@ -31,6 +31,13 @@ class Channel(db.Model):
             "id": self.id,
             "server_id": self.server_id,
             "name": self.name,
-            # "Server": self.server.to_dict(),
-            # "Messages": [message.to_dict() for message in self.messages]
+            "Server": self.server.to_dict(),
+            "Messages": [message.to_dict() for message in self.messages],
+        }
+
+    def to_dict_base(self):
+        return {
+            "id": self.id,
+            "server_id": self.server_id,
+            "name": self.name,
         }
