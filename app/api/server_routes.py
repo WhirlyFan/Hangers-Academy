@@ -5,7 +5,7 @@ from app.models import db, User, Server
 from .auth_routes import validation_errors_to_error_messages
 
 server_routes = Blueprint("servers", __name__)
-    
+
 
 @server_routes.route("/current")
 @login_required
