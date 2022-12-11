@@ -2,7 +2,7 @@ from flask import Blueprint, request
 from flask_login import login_required, current_user
 from ..forms.message_form import CreateMessage, UpdateMessage
 from app.models import db, Message
-from .auth_routes import validation_errors_to_error_messages
+from .auth_routes import validation_errors_to_error_messages, authorized
 # add authorized from auth_routes
 message_routes = Blueprint("messages", __name__)
 
@@ -43,6 +43,9 @@ def update_message(message_id):
 
     message = Message.query.get(message_id)
 
+    if not authorized(message.user_id):
+        return { "error": "This is not your message" }
+
     if message and form.validate_on_submit():
         data = form.data
         message.message_content = data["message_content"]
@@ -58,6 +61,10 @@ def delete_message(message_id):
     Deletes a message
     """
     message = Message.query.get(message_id)
+    print(message)
+
+    if not authorized(message.user_id):
+        return { "error": "This is not your message" }
 
     if not message:
         return {
