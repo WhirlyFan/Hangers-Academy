@@ -31,13 +31,12 @@ def get_server_details(server_id):
     return server
 
 
-@server_routes.route("/")
-# @login_required
+@server_routes.route("")
+@login_required
 def get_all_servers():
     """
     Query for all servers
     """
-    print('USER AUTHORIZATION',current_user.is_authenticated) 
     all_servers = Server.query.all()
 
     all_servers_to_dict = [server.to_dict() for server in all_servers]
@@ -69,6 +68,10 @@ def create_server():
     """
     form = CreateServer()
     form["csrf_token"].data = request.cookies["csrf_token"]
+
+    print("SERVER FORM DATAA", form.data)
+    body = request.get_json()
+    print('REQUEST BODY',body)
 
     if form.validate_on_submit():
         data = form.data

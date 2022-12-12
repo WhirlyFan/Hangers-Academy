@@ -30,8 +30,10 @@ export const getAllServersThunk = () => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        // console.log(data)
         dispatch(getAllServers(data));
+        return data
+    } else {
+        throw response
     }
 };
 
@@ -41,6 +43,72 @@ export const getCurrentServersThunk = () => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(getCurrentServers(data))
+        return data
+    } else {
+        throw response
+    }
+}
+
+export const postServerThunk = (server) => async (dispatch) => {
+    console.log(server)
+    const response = await fetch("/api/servers", {
+        method: "POST",
+        body: JSON.stringify(server)
+    });
+
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(getAllServersThunk())
+        dispatch(getCurrentServersThunk())
+        return data
+    } else {
+        throw response
+    }
+}
+
+export const postServerMemberThunk = (id) => async (dispatch) => {
+    const response = await fetch (`/api/servers/${id}/users`, {
+        method: "POST"
+    })
+    
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(getAllServersThunk())
+        dispatch(getCurrentServersThunk())
+        return data
+    } else {
+        throw response
+    }
+}
+
+export const editServerThunk = (server, id) => async (dispatch) => {
+    const response = await fetch (`/api/servers/${id}`, {
+        method: "PUT",
+        body: JSON.stringify(server),
+    })
+
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(getAllServersThunk())
+        dispatch(getCurrentServersThunk())
+        return data
+    } else {
+        throw response
+    }
+}
+
+export const deleteServerThunk = (id) => async (dispatch) => {
+    const response = await fetch (`/api/servers/${id}`, {
+        method: "DELETE"
+    })
+
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(getAllServersThunk())
+        dispatch(getCurrentServersThunk())
+        return data
+    } else {
+        throw response
     }
 }
 
