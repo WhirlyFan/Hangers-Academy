@@ -47,7 +47,6 @@ Creates and returns a new friend
 
   ```json
   {
-    "user_id": 1,
     "friend_id": 2
   }
   ```
@@ -61,31 +60,57 @@ Creates and returns a new friend
 
   ```json
   {
-    "id": 1,
-    "user_id": 1,
-    "friend_id": 2,
-    "created_at": "2021-11-19 20:39:36",
-    "updated_at": "2021-11-19 20:39:36"
+    "Friends": [
+      {
+        "id": 1,
+        "user_id": 1,
+        "friend_id": "2",
+        "created_at": "2021-11-19 20:39:36",
+        "updated_at": "2021-11-19 20:39:36"
+      }
+    ]
   }
   ```
 
-* Error Response: Body validation error
+* Error response: Couldn't find a friend with the specified id
 
-  - LIKELY WON'T BE USED IN PRODUCTION
-
-  - Status Code: 400
+  - Status Code: 401
   - Headers:
     - Content-Type: application/json
   - Body:
 
   ```json
   {
-    "message": "Validation Error",
-    "statusCode": 400,
-    "errors": {
-      "user_id": "User ID couldn't be found",
-      "friend_id": "Friend ID couldn't be found"
-    }
+    "message": "Friend couldn't be found",
+    "status_code": 401
+  }
+  ```
+
+* Error response: You cannot add yourself as a friend
+
+  - Status Code: 401
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+  ```json
+  {
+    "message": "You cannot add yourself as a friend",
+    "status_code": 401
+  }
+  ```
+
+* Error response: This user is already in your friends list
+
+  - Status Code: 401
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+  ```json
+  {
+    "message": "This user is already in your friends list",
+    "status_code": 401
   }
   ```
 

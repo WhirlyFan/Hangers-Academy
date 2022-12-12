@@ -29,35 +29,6 @@
   }
   ```
 
-### Get all Users by server id
-
-- Require Authentication: True
-
-- Request
-
-  - Method: GET
-  - URL: /api/servers/:server_id/users
-  - Body: None
-
-- Successful Response
-
-  - Status code: 200
-  - Headers:
-    - Content-Type: application/json
-  - Body:
-
-  ```json
-  {
-    "Users": [
-      {
-        "id": 1,
-        "username": "WhirlyFan",
-        "email": "email@email.com"
-      }
-    ]
-  }
-  ```
-
 ### Get the Current User
 
 Returns the information about the current user that is logged in.
