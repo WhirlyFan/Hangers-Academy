@@ -53,6 +53,9 @@ export const postServerThunk = (server) => async (dispatch) => {
     console.log(server)
     const response = await fetch("/api/servers", {
         method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
         body: JSON.stringify(server)
     });
 
@@ -82,8 +85,12 @@ export const postServerMemberThunk = (id) => async (dispatch) => {
 }
 
 export const editServerThunk = (server, id) => async (dispatch) => {
+    console.log(server)
     const response = await fetch (`/api/servers/${id}`, {
         method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
         body: JSON.stringify(server),
     })
 

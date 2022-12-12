@@ -69,9 +69,7 @@ def create_server():
     form = CreateServer()
     form["csrf_token"].data = request.cookies["csrf_token"]
 
-    print("SERVER FORM DATAA", form.data)
     body = request.get_json()
-    print('REQUEST BODY',body)
 
     if form.validate_on_submit():
         data = form.data
