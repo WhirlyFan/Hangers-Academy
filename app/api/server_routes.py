@@ -32,7 +32,7 @@ def get_server_details(server_id):
 
 
 @server_routes.route("/")
-# @login_required
+@login_required
 def get_all_servers():
     """
     Query for all servers
