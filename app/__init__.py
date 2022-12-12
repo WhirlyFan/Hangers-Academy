@@ -84,6 +84,10 @@ def api_help():
     return route_list
 
 
+if __name__ == '__main__':
+    socketio.run(app)
+
+
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def react_root(path):
@@ -100,7 +104,3 @@ def react_root(path):
 @app.errorhandler(404)
 def not_found(e):
     return app.send_static_file('index.html')
-
-
-if __name__ == '__main__':
-    socketio.run(app)
