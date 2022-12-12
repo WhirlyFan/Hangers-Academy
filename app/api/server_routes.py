@@ -32,11 +32,12 @@ def get_server_details(server_id):
 
 
 @server_routes.route("/")
-@login_required
+# @login_required
 def get_all_servers():
     """
     Query for all servers
     """
+    print('USER AUTHORIZATION',current_user.is_authenticated) 
     all_servers = Server.query.all()
 
     all_servers_to_dict = [server.to_dict() for server in all_servers]
