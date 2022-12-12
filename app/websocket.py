@@ -9,6 +9,8 @@ if os.environ.get('FLASK_ENV') == 'production':
         'https://hangersacademy.onrender.com',
         'http://hangersacademy.com',
         'https://hangersacademy.com',
+        'http://www.hangersacademy.com',
+        'https://www.hangersacademy.com',
     ]
     # origins = "*"
 else:
