@@ -31,7 +31,7 @@ def get_server_details(server_id):
     return server
 
 
-@server_routes.route("/")
+@server_routes.route("")
 @login_required
 def get_all_servers():
     """
@@ -68,6 +68,8 @@ def create_server():
     """
     form = CreateServer()
     form["csrf_token"].data = request.cookies["csrf_token"]
+
+    body = request.get_json()
 
     if form.validate_on_submit():
         data = form.data
