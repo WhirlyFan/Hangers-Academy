@@ -4,12 +4,13 @@ import os
 
 # configure cors_allowed_origins
 if os.environ.get('FLASK_ENV') == 'production':
-    origins = [
-        'http://hangersacademy.herokuapp.com',
-        'https://hangersacademy.herokuapp.com',
-        'http://hangersacademy.com',
-        'https://hangersacademy.com',
-    ]
+    # origins = [
+    #     'http://hangersacademy.herokuapp.com',
+    #     'https://hangersacademy.herokuapp.com',
+    #     'http://hangersacademy.com',
+    #     'https://hangersacademy.com',
+    # ]
+    origins = "*"
 else:
     origins = "*"
 
