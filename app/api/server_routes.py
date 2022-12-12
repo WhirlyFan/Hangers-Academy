@@ -93,7 +93,7 @@ def create_server():
 @login_required
 def update_server(server_id):
     """
-    Update a Server
+    Update a Server only if a user is authorized
     """
 
     form = UpdateServer()
@@ -117,9 +117,13 @@ def update_server(server_id):
 @login_required
 def delete_server(server_id):
     """
-    Delete a Route
+    Delete a Route only if user is authorized
     """
     server = Server.query.get(server_id)
+
+    if not authorized(server.owner_id):
+        return {"error": "You do not own this server"}, 401
+
     if not server:
         return {"message": "Server couldn't be found"}, 404
     else:

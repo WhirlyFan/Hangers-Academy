@@ -2,7 +2,7 @@ from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import db, User, Server, Channel
 from app.forms import ChannelForm
-from .auth_routes import validation_errors_to_error_messages
+from .auth_routes import validation_errors_to_error_messages, authorized
 from app.models.messages import Message
 
 channel_routes = Blueprint("channels", __name__)
@@ -16,11 +16,16 @@ def update_channel(channel_id):
     requests body and returns updated channel
     """
     form = ChannelForm()
+    channel = Channel.query.get(channel_id)
+
+    print(channel.to_dict())
+
+    if not authorized(channel.to_dict()['Server']['owner_id']):
+        return { "error": "You do not own this server" }
 
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         name = form.data['name']
-        channel = Channel.query.get(channel_id)
         channel.name = name
         db.session.commit()
 
@@ -37,6 +42,10 @@ def delete_channel(channel_id):
     database then responds with success message
     """
     channel = Channel.query.get(channel_id)
+
+    if not authorized(channel.to_dict()['Server']['owner_id']):
+        return { "error": "You do not own this server" }
+
     if not channel:
         return {
             "message": "Channel couldn't be found",
@@ -57,10 +66,14 @@ def create_channel():
     """
 
     form = ChannelForm()
+    server_id = form.data['server_id']
+    server = Server.query.get(server_id)
+
+    if not authorized(server.owner_id):
+        return { "error": "You do not own this server" }
 
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        server_id = form.data['server_id']
         name = form.data['name']
 
         new_channel = Channel(server_id=server_id, name=name)
