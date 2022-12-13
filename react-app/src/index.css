@@ -1,1 +1,8 @@
 /* TODO Add site wide styles */
+#main-div {
+    grid-template-areas: 
+    "server-list channel-list header header",
+    "server-list channel-list channel-view members-list",
+    "server-list user-hub, channel-view, members-list" 
+    ;
+}
