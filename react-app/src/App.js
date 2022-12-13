@@ -43,8 +43,9 @@ function App() {
     return (
       <BrowserRouter>
         <span>needs to log in</span>
+        <NavBar />
         <Route path="/login" exact={true}>
-          <Login />
+          <LoginForm />
         </Route>
         <Route path="/">
           <Main />

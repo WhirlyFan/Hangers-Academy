@@ -46,9 +46,18 @@ class User(db.Model, UserMixin):
     friends = db.relationship("User", secondary=friends, cascade="all, delete", primaryjoin=(
         friends.c.user_id == id), secondaryjoin=(friends.c.friend_id == id), backref=db.backref("user_ids"))
 
+    def to_dict_base(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+        }
+
     def to_dict(self):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            "servers": [server.to_dict() for server in self.servers],
+            "friends": [friend.to_dict_base() for friend in self.friends]
         }

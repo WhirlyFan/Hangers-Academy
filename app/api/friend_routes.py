@@ -6,17 +6,17 @@ from app.forms import FriendForm
 
 friends_routes = Blueprint("friends",__name__)
 
-@friends_routes.route("/current")
-@login_required
-def get_current_user_friends():
-    """
-    Queries the current user and responds with a list of its friends
-    """
-    user = User.query.get(current_user.id)
-    friends = user.friends
-    friends_list = [friend.to_dict() for friend in friends]
+# @friends_routes.route("/current")
+# @login_required
+# def get_current_user_friends():
+#     """
+#     Queries the current user and responds with a list of its friends
+#     """
+#     user = User.query.get(current_user.id)
+#     friends = user.friends
+#     friends_list = [friend.to_dict() for friend in friends]
 
-    return {"Friends": friends_list}
+#     return {"Friends": friends_list}
 
 
 @friends_routes.route("", methods=["POST"])
@@ -37,7 +37,7 @@ def add_friend():
         user.friends.append(new_friend)
         db.session.commit()
 
-        return redirect(f'{request.base_url}/current')
+        return { "message": "Successfully added friend", "status_code": 200 }
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 

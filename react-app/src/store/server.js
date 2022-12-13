@@ -7,7 +7,6 @@ const normalize = (arr) => {
 
 //types
 const GET_ALL_SERVERS = 'servers/getAllServers';
-const GET_CURRENT_SERVERS = 'servers/getCurrentServers'
 
 //action creators
 const getAllServers = (payload) => {
@@ -16,13 +15,6 @@ const getAllServers = (payload) => {
         payload
     }
 };
-
-const getCurrentServers = (payload) => {
-    return {
-        type: GET_CURRENT_SERVERS,
-        payload
-    }
-}
 
 //thunks
 export const getAllServersThunk = () => async (dispatch) => {
@@ -37,20 +29,8 @@ export const getAllServersThunk = () => async (dispatch) => {
     }
 };
 
-export const getCurrentServersThunk = () => async (dispatch) => {
-    const response = await fetch("/api/servers/current");
-
-    if (response.ok) {
-        const data = await response.json();
-        dispatch(getCurrentServers(data))
-        return data
-    } else {
-        throw response
-    }
-}
-
 export const postServerThunk = (server) => async (dispatch) => {
-    console.log(server)
+    // console.log(server)
     const response = await fetch("/api/servers", {
         method: "POST",
         headers: {
@@ -62,7 +42,6 @@ export const postServerThunk = (server) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json()
         dispatch(getAllServersThunk())
-        dispatch(getCurrentServersThunk())
         return data
     } else {
         throw response
@@ -77,10 +56,31 @@ export const postServerMemberThunk = (id) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json()
         dispatch(getAllServersThunk())
-        dispatch(getCurrentServersThunk())
         return data
     } else {
         throw response
+    }
+}
+
+export const postServerChannelThunk = (input) => async (dispatch) => {
+    const {server_id, name} = input
+    const response = await fetch ('/api/channels', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            server_id,
+            name
+        })
+    });
+
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(getAllServersThunk())
+        return data
+    } else {
+        return response
     }
 }
 
@@ -97,10 +97,30 @@ export const editServerThunk = (server, id) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json()
         dispatch(getAllServersThunk())
-        dispatch(getCurrentServersThunk())
         return data
     } else {
         throw response
+    }
+}
+
+export const editServerChannelThunk = (input) => async (dispatch) => {
+    const {channel_id, name} = input
+    const response = await fetch (`/api/channels/${channel_id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            name
+        })
+    });
+
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(getAllServersThunk())
+        return data
+    } else {
+        return response
     }
 }
 
@@ -112,7 +132,20 @@ export const deleteServerThunk = (id) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json()
         dispatch(getAllServersThunk())
-        dispatch(getCurrentServersThunk())
+        return data
+    } else {
+        throw response
+    }
+}
+
+export const deleteServerChannelThunk = (channel_id) => async (dispatch) => {
+    const response = await fetch (`/api/channels/${channel_id}`, {
+        method: "DELETE"
+    })
+
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(getAllServersThunk())
         return data
     } else {
         throw response
@@ -122,8 +155,7 @@ export const deleteServerThunk = (id) => async (dispatch) => {
 //reducer
 
 const initialState = {
-    allServers: {},
-    currentServers: {}
+    allServers: {}
 }
 
 const serversReducer = (state = initialState, action) => {
@@ -132,10 +164,6 @@ const serversReducer = (state = initialState, action) => {
         case GET_ALL_SERVERS:
             const allServersObj = normalize(action.payload.Servers)
             newState = {...state, allServers: allServersObj}
-            return newState
-        case GET_CURRENT_SERVERS:
-            const currentServersObj = normalize(action.payload.Servers)
-            newState = {...state, currentServers: currentServersObj}
             return newState
         default:
             return state;
