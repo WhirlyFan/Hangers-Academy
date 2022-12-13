@@ -22,3 +22,6 @@ def server_check(form, field):
 class ChannelForm(FlaskForm):
     name = StringField("Name", validators=[DataRequired(), name_check])
     server_id = IntegerField("Server_id", validators=[DataRequired(), server_check])
+
+class EditChannelForm(FlaskForm):
+    name = StringField("Name", validators=[DataRequired(), name_check])

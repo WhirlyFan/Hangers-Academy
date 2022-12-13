@@ -16,8 +16,10 @@ def create_message():
 
     form = CreateMessage()
     form["csrf_token"].data = request.cookies["csrf_token"]
+    # print(form.data)
 
     if form.validate_on_submit():
+        # print("VALIDATEED")
         data = form.data
         create_message = Message(
             message_content=data["message_content"],
@@ -29,6 +31,7 @@ def create_message():
         db.session.commit()
 
         return create_message.to_dict()
+    # print({"errors": validation_errors_to_error_messages(form.errors)})
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 

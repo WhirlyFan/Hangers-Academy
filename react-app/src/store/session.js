@@ -94,6 +94,57 @@ export const signUp = (username, email, password) => async (dispatch) => {
   }
 };
 
+export const getUserThunk = (id) => async(dispatch) => {
+  const response = await fetch(`/api/users/${id}`, {
+    headers: {
+      "Content-Type": "application.json"
+    }
+  });
+
+  if (response.ok) {
+    const data = await response.json()
+    dispatch(setUser(data));
+    return data
+  }
+  throw response
+};
+
+export const addFriendThunk = (user_id, friend_id) => async(dispatch) => {
+  const response = await fetch("/api/friends", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      friend_id
+    })
+  });
+  
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(getUserThunk(user_id))
+    return data
+  }
+  throw response
+};
+
+export const deleteFriendThunk = (user_id, friend_id) => async (dispatch) => {
+  const response = await fetch (`/api/friends/${friend_id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  });
+
+  if (response.ok) {
+    const data = await response.json()
+    dispatch (getUserThunk(user_id))
+    return data
+  } else {
+    throw response
+  }
+}
+
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:

@@ -7,6 +7,7 @@ import configureStore from './store';
 
 import * as serverActions from './store/server';
 import * as channelMessagesActions from './store/channelMessages'
+import * as userActions from "./store/session"
 
 const store = configureStore();
 
@@ -15,6 +16,7 @@ if (process.env.NODE_ENV !== "production") {
   window.getAllServers = serverActions;
   window.channelMessagesActions = channelMessagesActions;
   window.serverActions = serverActions;
+  window.userActions = userActions;
 }
 
 ReactDOM.render(
