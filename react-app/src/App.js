@@ -10,10 +10,11 @@ import DirectMessagesView from "./components/view/DirectMessagesView";
 import UsersView from "./components/view/UsersView";
 import ChannelList from "./components/list/ChannelList";
 import MemberList from "./components/list/MemberList";
-import ChannelView from "./components/view/ChannelView";
+import MessageView from "./components/view/MessageView";
 import AllServersView from "./components/view/AllServersView";
 import ProfileView from "./components/view/ProfileView";
 import Landing from "./components/Landing";
+import Header from "./components/Header";
 
 import './index.css'
 
@@ -48,30 +49,57 @@ if (!sessionUser) {
 }
 
 return (
-  <div>
+  <div id="main-div">
     <BrowserRouter>
+    <div id='server-list'>
       <ServersView />
+    </div>
+    <div id='user-hub'>
       <UserHub />
+    </div>
+    <div id='header'>
+      <Header />
+    </div>
       <Switch>
         <Route path='/friends'>
-          <FriendsView />
-          <DirectMessagesView />
-          <UsersView />
+          <div className='message-view'>
+            <FriendsView />
+          </div>
+          <div className='channel-list'>
+            <DirectMessagesView />
+          </div>
+          <div id='users-view'>
+            <UsersView />
+          </div>
         </Route>
         <Route path='/servers/:serverId/:channelId'>
+          <div className='channel-list'>
             <ChannelList />
+          </div>
+          <div className='member-list'>
             <MemberList />
-            <ChannelView />
+          </div>
+          <div className='message-view'>
+            <MessageView />
+          </div>
         </Route>
         <Route path='/servers/me/:serverId/:channelId'>
+          <div className='channel-list'>
             <DirectMessagesView />
-            <ChannelView />
+          </div>
+          <div className='message-view'>
+            <MessageView />
+          </div>
         </Route>
         <Route path='/servers' exact={true}>
+          <div>
             <AllServersView />
+          </div>
         </Route>
         <Route path='/me'>
+          <div id='profile-view'>
             <ProfileView />
+          </div>
         </Route>
       </Switch>
     </BrowserRouter>

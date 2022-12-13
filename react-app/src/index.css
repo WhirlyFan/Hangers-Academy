@@ -1,8 +1,72 @@
 /* TODO Add site wide styles */
-#main-div {
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* #main-div {
+    display: grid;
     grid-template-areas: 
     "server-list channel-list header header",
-    "server-list channel-list channel-view members-list",
-    "server-list user-hub, channel-view, members-list" 
+    "server-list channel-list message-view members-list",
+    "server-list user-hub, message-view, members-list" 
     ;
+    border: 3px solid teal;
+} */
+
+#main-div {  
+    display: grid;
+    grid-template-columns: 0.3fr 0.7fr 2.4fr 0.6fr;
+    grid-template-rows: 0.2fr 2.8fr 0.2fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+  }
+  
+#server-list { grid-area: 1 / 1 / 4 / 2; border: 3px solid red; }
+  
+.channel-list { grid-area: 1 / 2 / 4 / 3; border: 3px solid blue; }
+  
+#header { grid-area: 1 / 3 / 2 / 5; border: 3px solid yellow; }
+  
+.message-view { grid-area: 2 / 3 / 4 / 4; border: 3px solid green; }
+  
+.member-list { grid-area: 2 / 4 / 4 / 5; border: 3px solid orange; }
+  
+#user-hub { grid-area: 3 / 2 / 4 / 3; border: 3px solid purple;}
+  
+
+/* #server-list {
+    grid-area: server-list;
+    border: 3px solid green;
 }
+
+#user-hub {
+    grid-area: user-hub;
+    border: 3px solid red;
+}
+
+#header {
+    grid-area: header;
+    border: 3px solid blue;
+}
+
+.channel-list {
+    grid-area: channel-list;
+    border: 3px solid orange;
+}
+
+.message-view {
+    grid-area: message-view;
+    border: 3px solid yellow;
+}
+
+.member-list {
+    grid-area: member-list;
+    border: 3px solid violet;
+}
+
+#users-view {
+    grid-area: member-list;
+    border: 3px solid purple;
+}; */

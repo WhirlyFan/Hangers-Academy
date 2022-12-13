@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function ChannelView() {
+export default function MessageView() {
     return (
         <div></div>
     )
