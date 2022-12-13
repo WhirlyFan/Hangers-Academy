@@ -11,9 +11,10 @@ import * as channelMessagesActions from './store/channelMessages'
 const store = configureStore();
 
 if (process.env.NODE_ENV !== "production") {
-  window.store = store; //expose store to window in development
   window.getAllServers = serverActions;
   window.channelMessagesActions = channelMessagesActions;
+  window.store = store; //expose store to window in development 
+  window.serverActions = serverActions;
 }
 
 ReactDOM.render(
