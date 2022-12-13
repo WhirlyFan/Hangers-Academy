@@ -58,6 +58,6 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            "servers": [server.to_dict() for server in self.servers],
-            "friends": [friend.to_dict_base() for friend in self.friends]
+            'servers': [server.to_dict() for server in self.servers],
+            'friends': [friend.to_dict_base() for friend in self.friends]
         }

@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { authenticate } from "./store/session";
 import Login from "./components/Login";
+import LoginForm from "./components/auth/LoginForm"
 import ServersView from "./components/view/ServersView";
 import UserHub from "./components/UserHub";
 import FriendsView from "./components/view/FriendsView";
@@ -41,7 +42,7 @@ if (!sessionUser) {
           <Landing />
         </Route>
         <Route path='/login'>
-          <Login />
+          <LoginForm />
         </Route>
       </Switch>
     </BrowserRouter>
