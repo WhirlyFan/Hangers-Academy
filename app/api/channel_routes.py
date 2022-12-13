@@ -18,8 +18,6 @@ def update_channel(channel_id):
     form = ChannelForm()
     channel = Channel.query.get(channel_id)
 
-    print(channel.to_dict())
-
     if not authorized(channel.to_dict()['Server']['owner_id']):
         return { "error": "You do not own this server" }
 

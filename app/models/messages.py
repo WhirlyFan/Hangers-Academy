@@ -21,6 +21,14 @@ class Message(db.Model):
     channel = db.relationship("Channel", back_populates="messages")
     user = db.relationship("User", back_populates="messages")
 
+    @property
+    def _message_content(self):
+        return self.message_content
+
+    @_message_content.setter
+    def _message_content(self, message_content):
+        self.message_content = message_content
+
     def to_dict(self):
         return {
             'id': self.id,
