@@ -11,16 +11,18 @@ import { authenticate } from "./store/session";
 import Chat from "./components/Chat";
 import Login from "./components/Login";
 import Main from "./components/Main";
-import ServersView from "./components/view/ServerView";
+import ServersView from "./components/view/ServersView";
 import UserHub from "./components/UserHub";
 import FriendsView from "./components/view/FriendsView";
 import DirectMessagesView from "./components/view/DirectMessagesView";
-import UserView from "./components/view/UserView";
+import UsersView from "./components/view/UsersView";
 import ChannelList from "./components/list/ChannelList";
 import MemberList from "./components/list/MemberList";
 import ChannelView from "./components/view/ChannelView";
 import AllServersView from "./components/view/AllServersView";
 import ProfileView from "./components/view/ProfileView";
+
+import './index.css'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -37,51 +39,96 @@ function App() {
   if (!loaded) {
     return null;
   }
-
-  //if not logged in, redirect to root landing page
-  if (!sessionUser) {
-    return (
-      <BrowserRouter>
-        <span>needs to log in</span>
-        <NavBar />
-        <Route path="/login" exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path="/">
-          <Main />
-        </Route>
-      </BrowserRouter>
-    );
-  }
-
-  //if logged in, redirect to user hub
+if (!sessionUser) {
   return (
     <BrowserRouter>
-      <span>logged in</span>
+      <Switch>
+        <Route path='/' exact={true}>
+          <Landing />
+        </Route>
+        <Route path='/login'>
+          <Login />
+        </Route>
+      </Switch>
+    </BrowserRouter>
+  )
+}
+
+return (
+  <div>
+    <BrowserRouter>
       <ServersView />
       <UserHub />
-      <Route path="/friends" exact={true}>
-        <FriendsView />
-        <DirectMessagesView />
-        <UserView />
-      </Route>
-      <Route path="/servers/:serverId/:channelId">
-        <ChannelList />
-        <MemberList />
-        <ChannelView />
-      </Route>
-      <Route path="/servers/me/:serverId/:channelId">
-        <DirectMessagesView />
-        <ChannelView />
-      </Route>
-      <Route path="/servers" exact={true}>
-        <AllServersView />
-      </Route>
-      <Route path="/me">
-        <ProfileView />
-      </Route>
+      <Switch>
+        <Route path='/friends'>
+          <FriendsView />
+          <DirectMessagesView />
+          <UsersView />
+        </Route>
+        <Route path='/servers/:serverId/:channelId'>
+            <ChannelList />
+            <MemberList />
+            <ChannelView />
+        </Route>
+        <Route path='/servers/me/:serverId/:channelId'>
+            <DirectMessagesView />
+            <ChannelView />
+        </Route>
+        <Route path='/servers' exact={true}>
+            <AllServersView />
+        </Route>
+        <Route path='/me'>
+            <ProfileView />
+        </Route>
+      </Switch>
     </BrowserRouter>
-  );
+  </div>
+)
+
+  //if not logged in, redirect to root landing page
+  // if (!sessionUser) {
+  //   return (
+  //     <BrowserRouter>
+  //       <span>needs to log in</span>
+  //       <NavBar />
+  //       <Route path="/login" exact={true}>
+  //         <LoginForm />
+  //       </Route>
+  //       <Route path="/">
+  //         <Main />
+  //       </Route>
+  //     </BrowserRouter>
+  //   );
+  // }
+
+  //if logged in, redirect to user hub
+  // return (
+  //   <BrowserRouter>
+  //     <span>logged in</span>
+  //     <ServersView />
+  //     <UserHub />
+  //     <Route path="/friends" exact={true}>
+  //       <FriendsView />
+  //       <DirectMessagesView />
+  //       <UserView />
+  //     </Route>
+  //     <Route path="/servers/:serverId/:channelId">
+  //       <ChannelList />
+  //       <MemberList />
+  //       <ChannelView />
+  //     </Route>
+  //     <Route path="/servers/me/:serverId/:channelId">
+  //       <DirectMessagesView />
+  //       <ChannelView />
+  //     </Route>
+  //     <Route path="/servers" exact={true}>
+  //       <AllServersView />
+  //     </Route>
+  //     <Route path="/me">
+  //       <ProfileView />
+  //     </Route>
+  //   </BrowserRouter>
+  // );
 
   // return (
   //   <BrowserRouter>
