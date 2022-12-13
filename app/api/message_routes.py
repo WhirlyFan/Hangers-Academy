@@ -40,7 +40,6 @@ def update_message(message_id):
     """
     form = UpdateMessage()
     form["csrf_token"].data = request.cookies["csrf_token"]
-
     message = Message.query.get(message_id)
 
     if not authorized(message.user_id):
@@ -61,7 +60,6 @@ def delete_message(message_id):
     Deletes a message
     """
     message = Message.query.get(message_id)
-    print(message)
 
     if not authorized(message.user_id):
         return { "error": "This is not your message" }

@@ -1,9 +1,6 @@
-// Action Types
+// ACTION TYPES
 
 const GET_CHANNEL_MESSAGES = "channels/getChannelMessages"
-// const CREATE_CHANNEL = "channels/createChannel"
-// const DELETE_CHANNEL = "channels/deleteChannel"
-// const UPDATE_CHANNEL = "channels/updateChannel"
 
 // Action Creators
 export const getChannelMessages = (payload) => {
@@ -13,64 +10,41 @@ export const getChannelMessages = (payload) => {
     }
 };
 
-// export const createChannelMessage = (payload) => {
-//     return {
-//         type: CREATE_CHANNEL,
-//         payload
-//     }
-// }
-
-// export const deleteChannelMessage = (payload) => {
-//     return {
-//         type: DELETE_CHANNEL,
-//         payload
-//     }
-// }
-
-// export const updateChannelMessage = (payload) => {
-//     return {
-//         type: UPDATE_CHANNEL,
-//         payload
-//     }
-// }
-
-// Thunks
+// THUNKS
 export const getChannelMessagesThunk = (channelId) => async (dispatch) => {
-    const response = await fetch(`/api/channels/${channelId}/messages`, {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
+    const response = await fetch(`/api/channels/${channelId}/messages`);
 
-    if (response.ok) {
-        const data = await response.json();
-        dispatch(getChannelMessages(data))
-    } else {
+    if (!response.ok) {
         throw response;
     }
-
-    return response
+    const data = await response.json();
+    dispatch(getChannelMessages(data))
+    return data
 }
 
 export const createChannelMessageThunk = (input) => async (dispatch) => {
-    const { channel_id, user_id, message_content } = input
+    const { channelId, userId, messageContent } = input
     const response = await fetch("/api/messages", {
+        headers: {
+            'Content-Type': 'application/json'
+        },
         method: 'POST',
         body: JSON.stringify({
-            channel_id,
-            user_id,
-            message_content
+            channelId,
+            userId,
+            messageContent
         })
     });
 
     if (!response.ok) {
         throw response;
     }
-
-    return response
+    const data = response.json();
+    dispatch(getChannelMessagesThunk(channelId))
+    return data
 }
 
-export const deleteChannelMessageThunk = (messageId) => async (dispatch) => {
+export const deleteChannelMessageThunk = (messageId, channelId) => async (dispatch) => {
     const response = await fetch(`/api/messages/${messageId}`, {
         method: 'DELETE'
     })
@@ -78,28 +52,33 @@ export const deleteChannelMessageThunk = (messageId) => async (dispatch) => {
     if (!response.ok) {
         throw response;
     }
-
-    return response
+    const data = response.json();
+    dispatch(getChannelMessagesThunk(channelId))
+    return data
 }
 
 export const updateChannelMessageThunk = (input) => async (dispatch) => {
-    const { messageId, message_content } = input
+    const { messageId, messageContent, channelId } = input
     const response = await fetch(`/api/messages/${messageId}`, {
+        headers: {
+            'Content-Type': 'application/json'
+        },
         method: 'PUT',
         body: JSON.stringify({
-            message_content
+            message_content: messageContent
         })
     })
 
     if (!response.ok) {
         throw response
     }
+    const data = response.json();
+    dispatch(getChannelMessagesThunk(channelId))
+    return data
 }
 
-// Reducer
-const initialState = {
-    channelMessages: []
-}
+// REDUCER
+const initialState = {}
 
 export const channelMessagesReducer = (state=initialState, action) => {
     let newState = { ...state }
