@@ -68,7 +68,7 @@ return (
           <div className='channel-list'>
             <DirectMessagesView />
           </div>
-          <div id='users-view'>
+          <div className="member-list">
             <UsersView />
           </div>
         </Route>
