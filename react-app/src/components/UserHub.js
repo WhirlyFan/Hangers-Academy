@@ -2,6 +2,6 @@ import React from "react";
 
 export default function UserHub() {
     return (
-        <div></div>
+        <div>USER HUB</div>
     )
 };
