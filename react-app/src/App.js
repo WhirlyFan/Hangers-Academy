@@ -21,6 +21,7 @@ import MemberList from "./components/list/MemberList";
 import ChannelView from "./components/view/ChannelView";
 import AllServersView from "./components/view/AllServersView";
 import ProfileView from "./components/view/ProfileView";
+import Landing from "./components/Landing";
 
 import './index.css'
 
