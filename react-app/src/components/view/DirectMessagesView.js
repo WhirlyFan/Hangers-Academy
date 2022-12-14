@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom'
 
 export default function DirectMessagesView() {
-    const userServers = useSelector(state => state.session.user.servers)
+    const userServers = useSelector(state => state.session.user.private_servers)
     const history = useHistory()
 
     useEffect(() => {
@@ -17,7 +17,6 @@ export default function DirectMessagesView() {
     const privateServers = userServers.filter(server => {
         return server.private === true
     })
-    console.log("FILTER FOR PRVATE SERVERS!", privateServers)
 
     return (
         <div>

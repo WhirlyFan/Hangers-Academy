@@ -23,7 +23,7 @@ export default function FriendsView() {
         if (serverToDelete) dispatch(deleteServerThunk(serverToDelete.id)).then(setHasClicked(!hasClicked))
     }
 
-    const privateServers = sessionUser.servers.filter(server => server.private=true)
+    const privateServers = sessionUser.private_servers.filter(server => server.private=true)
     const privServers = privateServers.map(server => {
         const memberIds = server.Members.map(member => member.id)
         return {...server, memberIds}

@@ -24,5 +24,4 @@ def user(id):
 
     user = User.query.get(id)
     userInfo = user.to_dict()
-    print('USER INFO RETURNED!!!!',userInfo["servers"])
     return userInfo

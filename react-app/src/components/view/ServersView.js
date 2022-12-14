@@ -12,13 +12,7 @@ export default function ServersView() {
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
     const user = useSelector(state => state.session.user)
-    const serversArr = user.servers
-    console.log('This is the servers ARR', serversArr)
-    const filteredPublicServers = serversArr.filter(server => {
-        console.log('THIS IS EACH SERVER!!!!', server, server.private)
-        return server.private === false
-    })
-    console.log('FILTER FOR PUBLIC SERVERS!', filteredPublicServers)
+    const serversArr = user.public_servers
     const userId = user.id
 
     useEffect(() => {
@@ -55,7 +49,7 @@ export default function ServersView() {
             {/* Maps out all public server user is a member of */}
             <div>
                 {
-                    filteredPublicServers.map((server) => {
+                    serversArr.map((server) => {
                         return (
                             <div className={styles.serverItem} key={server.id} onClick={() => redirectServer(server.id)}>
                                 {imgValidator(server.server_img) ? <img className={styles.serverItemImage} src={server.server_img} alt='server_img' /> : server.name[0]}
