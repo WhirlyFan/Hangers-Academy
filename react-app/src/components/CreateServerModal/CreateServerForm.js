@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { postServerThunk } from "../../store/server";
 
-function CreateServerForm({ setShowModal }) {
+function CreateServerForm({ setShowModal, setHasSubmitted }) {
     const dispatch = useDispatch();
 
     const [serverName, setServerName] = useState("")
+    const [serverImg, setServerImg] = useState("")
     const [errors, setErrors] = useState([]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
-        return dispatch(postServerThunk({ name: serverName, private: false, server_img: 'url' }))
+        return dispatch(postServerThunk({ name: serverName, private: false, server_img: serverImg }))
+            .then(() => setHasSubmitted(prevValue => !prevValue))
             .then(() => setShowModal(false))
     };
 
@@ -28,6 +30,15 @@ function CreateServerForm({ setShowModal }) {
                             value={serverName}
                             onChange={(e) => setServerName(e.target.value)}
                             placeholder='Server Name'
+                            required
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="text"
+                            value={serverImg}
+                            onChange={(e) => setServerImg(e.target.value)}
+                            placeholder='Server Image URL'
                             required
                         />
                     </div>

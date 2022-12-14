@@ -9,15 +9,17 @@ export default function ServersView() {
     const dispatch = useDispatch()
     const history = useHistory()
 
+    const [hasSubmitted, setHasSubmitted] = useState(false)
+
     const user = useSelector(state => state.session.user)
     const serversArr = user.servers
     const filteredPublicServers = serversArr.filter(server => server.private === false)
+    console.log('caught private === false servers', filteredPublicServers)
     const userId = user.id
-    console.log(filteredPublicServers)
 
     useEffect(() => {
         dispatch(getUserThunk(userId))
-    }, [dispatch, userId])
+    }, [dispatch, userId, hasSubmitted])
 
     const redirectServer = (serverId) => {
         history.push(`/servers/${serverId}/1`)
@@ -25,6 +27,10 @@ export default function ServersView() {
 
     const redirectFriendsRoute = () => {
         history.push('/friends')
+    }
+
+    const redirectAllServersRoute = () => {
+        history.push('/servers')
     }
 
     // This function validates image urls for conditional rendering
@@ -56,7 +62,10 @@ export default function ServersView() {
             </div>
             {/* Add Server Button */}
             <div>
-                <CreateServerModal />
+                <CreateServerModal setHasSubmitted={setHasSubmitted} />
+            </div>
+            <div className={styles.homeButton} onClick={() => redirectAllServersRoute()}>
+                <img className={styles.serverItemImage} src='https://cdn3.emoji.gg/emojis/6473-greencompass.png' alt='home-button-icon' />
             </div>
         </div>
     )
