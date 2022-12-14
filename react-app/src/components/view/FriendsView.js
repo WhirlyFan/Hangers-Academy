@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
-import { deleteFriendThunk } from "../../store/session";
+import { deleteFriendThunk, getUserThunk } from "../../store/session";
+import { postServerThunk, deleteServerThunk } from "../../store/server";
 
 export default function FriendsView() {
     const sessionUser = useSelector(state => state.session.user)
@@ -9,20 +10,31 @@ export default function FriendsView() {
     const [hasClicked, setHasClicked] = useState(false)
   
     useEffect(() => {
-
+        dispatch(getUserThunk(sessionUser.id))
     }, [dispatch, hasClicked]);
     
     const deleteFriend = (userId, friendId) => {
-        dispatch(deleteFriendThunk(userId, friendId)).then(() => {
-            setHasClicked(!hasClicked)
+        dispatch(deleteFriendThunk(userId, friendId))
+        const serverToDelete = privServers.find(server => {
+            return server.memberIds.includes(userId)
         })
+        if (serverToDelete) dispatch(deleteServerThunk(serverToDelete.id)).then(setHasClicked(!hasClicked))
     }
 
-    // const messageFriend = () => {
-        
-    // }
+    const privateServers = sessionUser.servers.filter(server => server.private=true)
+    const privServers = privateServers.map(server => {
+        const memberIds = server.Members.map(member => member.id)
+        return {...server, memberIds}
+    });
 
-    //TODO remove li element style
+    const messageFriend = async (friend) => {
+        const privateServer = {
+            name: sessionUser.username + friend.username,
+            server_img: "url",
+            private: "True"
+        };    
+        dispatch(postServerThunk(privateServer, friend.id)).then(() => setHasClicked(!hasClicked))
+    }
 
     return (
         <div>
@@ -35,6 +47,7 @@ export default function FriendsView() {
                         <div key={friend.id}>
                             {friend.username}
                             <button onClick={() => deleteFriend(sessionUser.id,friend.id)}>Remove Friend</button>
+                            <button onClick={() => messageFriend(friend)}>Chat</button>
                         </div>
                     )) :
                     <h3>Try adding a friend from the Users list!</h3>

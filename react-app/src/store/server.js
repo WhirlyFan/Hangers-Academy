@@ -29,8 +29,7 @@ export const getAllServersThunk = () => async (dispatch) => {
     }
 };
 
-export const postServerThunk = (server) => async (dispatch) => {
-    // console.log(server)
+export const postServerThunk = (server, userId=false) => async (dispatch) => {
     const response = await fetch("/api/servers", {
         method: "POST",
         headers: {
@@ -41,16 +40,25 @@ export const postServerThunk = (server) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json()
+        if (data.private === true) {
+            dispatch(postServerMemberThunk(data.id, userId))
+            return data
+        }
         dispatch(getAllServersThunk())
         return data
     } else {
-        throw response
+        const data = await response.json()
+        return data
     }
 }
 
-export const postServerMemberThunk = (id) => async (dispatch) => {
-    const response = await fetch (`/api/servers/${id}/users`, {
-        method: "POST"
+export const postServerMemberThunk = (serverId, userId) => async (dispatch) => {
+    const response = await fetch (`/api/servers/${serverId}/users`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({user_id: userId})
     })
     
     if (response.ok) {
