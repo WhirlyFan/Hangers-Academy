@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { io } from "socket.io-client";
 let socket;
 
@@ -7,6 +8,7 @@ export default function MessageView() {
   const [chatInput, setChatInput] = useState("");
   const [messages, setMessages] = useState([]);
   const user = useSelector((state) => state.session.user);
+  const { serverId, channelId } = useParams();
 
   useEffect(() => {
     // open socket connection
@@ -16,12 +18,15 @@ export default function MessageView() {
     socket.on("chat", (chat) => {
       setMessages((messages) => [...messages, chat]);
     });
-    socket.on("join", { user: user.username, room: "general" });
+    socket.emit("join", {
+      user: user.username,
+      room: serverId + "-" + channelId,
+    });
     // when component unmounts, disconnect
     return () => {
       socket.disconnect();
     };
-  }, []);
+  }, [channelId, serverId, user.username]);
 
   const updateChatInput = (e) => {
     setChatInput(e.target.value);
@@ -32,7 +37,7 @@ export default function MessageView() {
     socket.emit("chat", {
       user: user.username,
       msg: chatInput,
-      room: "general",
+      room: serverId + "-" + channelId,
     });
     setChatInput("");
   };

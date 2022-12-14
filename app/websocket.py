@@ -24,7 +24,7 @@ def on_join(data):
     username = data['user']
     room = data['room']
     join_room(room)
-    send(username + ' has entered the room.', room=room)
+    send(username + ' has entered the room.', to=room)
 
 
 @socketio.on('leave')
@@ -32,16 +32,21 @@ def on_leave(data):
     username = data['user']
     room = data['room']
     leave_room(room)
-    send(username + ' has left the room.', room=room)
-
-
-# # handle chat messages
-# @socketio.on("chat")
-# def handle_chat(data):
-#     emit("chat", data, broadcast=True)
+    send(username + ' has left the room.', to=room)
 
 # handle chat messages
+
+
 @socketio.on("chat")
 def handle_chat(data):
-    room = data['room']
-    emit("chat", data, room=room)
+    # message = Message(
+    #     user_id=current_user.id,
+    #     channel_id=int(data['room']),
+    #     message=data['message']
+    # )
+    # db.session.add(message)
+    # db.session.commit()
+
+    if data['room']:
+        room = data['room']
+        emit("chat", data, broadcast=True, to=room)
