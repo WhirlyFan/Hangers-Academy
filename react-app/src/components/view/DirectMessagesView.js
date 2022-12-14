@@ -11,7 +11,7 @@ export default function DirectMessagesView() {
     }, [userServers])
 
     const handleClick = (serverId, channelId) => {
-        history.push(`/servers/me/${serverId}/${channelId}`)
+        history.push(`/main/servers/me/${serverId}/${channelId}`)
     }
 
     const privateServers = userServers.filter(server => {
