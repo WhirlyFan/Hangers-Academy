@@ -1,0 +1,75 @@
+.serversContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* padding-right: 40px; */
+    /* width:100%; */
+    height: 100%;
+    /* border: 1px solid red */
+
+}
+
+.homeButton {
+    background-color: #36393f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    height:38px;
+    width:38px;
+    margin-top: 10px;
+    margin-bottom:0px;
+    border-radius:20px;
+    cursor: pointer;
+    transition: border-radius, 0.33s;
+    /* border-bottom: 1px solid #36393f; */
+}
+
+#homeBar {
+    width: 70%;
+    /* border-bottom: red solid 1px;
+    border-color: red; */
+}
+
+#homeBar > hr {
+    border: none;
+    background-color: #36393f;
+    height: 2px;
+    border-radius: 15px;
+}
+
+.serverItem {
+    background-color: #36393f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    height:38px;
+    width:38px;
+    margin-bottom:20px;
+    border-radius:20px;
+    cursor: pointer;
+    transition: border-radius, 0.33s;
+    /* text-align: center; */
+    /* right */
+    /* border: 2px solid red; */
+}
+
+.serverItem:hover {
+    border-radius: 13px;
+    background-color: #5865f2;
+}
+
+.serverItemImage {
+    max-width: 100%;
+    max-height: 100%;
+    transition: border-radius, 0.33s;
+    border-radius:20px;
+    cursor: pointer;
+}
+
+.serverItemImage:hover {
+    border-radius: 13px;
+    /* background-color: #5865f2; */
+}
