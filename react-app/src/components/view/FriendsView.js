@@ -33,7 +33,7 @@ export default function FriendsView() {
         const privateServer = {
             name: sessionUser.username + friend.username,
             server_img: "url",
-            private: "True"
+            private: true
         };
         
         const server = privServers.find(server => {
