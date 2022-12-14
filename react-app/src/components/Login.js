@@ -1,7 +1,10 @@
 import React from "react";
+import LoginForm from "./auth/LoginForm";
 
 export default function Login() {
-    return (
-        <div>This will be the login route</div>
-    )
-};
+  return (
+    <div>
+      <LoginForm />
+    </div>
+  );
+}
