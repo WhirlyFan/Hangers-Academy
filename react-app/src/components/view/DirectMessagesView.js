@@ -1,4 +1,4 @@
-import {useEffect} from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom'
 
@@ -15,15 +15,15 @@ export default function DirectMessagesView() {
     }
 
     const privateServers = userServers.filter(server => {
-        console.log("FILTER FOR PRVATE SEERVERS",server)
         return server.private === true
     })
+    console.log("FILTER FOR PRVATE SERVERS!", privateServers)
 
     return (
         <div>
             <ul>
                 {privateServers.length > 0 ? privateServers.map(server => (
-                <div onClick={() => handleClick(server.id, server.Channels[0].id)} key={server.id}>{server.name}</div>
+                    <div onClick={() => handleClick(server.id, server.Channels[0].id)} key={server.id}>{server.name}</div>
                 )) : <h3>Try Chatting With a Friend!</h3>}
             </ul>
         </div>

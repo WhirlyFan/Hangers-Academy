@@ -13,8 +13,12 @@ export default function ServersView() {
 
     const user = useSelector(state => state.session.user)
     const serversArr = user.servers
-    const filteredPublicServers = serversArr.filter(server => server.private === false)
-    console.log('caught private === false (PUBLIC) servers', filteredPublicServers)
+    console.log('This is the servers ARR', serversArr)
+    const filteredPublicServers = serversArr.filter(server => {
+        console.log('THIS IS EACH SERVER!!!!', server, server.private)
+        return server.private === false
+    })
+    console.log('FILTER FOR PUBLIC SERVERS!', filteredPublicServers)
     const userId = user.id
 
     useEffect(() => {
@@ -22,15 +26,15 @@ export default function ServersView() {
     }, [dispatch, userId, hasSubmitted])
 
     const redirectServer = (serverId) => {
-        history.push(`/servers/${serverId}/1`)
+        history.push(`/main/servers/${serverId}/1`)
     }
 
     const redirectFriendsRoute = () => {
-        history.push('/friends')
+        history.push('/main/friends')
     }
 
     const redirectAllServersRoute = () => {
-        history.push('/servers')
+        history.push('/main/servers')
     }
 
     // This function validates image urls for conditional rendering
