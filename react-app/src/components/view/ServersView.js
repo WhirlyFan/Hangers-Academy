@@ -46,6 +46,5 @@ export default function ServersView() {
                 ))}
             </div>
         </div>
-        // <div>SERVERLIST</div>
     )
 };
