@@ -6,15 +6,15 @@ import { postServerThunk, deleteServerThunk } from "../../store/server";
 
 export default function FriendsView() {
     const sessionUser = useSelector(state => state.session.user)
-    const { friends } = sessionUser; 
+    const { friends } = sessionUser;
     const dispatch = useDispatch();
     const [hasClicked, setHasClicked] = useState(false)
     const history = useHistory()
-  
+
     useEffect(() => {
         dispatch(getUserThunk(sessionUser.id))
     }, [dispatch, hasClicked]);
-    
+
     const deleteFriend = (userId, friendId) => {
         dispatch(deleteFriendThunk(userId, friendId))
         const serverToDelete = privServers.find(server => {
@@ -31,15 +31,15 @@ export default function FriendsView() {
 
     const messageFriend = (friend) => {
         const privateServer = {
-            name: sessionUser.username + friend.username,
+            name: sessionUser.username + '_' +  friend.username,
             server_img: "url",
             private: true
         };
-        
+
         const server = privServers.find(server => {
             return server.memberIds.includes(friend.id)
-        })  
-        
+        })
+
         if (server) {
             const channelId = server.Channels[0].id
             history.push(`/servers/me/${server.id}/${channelId}`)
