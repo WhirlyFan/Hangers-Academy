@@ -31,21 +31,21 @@ export default function ServersView() {
     }
 
     return (
-        // <div className={styles.serversContainer}>
-        //     <div className={styles.homeButton} onClick={() => redirectFriendsRoute()}>
-        //         <img className={styles.serverItemImage} src='https://cdn.discordapp.com/attachments/1049445170778738789/1051654101286527137/1.png' alt='home-button-icon'/>
-        //     </div>
-        //     <div id={styles.homeBar}>
-        //         <hr />
-        //     </div>
-        //     <div>
-        //         { serversArr.map((server) => (
-        //             <div className={styles.serverItem} onClick={() => redirectServer(server.id)}>
-        //                {imgValidator(server.server_img) ? <img className={styles.serverItemImage} src={server.server_img} alt='server_img'/> : server.name[0]}
-        //             </div>
-        //         ))}
-        //     </div>
-        // </div>
-        <div>SERVERLIST</div>
+        <div className={styles.serversContainer}>
+            <div className={styles.homeButton} onClick={() => redirectFriendsRoute()}>
+                <img className={styles.serverItemImage} src='https://cdn.discordapp.com/attachments/1049445170778738789/1051654101286527137/1.png' alt='home-button-icon'/>
+            </div>
+            <div id={styles.homeBar}>
+                <hr />
+            </div>
+            <div>
+                { serversArr.map((server) => (
+                    <div className={styles.serverItem} onClick={() => redirectServer(server.id)}>
+                       {imgValidator(server.server_img) ? <img className={styles.serverItemImage} src={server.server_img} alt='server_img'/> : server.name[0]}
+                    </div>
+                ))}
+            </div>
+        </div>
+        // <div>SERVERLIST</div>
     )
 };
