@@ -16,6 +16,7 @@ import AllServersView from "./components/view/AllServersView";
 import ProfileView from "./components/view/ProfileView";
 import Landing from "./components/Landing";
 import Header from "./components/Header";
+import LoginForm from './components/auth/LoginForm'
 
 import './index.css'
 
