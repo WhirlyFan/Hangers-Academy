@@ -101,19 +101,18 @@ export const signUp = (username, email, password) => async (dispatch) => {
   }
 };
 
-export const getUserThunk = (id) => async(dispatch) => {
+export const getUserThunk = (id) => async (dispatch) => {
   const response = await fetch(`/api/users/${id}`, {
-    headers: {
-      "Content-Type": "application.json"
-    }
   });
 
   if (response.ok) {
     const data = await response.json()
+    console.log('data from GetUserThunk', data.servers)
     dispatch(setUser(data));
     return data
+  } else {
+    throw response
   }
-  throw response
 };
 
 export const getAllUsers = () => async (dispatch) => {
@@ -128,7 +127,7 @@ export const getAllUsers = () => async (dispatch) => {
   return data
 }
 
-export const addFriendThunk = (user_id, friend_id) => async(dispatch) => {
+export const addFriendThunk = (user_id, friend_id) => async (dispatch) => {
   const response = await fetch("/api/friends", {
     method: "POST",
     headers: {
@@ -138,7 +137,7 @@ export const addFriendThunk = (user_id, friend_id) => async(dispatch) => {
       friend_id
     })
   });
-  
+
   if (response.ok) {
     const data = await response.json();
     dispatch(getUserThunk(user_id))
@@ -148,7 +147,7 @@ export const addFriendThunk = (user_id, friend_id) => async(dispatch) => {
 };
 
 export const deleteFriendThunk = (user_id, friend_id) => async (dispatch) => {
-  const response = await fetch (`/api/friends/${friend_id}`, {
+  const response = await fetch(`/api/friends/${friend_id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json"
@@ -157,7 +156,7 @@ export const deleteFriendThunk = (user_id, friend_id) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json()
-    dispatch (getUserThunk(user_id))
+    dispatch(getUserThunk(user_id))
     return data
   } else {
     throw response
@@ -165,9 +164,10 @@ export const deleteFriendThunk = (user_id, friend_id) => async (dispatch) => {
 }
 
 export default function reducer(state = initialState, action) {
-  let newState = {...state}
+  let newState = { ...state }
   switch (action.type) {
     case SET_USER:
+      console.log('this is the action payload', action.payload)
       return { ...newState, user: action.payload };
     case REMOVE_USER:
       return { ...newState, user: null };
