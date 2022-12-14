@@ -5,10 +5,13 @@ This component will be the foundation for our app. It will render two components
 ```Javascript
 return (
     <BrowserRouter>
+        <Route path='/'>
+            <Landing />
+        </Route>
         <Route path='/login' exact={true}>
             <Login />
         </Route>
-        <Route path='/'>
+        <Route path='/main'>
             <Main />
         </Route>
     </BrowserRouter>
@@ -22,28 +25,32 @@ This component will be just one page containing a form for the user to login or 
 This component will house all other components. We will use this component in order to structure where we want our other components to be located. (using css grid)
 
 ```Javascript
+if (!sessionUser) {
+    history.push('/')
+}
+
 return (
     <BrowserRouter>
         <ServersView />
         <UserHub />
-        <Route path='/friends' exact={true}>
+        <Route path='/main/friends' exact={true}>
             <FriendsView />
             <DirectMessagesView />
             <UserView />
         </Route>
-        <Route path='/servers/:serverId/:channelId'>
+        <Route path='/main/servers/:serverId/:channelId'>
             <ChannelList />
             <MemberList />
             <ChannelView />
         </Route>
-        <Route path='/servers/me/:serverId/:channelId'>
+        <Route path='/main/servers/me/:serverId/:channelId'>
             <DirectMessagesView />
             <ChannelView />
         </Route>
-        <Route path='/servers' exact={true}>
+        <Route path='/main/servers' exact={true}>
             <AllServersView />
         </Route>
-        <Route path='/me'>
+        <Route path='/main/me'>
             <ProfileView />
         </Route>
     </BrowserRouter>

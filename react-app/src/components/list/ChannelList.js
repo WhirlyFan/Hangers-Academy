@@ -2,6 +2,8 @@ import React from "react";
 
 export default function ChannelList() {
     return (
-        <div></div>
+        <>
+            <div>CHANNEL LIST</div>
+        </>
     )
 };

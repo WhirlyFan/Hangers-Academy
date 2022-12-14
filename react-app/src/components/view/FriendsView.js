@@ -13,8 +13,8 @@ export default function FriendsView() {
 
     useEffect(() => {
         dispatch(getUserThunk(sessionUser.id))
-    }, [dispatch, hasClicked]);
-
+    }, [dispatch, hasClicked, sessionUser.id]);
+    
     const deleteFriend = (userId, friendId) => {
         dispatch(deleteFriendThunk(userId, friendId))
         const serverToDelete = privServers.find(server => {
@@ -23,7 +23,7 @@ export default function FriendsView() {
         if (serverToDelete) dispatch(deleteServerThunk(serverToDelete.id)).then(setHasClicked(!hasClicked))
     }
 
-    const privateServers = sessionUser.servers.filter(server => server.private=true)
+    const privateServers = sessionUser.private_servers.filter(server => server.private=true)
     const privServers = privateServers.map(server => {
         const memberIds = server.Members.map(member => member.id)
         return {...server, memberIds}
@@ -42,12 +42,12 @@ export default function FriendsView() {
 
         if (server) {
             const channelId = server.Channels[0].id
-            history.push(`/servers/me/${server.id}/${channelId}`)
+            history.push(`/main/servers/me/${server.id}/${channelId}`)
             return;
         }
 
         dispatch(postServerThunk(privateServer, friend.id)).then(({server, channel}) => {
-            history.push(`/servers/me/${server.id}/${channel.id}`)
+            history.push(`/main/servers/me/${server.id}/${channel.id}`)
         })
     }
 

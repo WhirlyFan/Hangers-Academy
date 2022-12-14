@@ -6,10 +6,18 @@ from .servers import server_members
 friends = db.Table(
     "friends",
     db.Model.metadata,
-    db.Column("user_id", db.Integer, db.ForeignKey(
-        add_prefix_for_prod("users.id")), primary_key=True),
-    db.Column("friend_id", db.Integer, db.ForeignKey(
-        add_prefix_for_prod("users.id")), primary_key=True)
+    db.Column(
+        "user_id",
+        db.Integer,
+        db.ForeignKey(add_prefix_for_prod("users.id")),
+        primary_key=True,
+    ),
+    db.Column(
+        "friend_id",
+        db.Integer,
+        db.ForeignKey(add_prefix_for_prod("users.id")),
+        primary_key=True,
+    ),
 )
 
 
@@ -18,10 +26,10 @@ if environment == "production":
 
 
 class User(db.Model, UserMixin):
-    __tablename__ = 'users'
+    __tablename__ = "users"
 
     if environment == "production":
-        __table_args__ = {'schema': SCHEMA}
+        __table_args__ = {"schema": SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
@@ -39,25 +47,36 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
-
     servers = db.relationship(
-        "Server", secondary=server_members, back_populates="members")
+        "Server", secondary=server_members, back_populates="members"
+    )
     messages = db.relationship("Message", back_populates="user")
-    friends = db.relationship("User", secondary=friends, cascade="all, delete", primaryjoin=(
-        friends.c.user_id == id), secondaryjoin=(friends.c.friend_id == id), backref=db.backref("user_ids"))
+    friends = db.relationship(
+        "User",
+        secondary=friends,
+        cascade="all, delete",
+        primaryjoin=(friends.c.user_id == id),
+        secondaryjoin=(friends.c.friend_id == id),
+        backref=db.backref("user_ids"),
+    )
 
     def to_dict_base(self):
         return {
-            'id': self.id,
-            'username': self.username,
-            'email': self.email,
+            "id": self.id,
+            "username": self.username,
+            "email": self.email,
         }
 
     def to_dict(self):
         return {
-            'id': self.id,
-            'username': self.username,
-            'email': self.email,
-            'servers': [server.to_dict() for server in self.servers],
-            'friends': [friend.to_dict_base() for friend in self.friends]
+            "id": self.id,
+            "username": self.username,
+            "email": self.email,
+            "private_servers": [
+                server.to_dict() for server in self.servers if server.private == True
+            ],
+            "public_servers": [
+                server.to_dict() for server in self.servers if server.private == False
+            ],
+            "friends": [friend.to_dict_base() for friend in self.friends],
         }
