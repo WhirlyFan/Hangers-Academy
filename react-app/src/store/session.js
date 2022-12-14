@@ -1,6 +1,8 @@
 // constants
+// set === get
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
+const SET_ALL_USERS = "session/SET_ALL_USERS"
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -11,7 +13,12 @@ const removeUser = () => ({
   type: REMOVE_USER,
 });
 
-const initialState = { user: null };
+const setUsers = (users) => ({
+  type: SET_ALL_USERS,
+  payload: users
+});
+
+const initialState = { user: null, allUsers: null };
 
 export const authenticate = () => async (dispatch) => {
   const response = await fetch("/api/auth/", {
@@ -109,6 +116,19 @@ export const getUserThunk = (id) => async(dispatch) => {
   throw response
 };
 
+export const getAllUsers = () => async (dispatch) => {
+  const response = await fetch('/api/users/');
+
+  if (!response.ok) {
+    throw response
+  }
+
+  const data = await response.json();
+  console.log(data)
+  dispatch(setUsers(data.users));
+  return data
+}
+
 export const addFriendThunk = (user_id, friend_id) => async(dispatch) => {
   const response = await fetch("/api/friends", {
     method: "POST",
@@ -146,11 +166,14 @@ export const deleteFriendThunk = (user_id, friend_id) => async (dispatch) => {
 }
 
 export default function reducer(state = initialState, action) {
+  let newState = {...state}
   switch (action.type) {
     case SET_USER:
-      return { user: action.payload };
+      return { ...newState, user: action.payload };
     case REMOVE_USER:
-      return { user: null };
+      return { ...newState, user: null };
+    case SET_ALL_USERS:
+      return { ...newState, allUsers: action.payload };
     default:
       return state;
   }
