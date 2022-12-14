@@ -11,8 +11,7 @@ export default function ServersView() {
     const history = useHistory()
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const user = useSelector(state => state.session.user)
-    const serversArr = user.servers
-    const filteredPublicServers = serversArr.filter(server => server.private === false)
+    const serversArr = user.public_servers
     const userId = user.id
 
     useEffect(() => {
@@ -40,17 +39,17 @@ export default function ServersView() {
 
     return (
         <div className={styles.serversContainer}>
-            {/* Home Button */}
             <div className={styles.homeButton} onClick={() => redirectFriendsRoute()}>
-                <img className={styles.serverItemImage} src='https://cdn.discordapp.com/attachments/1049445170778738789/1051654101286527137/1.png' alt='home-button-icon' />
+                <img className={styles.serverItemImage} src='https://cdn.discordapp.com/attachments/1049445170778738789/1051654101286527137/1.png' alt='home-button-icon'/>
             </div>
             <div id={styles.homeBar}>
                 <hr />
             </div>
+            
             {/* Maps out all public server user is a member of */}
             <div>
                 {
-                    filteredPublicServers.map((server) => {
+                    serversArr.map((server) => {
                         return (
                             <div className={styles.serverItem} key={server.id} onClick={() => redirectServer(server.id)}>
                                 {imgValidator(server.server_img) ? <img className={styles.serverItemImage} src={server.server_img} alt='server_img' /> : server.name[0]}

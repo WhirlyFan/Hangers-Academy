@@ -6,24 +6,26 @@ import { postServerThunk, deleteServerThunk } from "../../store/server";
 
 export default function FriendsView() {
     const sessionUser = useSelector(state => state.session.user)
-    const { friends } = sessionUser; 
     const dispatch = useDispatch();
     const [hasClicked, setHasClicked] = useState(false)
     const history = useHistory()
-  
+    
+    const { friends } = sessionUser;
+    
     useEffect(() => {
         dispatch(getUserThunk(sessionUser.id))
     }, [dispatch, hasClicked, sessionUser.id]);
-    
+
     const deleteFriend = (userId, friendId) => {
         dispatch(deleteFriendThunk(userId, friendId))
         const serverToDelete = privServers.find(server => {
             return server.memberIds.includes(userId) && server.memberIds.includes(friendId)
         })
+        console.log(serverToDelete)
         if (serverToDelete) dispatch(deleteServerThunk(serverToDelete.id)).then(setHasClicked(!hasClicked))
     }
 
-    const privateServers = sessionUser.servers.filter(server => server.private=true)
+    const privateServers = sessionUser.private_servers.filter(server => server.private=true)
     const privServers = privateServers.map(server => {
         const memberIds = server.Members.map(member => member.id)
         return {...server, memberIds}
@@ -31,15 +33,15 @@ export default function FriendsView() {
 
     const messageFriend = (friend) => {
         const privateServer = {
-            name: sessionUser.username + friend.username,
+            name: sessionUser.username + '_' +  friend.username,
             server_img: "url",
             private: true
         };
-        
+
         const server = privServers.find(server => {
             return server.memberIds.includes(friend.id)
-        })  
-        
+        })
+
         if (server) {
             const channelId = server.Channels[0].id
             history.push(`/main/servers/me/${server.id}/${channelId}`)

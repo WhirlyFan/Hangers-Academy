@@ -6,7 +6,7 @@ import LoginForm from "./components/auth/LoginForm"
 import Landing from "./components/Landing";
 import Main from "./components/Main"
 
-import './index.css'
+import "./index.css";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -39,78 +39,6 @@ function App() {
       </Switch>
     </BrowserRouter>
   )
-// if (!sessionUser) {
-//   return (
-//     <BrowserRouter>
-//       <Switch>
-//         <Route path='/' exact={true}>
-//           <Landing />
-//         </Route>
-//         <Route path='/login'>
-//           <LoginForm />
-//         </Route>
-//       </Switch>
-//     </BrowserRouter>
-//   )
-// }
-
-// return (
-//   <div id="main-div">
-//     <BrowserRouter>
-//     <div id='server-list'>
-//       <ServersView />
-//     </div>
-//     <div id='user-hub'>
-//       <UserHub />
-//     </div>
-//     <div id='header'>
-//       <Header />
-//     </div>
-//       <Switch>
-//         <Route path='/friends'>
-//           <div className='message-view'>
-//             <FriendsView />
-//           </div>
-//           <div className='channel-list'>
-//             <DirectMessagesView />
-//           </div>
-//           <div className="member-list">
-//             <UsersView />
-//           </div>
-//         </Route>
-//         <Route path='/servers/:serverId/:channelId'>
-//           <div className='channel-list'>
-//             <ChannelList />
-//           </div>
-//           <div className='member-list'>
-//             <MemberList />
-//           </div>
-//           <div className='message-view'>
-//             <MessageView />
-//           </div>
-//         </Route>
-//         <Route path='/servers/me/:serverId/:channelId'>
-//           <div className='channel-list'>
-//             <DirectMessagesView />
-//           </div>
-//           <div className='message-view'>
-//             <MessageView />
-//           </div>
-//         </Route>
-//         <Route path='/servers' exact={true}>
-//           <div>
-//             <AllServersView />
-//           </div>
-//         </Route>
-//         <Route path='/me'>
-//           <div id='profile-view'>
-//             <ProfileView />
-//           </div>
-//         </Route>
-//       </Switch>
-//     </BrowserRouter>
-//   </div>
-//   )
 }
 
 export default App;

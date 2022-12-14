@@ -34,6 +34,7 @@ def add_friend():
         user = User.query.get(current_user.id)
         new_friend = User.query.get(form.data['friend_id'])
 
+        new_friend.friends.append(user)
         user.friends.append(new_friend)
         db.session.commit()
 
@@ -56,6 +57,7 @@ def remove_friend(friends_id):
         return { "message": "Friend couldn't be found", "status_code": 404 }
 
     user.friends.remove(friend)
+    friend.friends.remove(user)
     db.session.commit()
 
     return { "message": "Successfully deleted", "status_code": 200 }
