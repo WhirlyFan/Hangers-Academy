@@ -16,7 +16,6 @@ export default function MessageView() {
     socket.on("chat", (chat) => {
       setMessages((messages) => [...messages, chat]);
     });
-    socket.on("join", { user: user.username, room: "general" });
     // when component unmounts, disconnect
     return () => {
       socket.disconnect();
