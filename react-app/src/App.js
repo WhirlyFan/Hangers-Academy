@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { authenticate } from "./store/session";
 import Login from "./components/Login";
+import LoginForm from "./components/auth/LoginForm"
 import ServersView from "./components/view/ServersView";
 import UserHub from "./components/UserHub";
 import FriendsView from "./components/view/FriendsView";
@@ -43,7 +44,6 @@ if (!sessionUser) {
         </Route>
         <Route path='/login'>
           <LoginForm />
-          {/* temporary: change login form to login component later */}
         </Route>
       </Switch>
     </BrowserRouter>
