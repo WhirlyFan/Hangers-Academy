@@ -42,12 +42,12 @@ export default function FriendsView() {
         
         if (server) {
             const channelId = server.Channels[0].id
-            history.push(`/servers/me/${server.id}/${channelId}`)
+            history.push(`/main/servers/me/${server.id}/${channelId}`)
             return;
         }
 
         dispatch(postServerThunk(privateServer, friend.id)).then(({server, channel}) => {
-            history.push(`/servers/me/${server.id}/${channel.id}`)
+            history.push(`/main/servers/me/${server.id}/${channel.id}`)
         })
     }
 
