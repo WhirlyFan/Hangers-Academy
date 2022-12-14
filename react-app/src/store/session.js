@@ -103,9 +103,6 @@ export const signUp = (username, email, password) => async (dispatch) => {
 
 export const getUserThunk = (id) => async (dispatch) => {
   const response = await fetch(`/api/users/${id}`, {
-    headers: {
-      "Content-Type": "application.json"
-    }
   });
 
   if (response.ok) {
@@ -113,8 +110,9 @@ export const getUserThunk = (id) => async (dispatch) => {
     console.log('data from GetUserThunk', data.servers)
     dispatch(setUser(data));
     return data
+  } else {
+    throw response
   }
-  throw response
 };
 
 export const getAllUsers = () => async (dispatch) => {
@@ -169,6 +167,7 @@ export default function reducer(state = initialState, action) {
   let newState = { ...state }
   switch (action.type) {
     case SET_USER:
+      console.log('this is the action payload', action.payload)
       return { ...newState, user: action.payload };
     case REMOVE_USER:
       return { ...newState, user: null };

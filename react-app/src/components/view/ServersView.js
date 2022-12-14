@@ -14,7 +14,7 @@ export default function ServersView() {
     const user = useSelector(state => state.session.user)
     const serversArr = user.servers
     const filteredPublicServers = serversArr.filter(server => server.private === false)
-    console.log('caught private === false servers', filteredPublicServers)
+    console.log('caught private === false (PUBLIC) servers', filteredPublicServers)
     const userId = user.id
 
     useEffect(() => {

@@ -30,7 +30,6 @@ export const getAllServersThunk = () => async (dispatch) => {
 };
 
 export const postServerThunk = (server, userId = false) => async (dispatch) => {
-    console.log("BEFORE POST",server)
     const response = await fetch("/api/servers", {
         method: "POST",
         headers: {
@@ -46,7 +45,6 @@ export const postServerThunk = (server, userId = false) => async (dispatch) => {
             dispatch(postServerMemberThunk(data.id, userId))
             return { server: data, channel }
         }
-        console.log("RESPONSE AFTER POST", data)
         dispatch(getAllServersThunk())
         return data
     } else {
@@ -96,7 +94,6 @@ export const postServerChannelThunk = (input) => async (dispatch) => {
 }
 
 export const editServerThunk = (server, id) => async (dispatch) => {
-    console.log(server)
     const response = await fetch(`/api/servers/${id}`, {
         method: "PUT",
         headers: {
