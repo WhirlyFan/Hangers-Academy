@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { postServerThunk } from "../../store/server";
+import { useHistory } from "react-router-dom";
 
 function CreateServerForm({ setShowModal, setHasSubmitted }) {
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const [serverName, setServerName] = useState("")
     const [serverImg, setServerImg] = useState("")
@@ -13,6 +15,9 @@ function CreateServerForm({ setShowModal, setHasSubmitted }) {
         e.preventDefault();
         setErrors([]);
         return dispatch(postServerThunk({ name: serverName, server_img: serverImg }))
+            .then((response) => {
+                history.push(`/main/servers/${response.server.id}/${response.channel.id}`)
+            })
             .then(() => setHasSubmitted(prevValue => !prevValue))
             .then(() => setShowModal(false))
     };
