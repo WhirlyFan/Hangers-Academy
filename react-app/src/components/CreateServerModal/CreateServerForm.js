@@ -12,7 +12,7 @@ function CreateServerForm({ setShowModal, setHasSubmitted }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
-        return dispatch(postServerThunk({ name: serverName, private: false, server_img: serverImg }))
+        return dispatch(postServerThunk({ name: serverName, server_img: serverImg }))
             .then(() => setHasSubmitted(prevValue => !prevValue))
             .then(() => setShowModal(false))
     };

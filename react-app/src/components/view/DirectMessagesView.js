@@ -1,5 +1,5 @@
-import {useEffect, useState} from "react";
-import { useSelector, useDispatch } from "react-redux";
+import {useEffect} from "react";
+import { useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom'
 
 export default function DirectMessagesView() {
@@ -14,7 +14,10 @@ export default function DirectMessagesView() {
         history.push(`/servers/me/${serverId}/${channelId}`)
     }
 
-    const privateServers = userServers.filter(server => server.private === true)
+    const privateServers = userServers.filter(server => {
+        console.log("FILTER FOR PRVATE SEERVERS",server)
+        return server.private === true
+    })
 
     return (
         <div>

@@ -21,9 +21,9 @@ def user(id):
     """
     Query for a user by id and returns that user in a dictionary
     """
-    print("IN ROUTE")
+    # print("IN ROUTE")
     user = User.query.get(id)
-    print("HAVE USER", user.to_dict())
+    # print("HAVE USER", user.to_dict())
     userInfo = user.to_dict()
     print(userInfo["servers"])
-    return user.to_dict()
+    return userInfo

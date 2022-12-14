@@ -13,7 +13,7 @@ export default function FriendsView() {
   
     useEffect(() => {
         dispatch(getUserThunk(sessionUser.id))
-    }, [dispatch, hasClicked]);
+    }, [dispatch, hasClicked, sessionUser.id]);
     
     const deleteFriend = (userId, friendId) => {
         dispatch(deleteFriendThunk(userId, friendId))
