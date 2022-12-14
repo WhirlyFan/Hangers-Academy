@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 import landing_background from "../assets/landing_background.svg";
 import landing_right from "../assets/landing_right.svg";
 import landing_left from "../assets/landing_left.svg";
@@ -8,6 +9,11 @@ import styles from "./cssModules/Landing.module.css";
 //fix background layout
 export default function Landing() {
   const history = useHistory();
+  const sessionUser = useSelector(state => state.session.user)
+
+  if (sessionUser) {
+    history.push('/main/friends')
+  }
 
   const openDiscord = (e) => {
     e.preventDefault();
