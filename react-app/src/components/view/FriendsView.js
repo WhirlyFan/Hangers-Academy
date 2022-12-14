@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { deleteFriendThunk, getUserThunk } from "../../store/session";
 import { postServerThunk, deleteServerThunk } from "../../store/server";
@@ -8,6 +9,7 @@ export default function FriendsView() {
     const { friends } = sessionUser; 
     const dispatch = useDispatch();
     const [hasClicked, setHasClicked] = useState(false)
+    const history = useHistory()
   
     useEffect(() => {
         dispatch(getUserThunk(sessionUser.id))
@@ -16,7 +18,7 @@ export default function FriendsView() {
     const deleteFriend = (userId, friendId) => {
         dispatch(deleteFriendThunk(userId, friendId))
         const serverToDelete = privServers.find(server => {
-            return server.memberIds.includes(userId)
+            return server.memberIds.includes(userId) && server.memberIds.includes(friendId)
         })
         if (serverToDelete) dispatch(deleteServerThunk(serverToDelete.id)).then(setHasClicked(!hasClicked))
     }
@@ -27,13 +29,26 @@ export default function FriendsView() {
         return {...server, memberIds}
     });
 
-    const messageFriend = async (friend) => {
+    const messageFriend = (friend) => {
         const privateServer = {
             name: sessionUser.username + friend.username,
             server_img: "url",
             private: "True"
-        };    
-        dispatch(postServerThunk(privateServer, friend.id)).then(() => setHasClicked(!hasClicked))
+        };
+        
+        const server = privServers.find(server => {
+            return server.memberIds.includes(friend.id)
+        })  
+        
+        if (server) {
+            const channelId = server.Channels[0].id
+            history.push(`/servers/me/${server.id}/${channelId}`)
+            return;
+        }
+
+        dispatch(postServerThunk(privateServer, friend.id)).then(({server, channel}) => {
+            history.push(`/servers/me/${server.id}/${channel.id}`)
+        })
     }
 
     return (

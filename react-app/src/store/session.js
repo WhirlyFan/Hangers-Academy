@@ -124,7 +124,6 @@ export const getAllUsers = () => async (dispatch) => {
   }
 
   const data = await response.json();
-  console.log(data)
   dispatch(setUsers(data.users));
   return data
 }
