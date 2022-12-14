@@ -1,6 +1,7 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 from ..forms.server_form import CreateServer, UpdateServer
+from ..forms.server_member import AddServerMember
 from app.models import db, User, Server
 from .auth_routes import validation_errors_to_error_messages, authorized
 
@@ -50,14 +51,18 @@ def post_server_member(server_id):
     """
     Add a user to a specified server id
     """
-    user = User.query.get(current_user.id)
+    form = AddServerMember()
 
-    server = Server.query.get(server_id)
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    if form.validate_on_submit():
+        user_id = form.data['user_id']
+        user = User.query.get(user_id)
+        server = Server.query.get(server_id)
 
-    server.members.append(user)
-    db.session.commit()
-
-    return server.to_dict()
+        server.members.append(user)
+        db.session.commit()
+        return server.to_dict()
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 
 @server_routes.route("", methods=["POST"])
