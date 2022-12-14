@@ -6,20 +6,22 @@ import { postServerThunk, deleteServerThunk } from "../../store/server";
 
 export default function FriendsView() {
     const sessionUser = useSelector(state => state.session.user)
-    const { friends } = sessionUser;
     const dispatch = useDispatch();
     const [hasClicked, setHasClicked] = useState(false)
     const history = useHistory()
-
+    
+    const { friends } = sessionUser;
+    
     useEffect(() => {
         dispatch(getUserThunk(sessionUser.id))
     }, [dispatch, hasClicked, sessionUser.id]);
-    
+
     const deleteFriend = (userId, friendId) => {
         dispatch(deleteFriendThunk(userId, friendId))
         const serverToDelete = privServers.find(server => {
             return server.memberIds.includes(userId) && server.memberIds.includes(friendId)
         })
+        console.log(serverToDelete)
         if (serverToDelete) dispatch(deleteServerThunk(serverToDelete.id)).then(setHasClicked(!hasClicked))
     }
 

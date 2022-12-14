@@ -128,6 +128,15 @@ def delete_server(server_id):
     """
     server = Server.query.get(server_id)
 
+    server_info = server.to_dict()
+
+    member_ids = [member['id'] for member in server_info['Members']]
+
+    if server.private and (current_user.id in member_ids):
+        db.session.delete(server)
+        db.session.commit()
+        return {"message": "Successfully deleted"}
+
     if not authorized(server.owner_id):
         return {"error": "You do not own this server"}, 401
 
