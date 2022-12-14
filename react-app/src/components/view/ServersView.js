@@ -3,14 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 import { getUserThunk } from "../../store/session";
 import CreateServerModal from "../CreateServerModal";
+import AllServerModal from "../AllServersModal";
 import styles from "../cssModules/ServersView.module.css"
 
 export default function ServersView() {
     const dispatch = useDispatch()
     const history = useHistory()
-
     const [hasSubmitted, setHasSubmitted] = useState(false)
-
     const user = useSelector(state => state.session.user)
     const serversArr = user.public_servers
     const userId = user.id
@@ -33,6 +32,7 @@ export default function ServersView() {
 
     // This function validates image urls for conditional rendering
     const imgValidator = (imgUrl) => {
+        if (!imgUrl) return false
         if (imgUrl.slice(imgUrl.length - 3) === "jpg" || imgUrl.slice(imgUrl.length - 3) === "png") return true
         else return false
     }
@@ -62,8 +62,11 @@ export default function ServersView() {
             <div>
                 <CreateServerModal setHasSubmitted={setHasSubmitted} />
             </div>
-            <div className={styles.homeButton} onClick={() => redirectAllServersRoute()}>
+            {/* <div className={styles.homeButton} onClick={() => redirectAllServersRoute()}>
                 <img className={styles.serverItemImage} src='https://cdn3.emoji.gg/emojis/6473-greencompass.png' alt='home-button-icon' />
+            </div> */}
+            <div>
+                <AllServerModal />
             </div>
         </div>
     )
