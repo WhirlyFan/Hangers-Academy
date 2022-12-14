@@ -50,7 +50,7 @@ export default function Main() {
                     <UsersView />
                 </div>
                 </Route>
-            <Route path='/main/servers/:serverId/:channelId'>
+            <Route path='/main/servers/:serverId/:channelId' exact={true}>
                 <div className='channel-list'>
                     <ChannelList />
                 </div>
@@ -61,9 +61,12 @@ export default function Main() {
                     <MessageView />
                 </div>
             </Route>
-            <Route path='/main/servers/me/:serverId/:channelId'>
+            <Route path='/main/servers/me/:serverId/:channelId' exact={true}>
                 <div className='channel-list'>
                     <DirectMessagesView />
+                </div>
+                <div className='member-list'>
+                    <MemberList />
                 </div>
                 <div className='message-view'>
                     <MessageView />

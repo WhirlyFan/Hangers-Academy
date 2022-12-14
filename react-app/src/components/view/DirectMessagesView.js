@@ -3,14 +3,14 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 export default function DirectMessagesView() {
-  const userServers = useSelector((state) => state.session.user.servers);
+  const userServers = useSelector((state) => state.session.user.private_servers);
   const sessionUser = useSelector((state) => state.session.user);
   const history = useHistory();
 
   useEffect(() => {}, [userServers]);
 
   const handleClick = (serverId, channelId) => {
-    history.push(`/servers/me/${serverId}/${channelId}`);
+    history.push(`/main/servers/me/${serverId}/${channelId}`);
   };
   
   const privateServers = userServers.filter(

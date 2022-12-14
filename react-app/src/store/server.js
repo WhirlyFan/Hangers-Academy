@@ -1,3 +1,5 @@
+import { getUserThunk } from "./session";
+
 //normalize
 const normalize = (arr) => {
     const dataObj = {};
@@ -42,6 +44,7 @@ export const postServerThunk = (server, userId = false) => async (dispatch) => {
         const data = await response.json()
         if (data.private === true) {
             const channel = await dispatch(postServerChannelThunk({ server_id: data.id, name: "general" }))
+            dispatch(getUserThunk(data.owner_id))
             dispatch(postServerMemberThunk(data.id, userId))
             return { server: data, channel }
         }
