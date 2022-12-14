@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import LoginForm from './components/auth/LoginForm';
-import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
-import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
-import User from './components/User';
-import { authenticate } from './store/session';
-import Chat from './components/Chat';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { authenticate } from "./store/session";
+import LoginForm from "./components/auth/LoginForm"
+import Landing from "./components/Landing";
+import Main from "./components/Main"
+
+import "./index.css";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
+  // const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -27,29 +26,19 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
       <Switch>
+        <Route path='/' exact={true}>
+          <Landing />
+        </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
-        </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
-        <Route path='/' exact={true} >
-          <h1>My Home Page</h1>
-        </Route>
-        <Route path='/chat' exact={true} >
-          <Chat />
+        <Route path='/main'>
+          <Main />
         </Route>
       </Switch>
     </BrowserRouter>
-  );
+  )
 }
 
 export default App;

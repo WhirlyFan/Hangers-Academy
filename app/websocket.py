@@ -1,14 +1,16 @@
-from flask_socketio import SocketIO, emit
+from flask_socketio import SocketIO, emit, send, join_room, leave_room
 import os
 
 
 # configure cors_allowed_origins
 if os.environ.get('FLASK_ENV') == 'production':
     origins = [
-        'http://hangersacademy.herokuapp.com',
-        'https://hangersacademy.herokuapp.com',
+        'http://hangersacademy.onrender.com',
+        'https://hangersacademy.onrender.com',
         'http://hangersacademy.com',
         'https://hangersacademy.com',
+        'http://www.hangersacademy.com',
+        'https://www.hangersacademy.com',
     ]
 else:
     origins = "*"
@@ -17,7 +19,34 @@ else:
 socketio = SocketIO(cors_allowed_origins=origins)
 
 
+@socketio.on('join')
+def on_join(data):
+    username = data['user']
+    room = data['room']
+    join_room(room)
+    send(username + ' has entered the room.', to=room)
+
+
+@socketio.on('leave')
+def on_leave(data):
+    username = data['user']
+    room = data['room']
+    leave_room(room)
+    send(username + ' has left the room.', to=room)
+
 # handle chat messages
+
+
 @socketio.on("chat")
 def handle_chat(data):
-    emit("chat", data, broadcast=True)
+    # message = Message(
+    #     user_id=current_user.id,
+    #     channel_id=int(data['room']),
+    #     message=data['message']
+    # )
+    # db.session.add(message)
+    # db.session.commit()
+
+    if data['room']:
+        room = data['room']
+        emit("chat", data, broadcast=True, to=room)

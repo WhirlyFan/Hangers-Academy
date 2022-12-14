@@ -1,0 +1,51 @@
+.background {
+  position: relative;
+  top: auto;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #404eed;
+}
+
+.left_image {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  display: block;
+  height: auto;
+  width: auto;
+  margin-left: -53.65%;
+}
+
+.right_image {
+  position: absolute;
+  display: block;
+  bottom: 0;
+  left: 50%;
+  margin-left: 19.25%;
+}
+
+.login_button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  border-radius: 28px;
+  font-size: 20px;
+  padding: 16px 32px;
+  color: white;
+  border: none;
+  background-color: #23272a;
+  transition-property: background-color, color, box-shadow;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+.login_button:hover {
+  cursor: pointer;
+  background-color: #36393f;
+  box-shadow: 0 8px 15px rgb(0 0 0 / 20%);
+}

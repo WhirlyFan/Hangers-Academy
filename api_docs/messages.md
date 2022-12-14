@@ -9,7 +9,7 @@ Returns all messages for a channel specified by its id
 - Request
 
   - Method: GET
-  - URL: /api/channnels/:channel_id/messages
+  - URL: /api/channels/:channel_id/messages
   - Body: None
 
 - Successful Response
@@ -101,7 +101,7 @@ Updates and returns existing message specified by message id
 - Request
 
   - Method: PUT
-  - URL: /api/messages/:messsage_id
+  - URL: /api/messages/:message_id
   - Headers:
     - Content-Type: application/json
   - Body:

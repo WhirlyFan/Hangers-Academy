@@ -1,6 +1,7 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 from ..forms.server_form import CreateServer, UpdateServer
+from ..forms.server_member import AddServerMember
 from app.models import db, User, Server
 from .auth_routes import validation_errors_to_error_messages, authorized
 
@@ -31,7 +32,7 @@ def get_server_details(server_id):
     return server
 
 
-@server_routes.route("/")
+@server_routes.route("")
 @login_required
 def get_all_servers():
     """
@@ -50,14 +51,18 @@ def post_server_member(server_id):
     """
     Add a user to a specified server id
     """
-    user = User.query.get(current_user.id)
+    form = AddServerMember()
 
-    server = Server.query.get(server_id)
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    if form.validate_on_submit():
+        user_id = form.data['user_id']
+        user = User.query.get(user_id)
+        server = Server.query.get(server_id)
 
-    server.members.append(user)
-    db.session.commit()
-
-    return server.to_dict()
+        server.members.append(user)
+        db.session.commit()
+        return server.to_dict()
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 
 @server_routes.route("", methods=["POST"])
@@ -68,6 +73,8 @@ def create_server():
     """
     form = CreateServer()
     form["csrf_token"].data = request.cookies["csrf_token"]
+
+    body = request.get_json()
 
     if form.validate_on_submit():
         data = form.data
@@ -120,6 +127,15 @@ def delete_server(server_id):
     Delete a Route only if user is authorized
     """
     server = Server.query.get(server_id)
+
+    server_info = server.to_dict()
+
+    member_ids = [member['id'] for member in server_info['Members']]
+
+    if server.private and (current_user.id in member_ids):
+        db.session.delete(server)
+        db.session.commit()
+        return {"message": "Successfully deleted"}
 
     if not authorized(server.owner_id):
         return {"error": "You do not own this server"}, 401

@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import db, User, Server, Channel
-from app.forms import ChannelForm
+from app.forms import ChannelForm, EditChannelForm
 from .auth_routes import validation_errors_to_error_messages, authorized
 from app.models.messages import Message
 
@@ -15,10 +15,8 @@ def update_channel(channel_id):
     Grabs selected channel and updates with
     requests body and returns updated channel
     """
-    form = ChannelForm()
+    form = EditChannelForm()
     channel = Channel.query.get(channel_id)
-
-    print(channel.to_dict())
 
     if not authorized(channel.to_dict()['Server']['owner_id']):
         return { "error": "You do not own this server" }
