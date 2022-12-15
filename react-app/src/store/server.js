@@ -1,7 +1,7 @@
 import { getUserThunk } from "./session";
 
 //normalize
-const normalize = (arr) => {
+export const normalize = (arr) => {
     const dataObj = {};
     arr.forEach(obj => dataObj[obj.id] = obj)
     return dataObj;
