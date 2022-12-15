@@ -48,7 +48,7 @@ export default function ServersView() {
 
             {/* Maps out all public server user is a member of */}
             <div>
-                { 
+                {
                     serversArr.map((server) => {
                         return (
                             <div className={styles.serverItem} key={server.id} onClick={() => redirectServer(server.id)}>

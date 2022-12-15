@@ -22,7 +22,7 @@ export default function AllServersView({ setShowModal }) {
     return (
         <div id={styles.allServersContainer}>
             <div className={styles.bannerContainer}>
-                <div id={styles.welcomeText}><span>Sup Gamers, find a home</span></div>
+                <div id={styles.welcomeText}><span>Find your community on Discord</span></div>
                 <img src={guild_banner} alt="banner" className="banner"></img>
             </div>
 

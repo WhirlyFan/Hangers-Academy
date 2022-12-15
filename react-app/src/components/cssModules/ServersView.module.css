@@ -22,7 +22,7 @@
     margin-bottom:0px;
     border-radius:20px;
     cursor: pointer;
-    transition: border-radius, 0.33s;
+    transition: border-radius, 0.3s;
     /* border-bottom: 1px solid #36393f; */
 }
 
@@ -50,7 +50,7 @@
     margin-bottom:20px;
     border-radius:20px;
     cursor: pointer;
-    transition: border-radius, 0.33s;
+    transition: border-radius 0.3s, background-color 0.3s;
     /* text-align: center; */
     /* right */
     /* border: 2px solid red; */

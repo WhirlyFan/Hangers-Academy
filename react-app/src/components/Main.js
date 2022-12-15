@@ -20,13 +20,11 @@ export default function Main() {
     const sessionUser = useSelector(state => state.session.user)
     const history = useHistory()
     const location = useLocation()
-    console.log("THIS IS LOCATION", location.pathname)
 
     if (!sessionUser) {
         history.push('/')
         return;
     }
-
 
     return (
     <div id="main-div">
