@@ -1,0 +1,65 @@
+.friend_btn_container {
+    display: flex;
+    align-items: center;
+    height: 4.5vh;
+    margin-top:1vh;
+}
+
+.friend_btn_container:hover {
+    background-color: #40444b;
+    border-radius: 2%;
+    cursor: pointer;
+}
+
+.friend_btn{
+    padding: 1vw;
+}
+
+.friend {
+    width: 1.3vw;
+}
+
+.direct_messages_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.direct_messages_text {
+    margin-top: 2vh;
+    margin-left: .7vw;
+    font-size: .7rem;
+    color: #dcddde;
+}
+
+.dm_list {
+    display: flex;
+    flex-direction: column;
+}
+
+.direct_message_card {
+    padding: 1.7vh;
+    display: flex;
+    align-items: center;
+    color: #cbccce;
+}
+
+.direct_message_card:hover {
+    cursor: pointer;
+    background-color: #40444b;
+    color: #fbfdfe;
+}
+
+.no_dm {
+    font-size: .9rem;
+    text-align: center;
+}
+
+.icon_container {
+    border-radius: 50%;
+    padding-right: .5vw;
+}
+
+.icon {
+    width: 2vw;
+    border-radius: 50%;
+}

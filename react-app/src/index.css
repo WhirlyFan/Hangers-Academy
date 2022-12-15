@@ -20,7 +20,7 @@ body {
 
 #main-div {
     display: grid;
-    grid-template-columns: 3.7% 0.4fr 2.4fr 0.6fr;
+    grid-template-columns: 5% 0.4fr 2.4fr 0.6fr;
     grid-template-rows: 0.15fr 2.8fr 0.2fr;
     gap: 0px 0px;
     grid-auto-flow: row;
@@ -45,7 +45,7 @@ body {
     background-color: #36393f;
     position: sticky;
     border-bottom: .5px solid #2a2d31;
-    z-index: 1;
+    /* z-index: 1; */
     box-shadow: 0px 1px #2a2d31 ;
 }
 

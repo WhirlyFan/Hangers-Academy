@@ -4,11 +4,11 @@ from app.models import db, Server, environment, SCHEMA
 # Adds a demo user, you can add other users here if you want
 def seed_servers():
     hangers = Server(
-        owner_id=1, name='Hangers')
+        owner_id=3, name='Hangers')
     bloxcraft = Server(
-        owner_id=2, name='BloxCraft')
+        owner_id=3, name='BloxCraft')
     app_academy = Server(
-        owner_id=1, name='App Academy')
+        owner_id=3, name='App Academy')
 
     db.session.add_all([hangers, bloxcraft, app_academy])
     db.session.commit()
