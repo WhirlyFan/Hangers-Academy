@@ -109,12 +109,14 @@ export default function ChannelList() {
                                             {channel.name}
                                         </div>
                                     </div>
-                                    <div className={styles.gearIconContainer} onClick={() => {
-                                        setShowEditChannelModal(true);
-                                        redirectChannel(channel.id)
-                                    }}>
-                                        <img src={ChannelSettingsGearIcon} alt='gear-icon' />
-                                    </div>
+                                    {(user.id === server.owner_id) && (
+                                        <div className={styles.gearIconContainer} onClick={() => {
+                                            setShowEditChannelModal(true);
+                                            redirectChannel(channel.id)
+                                        }}>
+                                            <img src={ChannelSettingsGearIcon} alt='gear-icon' />
+                                        </div>
+                                    )}
                                     {showEditChannelModal && (
                                         <Modal onClose={() => { setShowEditChannelModal(false) }}>
                                             {<EditChannelForm setShowEditChannelModal={setShowEditChannelModal} setHasSubmitted={setHasSubmitted} serverId={serverId} />}

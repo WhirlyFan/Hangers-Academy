@@ -12,6 +12,7 @@
     height: 4.8%;
     width: 100%;
     border-bottom: .5px solid #2a2d31;
+    border: 1px red solid
 }
 
 .channelListNavBar:hover {
@@ -82,7 +83,7 @@
 }
 
 .gearIconContainer {
-    width: 9%;
+    width: 12%;
     /* border: 1px red solid */
 }
 
