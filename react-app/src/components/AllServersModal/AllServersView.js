@@ -10,14 +10,13 @@ export default function AllServersView({ setShowModal }) {
     const dispatch = useDispatch()
     const currentUser = useSelector(state => state.session.user)
     const allServersObj = useSelector(state => state.server.allServers)
-    // TO DO: STOP RENDERING SERVERS THAT YOU ARE ALREADY MEMBER OF
     const allServersArr = Object.values(allServersObj)
 
     useEffect(() => {
         dispatch(getAllServersThunk())
     }, [dispatch])
 
-    if (Object.keys(allServersObj) < 1) {
+    if (!allServersArr.length) {
         return "Servers loading..."
     }
 
@@ -25,12 +24,9 @@ export default function AllServersView({ setShowModal }) {
         const memberIds = server.Members.map(member => member.id)
         return {...server, memberIds}
     });
-
     const unjoinedServers = publicServers.filter(server => {
         return !server.memberIds.includes(currentUser.id)
     })
-
-
 
     return (
         <div id={styles.allServersContainer}>
