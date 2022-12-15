@@ -45,10 +45,10 @@ export default function ServersView() {
             <div id={styles.homeBar}>
                 <hr />
             </div>
-            
+
             {/* Maps out all public server user is a member of */}
             <div>
-                {
+                { 
                     serversArr.map((server) => {
                         return (
                             <div className={styles.serverItem} key={server.id} onClick={() => redirectServer(server.id)}>
@@ -62,9 +62,6 @@ export default function ServersView() {
             <div>
                 <CreateServerModal setHasSubmitted={setHasSubmitted} />
             </div>
-            {/* <div className={styles.homeButton} onClick={() => redirectAllServersRoute()}>
-                <img className={styles.serverItemImage} src='https://cdn3.emoji.gg/emojis/6473-greencompass.png' alt='home-button-icon' />
-            </div> */}
             <div>
                 <AllServerModal />
             </div>

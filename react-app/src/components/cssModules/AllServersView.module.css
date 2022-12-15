@@ -7,13 +7,14 @@
     width: 100%;
     height: 100%;
     /* background-color: #36393f; */
+    margin-bottom: 20px;
 }
 
 .serverCard {
     z-index: 1;
     background-color: #2f3136;
     height: 320px;
-    width: 245px;
+    width: 30%;
     border-radius: 12px;
     position: relative;
     transition-property: box-shadow, transform;
@@ -29,11 +30,14 @@
 .cardImgContainer {
     height: 160px;
     width: 100%;
+    margin-bottom: 15px;
 }
 
 .cardImg {
-    height: 143px;
+    /* height: 143px; */
+    max-height: 100%;
     width: 100%;
+    object-fit: cover;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
 }
@@ -47,7 +51,26 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 47%;
+    height: 41%;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+.bannerContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.banner {
+    object-fit: cover;
+    width: 100%;
+}
+
+#welcomeText {
+    position: absolute;
+    font-size: 25px;
+    margin: 0 auto;
+    width: 50%;
+    z-index: 1;
 }
