@@ -20,7 +20,6 @@ export default function Main() {
     const sessionUser = useSelector(state => state.session.user)
     const history = useHistory()
     const location = useLocation()
-    console.log("THIS IS LOCATION", location.pathname)
 
     if (!sessionUser) {
         history.push('/')
@@ -29,64 +28,64 @@ export default function Main() {
 
 
     return (
-    <div id="main-div">
-        <BrowserRouter>
-            <div id='server-list'>
-                <ServersView />
-            </div>
-            <div id='user-hub'>
-                <UserHub />
-            </div>
-            {location.pathname !== "/main/servers" && (
-            <div id='header'>
-                <Header />
-            </div>)}
-        <Switch>
-            <Route path='/main/friends'>
-                <div className='message-view'>
-                    <FriendsView />
+        <div id="main-div">
+            <BrowserRouter>
+                <div id='server-list'>
+                    <ServersView />
                 </div>
-                <div className='channel-list'>
-                    <DirectMessagesView />
+                <div id='user-hub'>
+                    <UserHub />
                 </div>
-                <div className="member-list">
-                    <UsersView />
-                </div>
-                </Route>
-            <Route path='/main/servers/:serverId/:channelId' exact={true}>
-                <div className='channel-list'>
-                    <ChannelList />
-                </div>
-                <div className='member-list'>
-                    <MemberList />
-                </div>
-                <div className='message-view'>
-                    <MessageView />
-                </div>
-            </Route>
-            <Route path='/main/servers/me/:serverId/:channelId' exact={true}>
-                <div className='channel-list'>
-                    <DirectMessagesView />
-                </div>
-                <div className='member-list'>
-                    <MemberList />
-                </div>
-                <div className='message-view'>
-                    <MessageView />
-                </div>
-            </Route>
-            <Route path='/main/servers' exact={true}>
-                <div>
-                    <AllServersView />
-                </div>
-            </Route>
-            <Route path='/main/me'>
-                <div id='profile-view'>
-                    <ProfileView />
-                </div>
-            </Route>
-        </Switch>
-        </BrowserRouter>
-    </div>
-)
+                {location.pathname !== "/main/servers" && (
+                    <div id='header'>
+                        <Header />
+                    </div>)}
+                <Switch>
+                    <Route path='/main/friends'>
+                        <div className='message-view'>
+                            <FriendsView />
+                        </div>
+                        <div className='channel-list'>
+                            <DirectMessagesView />
+                        </div>
+                        <div className="member-list">
+                            <UsersView />
+                        </div>
+                    </Route>
+                    <Route path='/main/servers/:serverId/:channelId' exact={true}>
+                        <div className='channel-list'>
+                            <ChannelList />
+                        </div>
+                        <div className='member-list'>
+                            <MemberList />
+                        </div>
+                        <div className='message-view'>
+                            <MessageView />
+                        </div>
+                    </Route>
+                    <Route path='/main/servers/me/:serverId/:channelId' exact={true}>
+                        <div className='channel-list'>
+                            <DirectMessagesView />
+                        </div>
+                        <div className='member-list'>
+                            <MemberList />
+                        </div>
+                        <div className='message-view'>
+                            <MessageView />
+                        </div>
+                    </Route>
+                    <Route path='/main/servers' exact={true}>
+                        <div>
+                            <AllServersView />
+                        </div>
+                    </Route>
+                    <Route path='/main/me'>
+                        <div id='profile-view'>
+                            <ProfileView />
+                        </div>
+                    </Route>
+                </Switch>
+            </BrowserRouter>
+        </div>
+    )
 };

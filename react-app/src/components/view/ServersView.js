@@ -26,9 +26,9 @@ export default function ServersView() {
         history.push('/main/friends')
     }
 
-    const redirectAllServersRoute = () => {
-        history.push('/main/servers')
-    }
+    // const redirectAllServersRoute = () => {
+    //     history.push('/main/servers')
+    // }
 
     // This function validates image urls for conditional rendering
     const imgValidator = (imgUrl) => {
@@ -40,12 +40,12 @@ export default function ServersView() {
     return (
         <div className={styles.serversContainer}>
             <div className={styles.homeButton} onClick={() => redirectFriendsRoute()}>
-                <img className={styles.serverItemImage} src='https://cdn.discordapp.com/attachments/1049445170778738789/1051654101286527137/1.png' alt='home-button-icon'/>
+                <img className={styles.serverItemImage} src='https://cdn.discordapp.com/attachments/1049445170778738789/1051654101286527137/1.png' alt='home-button-icon' />
             </div>
             <div id={styles.homeBar}>
                 <hr />
             </div>
-            
+
             {/* Maps out all public server user is a member of */}
             <div>
                 {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal } from '../../context/Modal';
+import { ServerSettingsModal } from '../../context/ServerSettingsModal';
 import CreateServerForm from './CreateServerForm';
 
 function CreateServerModal({ setHasSubmitted }) {
@@ -9,9 +9,9 @@ function CreateServerModal({ setHasSubmitted }) {
         <>
             <button onClick={() => setShowModal(true)}>Create Server</button>
             {showModal && (
-                <Modal onClose={() => setShowModal(false)}>
+                <ServerSettingsModal onClose={() => setShowModal(false)}>
                     <CreateServerForm setShowModal={setShowModal} setHasSubmitted={setHasSubmitted} />
-                </Modal>
+                </ServerSettingsModal>
             )}
         </>
     );
