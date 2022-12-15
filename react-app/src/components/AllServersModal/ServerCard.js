@@ -20,11 +20,11 @@ const ServerCard = ({ server, setShowModal }) => {
         <>
             { imgValidator(server.server_img) ?
                 <div className={styles.cardImgContainer} onClick={addToServer}>
-                    <img src={server.server_img} className={styles.cardImg}/>
+                    <img src={server.server_img} className={styles.cardImg} alt="server_img"/>
                 </div>
                 :
                 <div className={styles.cardImgContainer} onClick={addToServer}>
-                    <img src="https://cdn.discordapp.com/attachments/1049445170778738789/1051654100976160888/2.png" className={styles.cardImg}/>
+                    <img src="https://cdn.discordapp.com/attachments/1049445170778738789/1051654100976160888/2.png" className={styles.cardImg} alt="server_img"/>
                 </div>}
             <div className={styles.cardTextContainer} onClick={addToServer}>
                 <div>{server.name}</div>

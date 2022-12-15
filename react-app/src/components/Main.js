@@ -26,7 +26,6 @@ export default function Main() {
         return;
     }
 
-
     return (
         <div id="main-div">
             <BrowserRouter>

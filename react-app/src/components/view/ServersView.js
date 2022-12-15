@@ -62,9 +62,6 @@ export default function ServersView() {
             <div>
                 <CreateServerModal setHasSubmitted={setHasSubmitted} />
             </div>
-            {/* <div className={styles.homeButton} onClick={() => redirectAllServersRoute()}>
-                <img className={styles.serverItemImage} src='https://cdn3.emoji.gg/emojis/6473-greencompass.png' alt='home-button-icon' />
-            </div> */}
             <div>
                 <AllServerModal />
             </div>

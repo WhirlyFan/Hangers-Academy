@@ -40,6 +40,8 @@
 #modal-content::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: #1d1e21;
+    position: relative;
+    left: -5px;
 }
 
 #modal-content::-webkit-scrollbar-track {
