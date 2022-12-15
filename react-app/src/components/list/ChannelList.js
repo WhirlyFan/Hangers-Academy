@@ -9,6 +9,7 @@ import EditServerForm from "../Forms/EditServerForm";
 import CreateChannelForm from "../Forms/CreateChannelForm";
 import EditChannelForm from "../Forms/EditChannelForm";
 import ChannelSettingsGearIcon from "../../assets/channel-settings-gear.png"
+import { deleteServerMemberThunk } from "../../store/server";
 
 export default function ChannelList() {
     const dispatch = useDispatch()
@@ -57,6 +58,12 @@ export default function ChannelList() {
         history.push(`/main/servers/${server.id}/${channel_id}`)
     }
 
+    const leaveServerHandler = () => {
+        return dispatch(deleteServerMemberThunk(server.id))
+            .then(() => setHasSubmitted(prevValue => !prevValue))
+            .then(() => history.push('/main/friends'))
+    }
+
     return (
         <>
             <div className={styles.channelListContainer}>
@@ -80,6 +87,16 @@ export default function ChannelList() {
                         <div className={styles.serverSettingsDiv}>
                             <div className={styles.clickModal} onClick={() => setShowCreateChannelModal(true)}>
                                 Create Channel
+                            </div>
+                        </div>
+                    </div>
+                )}
+                {/* Menu for a server members who aren't the owner to leave server */}
+                {showMenu && (user.id !== server.owner_id) && (
+                    <div className={styles.dropdownMenu}>
+                        <div className={styles.serverSettingsDiv}>
+                            <div className={styles.clickModal} onClick={() => leaveServerHandler()}>
+                                Leave Server
                             </div>
                         </div>
                     </div>

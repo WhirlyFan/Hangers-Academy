@@ -170,6 +170,20 @@ export const deleteServerChannelThunk = (channel_id) => async (dispatch) => {
     }
 }
 
+export const deleteServerMemberThunk = (serverId) => async (dispatch) => {
+    const response = await fetch(`/api/servers/${serverId}/users`, {
+        method: "DELETE"
+    })
+
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(getAllServersThunk())
+        return data
+    } else {
+        throw response
+    }
+}
+
 //reducer
 
 const initialState = {
