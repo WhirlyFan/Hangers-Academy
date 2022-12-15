@@ -1,0 +1,79 @@
+#allServersContainer {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    height: 90%;
+    /* background-color: #36393f; */
+    padding-bottom: 20px;
+}
+
+.serverCard {
+    z-index: 1;
+    background-color: #2f3136;
+    height: 320px;
+    width: 30%;
+    border-radius: 12px;
+    position: relative;
+    transition-property: box-shadow, transform;
+    transition-duration: 0.25s;
+    cursor: pointer;
+}
+
+.serverCard:hover {
+    box-shadow: 0px 1px 6px rgb(0, 0, 0);
+    transform: translateY(-2px);
+}
+
+.cardImgContainer {
+    height: 160px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.cardImg {
+    /* height: 143px; */
+    max-height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.cardDescriptiveText {
+    color: #9ca3af;
+    font-size: 12px;
+}
+
+.cardTextContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 41%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.bannerContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.banner {
+    object-fit: cover;
+    width: 100%;
+}
+
+#welcomeText {
+    position: absolute;
+    top: 150px;
+    font-size: 25px;
+    width: 50%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

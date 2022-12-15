@@ -79,7 +79,7 @@ export const postServerMemberThunk = (serverId, userId) => async (dispatch) => {
     }
 }
 
-export const postServerChannelThunk = (input) => async (dispatch) => {
+export const postServerChannelThunk = (input, userId) => async (dispatch) => {
     const { server_id, name } = input
     const response = await fetch('/api/channels', {
         method: "POST",
@@ -101,7 +101,7 @@ export const postServerChannelThunk = (input) => async (dispatch) => {
     }
 }
 
-export const editServerThunk = (server, id) => async (dispatch) => {
+export const editServerThunk = (server, id, userId) => async (dispatch) => {
     const response = await fetch(`/api/servers/${id}`, {
         method: "PUT",
         headers: {
@@ -113,6 +113,7 @@ export const editServerThunk = (server, id) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json()
         dispatch(getAllServersThunk())
+        dispatch(getUserThunk(userId))
         return data
     } else {
         throw response
@@ -140,14 +141,15 @@ export const editServerChannelThunk = (input) => async (dispatch) => {
     }
 }
 
-export const deleteServerThunk = (id) => async (dispatch) => {
-    const response = await fetch(`/api/servers/${id}`, {
+export const deleteServerThunk = (serverId, userId) => async (dispatch) => {
+    const response = await fetch(`/api/servers/${serverId}`, {
         method: "DELETE"
     })
 
     if (response.ok) {
         const data = await response.json()
         dispatch(getAllServersThunk())
+        dispatch(getUserThunk(userId))
         return data
     } else {
         throw response
