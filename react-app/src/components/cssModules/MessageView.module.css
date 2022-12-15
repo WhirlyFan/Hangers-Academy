@@ -1,0 +1,42 @@
+/* .username {
+}
+
+.created_at {
+} */
+
+.details {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+}
+
+/* .details > * {
+} */
+
+.created_at {
+  margin-left: 0.5rem;
+  font-size: 0.5rem;
+}
+
+.message_content {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+.message_container {
+  height: fit-content;
+  overflow-y: scroll;
+  scroll-behavior: auto;
+}
+
+/* .form {
+} */
+
+.view {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
