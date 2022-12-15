@@ -35,6 +35,7 @@ export default function MessageView() {
         setMessages(messages.Messages);
       });
     });
+    //join room
     socket.emit("join", {
       user: user.username,
       room: serverId + "-" + channelId,
