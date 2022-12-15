@@ -4,8 +4,11 @@ import { useHistory, useParams } from "react-router-dom";
 import { getUserThunk } from "../../store/session";
 import styles from "../cssModules/ChannelList.module.css"
 import { ServerSettingsModal } from "../../context/ServerSettingsModal";
+import { Modal } from "../../context/Modal"
 import EditServerForm from "../Forms/EditServerForm";
 import CreateChannelForm from "../Forms/CreateChannelForm";
+import EditChannelForm from "../Forms/EditChannelForm";
+import ChannelSettingsGearIcon from "../../assets/channel-settings-gear.png"
 
 export default function ChannelList() {
     const dispatch = useDispatch()
@@ -15,6 +18,7 @@ export default function ChannelList() {
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const [showEditServerModal, setShowEditServerModal] = useState(false);
     const [showCreateChannelModal, setShowCreateChannelModal] = useState(false)
+    const [showEditChannelModal, setShowEditChannelModal] = useState(false)
     const [showMenu, setShowMenu] = useState(false);
 
     const user = useSelector(state => state.session.user)
@@ -49,8 +53,8 @@ export default function ChannelList() {
     const channelsArr = server.Channels
     // console.log(channelsArr)
 
-    const redirectChannel = (channelId) => {
-        history.push(`/main/servers/${server.id}/${channelId}`)
+    const redirectChannel = (channel_id) => {
+        history.push(`/main/servers/${server.id}/${channel_id}`)
     }
 
     return (
@@ -65,6 +69,7 @@ export default function ChannelList() {
                         <img src='https://www.pngkit.com/png/full/273-2739733_white-drop-down-arrow.png' alt="dropdown icon" />
                     </div>
                 </div>
+                {/* Menu for Server Settings and Create Channel only opens for owner of server */}
                 {showMenu && (user.id === server.owner_id) && (
                     <div className={styles.dropdownMenu}>
                         <div className={styles.serverSettingsDiv}>
@@ -95,8 +100,26 @@ export default function ChannelList() {
                     {
                         channelsArr.map((channel) => {
                             return (
-                                <div key={channel.id} onClick={() => redirectChannel(channel.id)}>
-                                    {channel.name}
+                                <div className={styles.eachChannelContainer} key={channel.id}>
+                                    <div onClick={() => {
+                                        // console.log(channel.id)
+                                        redirectChannel(channel.id)
+                                    }}>
+                                        <div>
+                                            {channel.name}
+                                        </div>
+                                    </div>
+                                    <div className={styles.gearIconContainer} onClick={() => {
+                                        setShowEditChannelModal(true);
+                                        redirectChannel(channel.id)
+                                    }}>
+                                        <img src={ChannelSettingsGearIcon} alt='gear-icon' />
+                                    </div>
+                                    {showEditChannelModal && (
+                                        <Modal onClose={() => { setShowEditChannelModal(false) }}>
+                                            {<EditChannelForm setShowEditChannelModal={setShowEditChannelModal} setHasSubmitted={setHasSubmitted} serverId={serverId} />}
+                                        </Modal>
+                                    )}
                                 </div>
                             )
                         })
