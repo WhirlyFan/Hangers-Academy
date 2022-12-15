@@ -8,6 +8,12 @@ body {
     font-weight: 400;
 }
 
+.errors {
+    color: #F38688;
+    margin-top: 10px;
+    margin-bottom: -5px;
+}
+
 /* #main-div {
     display: grid;
     grid-template-areas:
