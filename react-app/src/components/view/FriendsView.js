@@ -25,7 +25,6 @@ export default function FriendsView() {
         const serverToDelete = privServers.find(server => {
             return server.memberIds.includes(userId) && server.memberIds.includes(friendId)
         })
-        console.log(serverToDelete)
         if (serverToDelete) dispatch(deleteServerThunk(serverToDelete.id)).then(setHasClicked(!hasClicked))
     }
 
