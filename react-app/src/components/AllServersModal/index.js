@@ -8,9 +8,9 @@ function AllServerModal() {
 
     return (
         <>
-            <button  className={styles.homeButton} onClick={() => setShowModal(true)}>
-                <img className={styles.serverItemImage} src='https://cdn3.emoji.gg/emojis/6473-greencompass.png' alt='home-button-icon' />
-            </button>
+            <div id={styles.discoverButton} onClick={() => setShowModal(true)}>
+                <img className={styles.serverItem} src='https://cdn3.emoji.gg/emojis/6473-greencompass.png' alt='discover-button-icon' />
+            </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <AllServersView setShowModal={setShowModal} />

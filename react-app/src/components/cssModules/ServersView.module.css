@@ -22,7 +22,7 @@
     margin-bottom:0px;
     border-radius:20px;
     cursor: pointer;
-    transition: border-radius, 0.3s;
+    /* transition: border-radius, 0.3s; */
     /* border-bottom: 1px solid #36393f; */
 }
 
@@ -72,4 +72,15 @@
 .serverItemImage:hover {
     border-radius: 13px;
     /* background-color: #5865f2; */
+}
+
+#discoverButton {
+    border-radius: 20px;
+    cursor: pointer;
+    transition: border-radius, 0.3s;
+    margin-top:20px;
+}
+
+#discoverButton:hover {
+    border-radius: 12px;
 }
