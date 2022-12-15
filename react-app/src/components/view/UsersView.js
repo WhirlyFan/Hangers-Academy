@@ -3,6 +3,9 @@ import { getAllUsers } from "../../store/session";
 import { useSelector, useDispatch } from "react-redux";
 import { addFriendThunk } from "../../store/session";
 
+import styles from "../cssModules/UsersView.module.css"
+import add_btn from "../../assets/add_btn.png"
+
 export default function UsersView() {
   const allUsers = useSelector((state) => state.session.allUsers);
   const sessionUser = useSelector((state) => state.session.user);
@@ -29,19 +32,37 @@ export default function UsersView() {
   })
 
   return (
-    <div>
-      <div>
-        <div>
+    <div className={styles.container}>
+      <span className={styles.add_friends}>Add Friends</span>
+        <div className={styles.users_list}>
           {allUsers.map((user) => {
             return user.id !== sessionUser.id && !friendIds.includes(user.id) && (
-              <div key={user.id}>
-                <div>{user.username}</div>
-                <button onClick={() => addFriend(sessionUser.id, user.id)}>Add Friend</button>
+              <div key={user.id} className={styles.user_card}>
+                <div className={styles.left}>
+                  <div className={styles.icon_container}>
+                    <img
+                    className={styles.icon}
+                    src="https://cdn.discordapp.com/attachments/1049445170778738789/1051654101286527137/1.png"
+                    alt="default-icon"
+                    >
+                    </img>
+                  </div>
+                  <div>{user.username}</div>
+                </div>
+                <div 
+                onClick={() => addFriend(sessionUser.id, user.id)}
+                className={styles.right}
+                >
+                  <img
+                  src={add_btn}
+                  alt='addbtn'
+                  >
+                  </img>
+                </div>
               </div>
             )
           })}
         </div>
-      </div>
     </div>
   );
 }
