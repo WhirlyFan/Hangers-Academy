@@ -1,0 +1,54 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.users_list {
+    display: flex;
+    flex-direction: column;
+}
+
+.user_card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.7vh;
+    color: #b0b2b7;
+}
+
+.user_card:hover {
+    background-color: #40444b;
+    color: #fbfdfe;
+}
+
+.icon_container {
+    border-radius: 50%;
+    padding-right: .5vw;
+}
+
+.icon {
+    width: 2vw;
+    border-radius: 50%;
+}
+
+.icon:hover {
+    cursor: pointer;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    /* color: #b0b2b7; */
+}
+
+.right {
+    padding-right: 2vw;
+}
+
+.right:hover {
+    cursor: pointer;
+}
+
+.add_friends {
+    padding: 2vh
+}

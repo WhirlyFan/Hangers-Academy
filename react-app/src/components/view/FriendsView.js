@@ -4,6 +4,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { deleteFriendThunk, getUserThunk } from "../../store/session";
 import { postServerThunk, deleteServerThunk } from "../../store/server";
 
+import styles from '../cssModules/FriendsView.module.css'
+import message_icon2 from "../../assets/message_icon2.png"
+import remove_btn from "../../assets/remove_btn.png"
+
 export default function FriendsView() {
     const sessionUser = useSelector(state => state.session.user)
     const dispatch = useDispatch();
@@ -54,20 +58,47 @@ export default function FriendsView() {
     }
 
     return (
-        <div>
+        <div className={styles.container}>
             <div>
-                <p>FRIENDS - {friends.length}</p>
+                <p className={styles.friend_label}>FRIENDS - {friends.length}</p>
             </div>
-            <div>
+            <div className={styles.friends_container}>
                 <div>
                     {friends.length > 0 ? friends.map(friend => (
-                        <div key={friend.id}>
-                            {friend.username}
-                            <button onClick={() => deleteFriend(sessionUser.id,friend.id)}>Remove Friend</button>
-                            <button onClick={() => messageFriend(friend)}>Chat</button>
+                        <div className={styles.friend_card} key={friend.id}>
+                            <div className={styles.left_half}>
+                                <div className="profile-icon-container">
+                                </div>
+                                <div className={styles.friend}>
+                                    <span className={styles.username}>{friend.username}</span>
+                                    <span className={styles.status}>Online</span>
+                                </div>    
+                            </div>
+                            <div className={styles.right_half}>
+                                <div 
+                                className={styles.message_icon_container} 
+                                onClick={() => messageFriend(friend)}>
+                                    <img
+                                    className={styles.message_icon}
+                                    src={message_icon2}
+                                    alt='messageicon'
+                                    >                                    
+                                    </img>
+                                </div>
+                                <div
+                                className={styles.message_icon_container} 
+                                onClick={() => deleteFriend(sessionUser.id,friend.id)}>
+                                     <img
+                                    className={styles.message_icon}
+                                    src={remove_btn}
+                                    alt='remove-btn'
+                                    >                                    
+                                    </img>
+                                </div>
+                            </div>
                         </div>
                     )) :
-                    <h3>Try adding a friend from the Users list!</h3>
+                    <h3 className={styles.no_friends}>Try adding a friend from the Users list!</h3>
                 }
                 </div>
             </div>

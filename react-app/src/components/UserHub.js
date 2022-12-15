@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import UserSettingsModal from "./UserSettingsModal";
 
 export default function UserHub() {
     const sessionUser = useSelector(state => state.session.user); 
@@ -7,7 +8,7 @@ export default function UserHub() {
     return (
         <div>
             <span>{sessionUser.username}</span>
-            <button>Settings</button>
+            <UserSettingsModal sessionUser={sessionUser} />
         </div>
     )
 };
