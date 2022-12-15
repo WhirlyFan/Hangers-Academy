@@ -8,8 +8,10 @@ import guild_banner from "../../assets/guild_banner.svg"
 
 export default function AllServersView({ setShowModal }) {
     const dispatch = useDispatch()
+    const currentUser = useSelector(state => state.session.user)
     const allServersObj = useSelector(state => state.server.allServers)
     // TO DO: STOP RENDERING SERVERS THAT YOU ARE ALREADY MEMBER OF
+    const allServersArr = Object.values(allServersObj)
 
     useEffect(() => {
         dispatch(getAllServersThunk())
@@ -19,6 +21,17 @@ export default function AllServersView({ setShowModal }) {
         return "Servers loading..."
     }
 
+    const publicServers = allServersArr.map(server => {
+        const memberIds = server.Members.map(member => member.id)
+        return {...server, memberIds}
+    });
+
+    const unjoinedServers = publicServers.filter(server => {
+        return !server.memberIds.includes(currentUser.id)
+    })
+
+
+
     return (
         <div id={styles.allServersContainer}>
             <div className={styles.bannerContainer}>
@@ -26,7 +39,7 @@ export default function AllServersView({ setShowModal }) {
                 <img src={guild_banner} alt="banner" className="banner"></img>
             </div>
 
-            {Object.values(allServersObj).map((server) => (
+            {unjoinedServers.map((server) => (
                     <div key={server.id} className={styles.serverCard}>
                         <ServerCard server={server} setShowModal={setShowModal} />
                     </div>
