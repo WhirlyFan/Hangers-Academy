@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { authenticate } from "./store/session";
 import LoginForm from "./components/auth/LoginForm"
+import Login from "./components/Login";
 import Landing from "./components/Landing";
 import Main from "./components/Main"
 
@@ -31,7 +32,7 @@ function App() {
           <Landing />
         </Route>
         <Route path='/login' exact={true}>
-          <LoginForm />
+          <Login />
         </Route>
         <Route path='/main'>
           <Main />
