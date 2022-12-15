@@ -79,7 +79,7 @@ export const postServerMemberThunk = (serverId, userId) => async (dispatch) => {
     }
 }
 
-export const postServerChannelThunk = (input) => async (dispatch) => {
+export const postServerChannelThunk = (input, userId) => async (dispatch) => {
     const { server_id, name } = input
     const response = await fetch('/api/channels', {
         method: "POST",

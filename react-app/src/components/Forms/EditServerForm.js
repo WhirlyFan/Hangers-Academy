@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { deleteServerThunk, editServerThunk } from "../../store/server";
 
-function EditServerForm({ setShowModal, serverId, userId }) {
+function EditServerForm({ setShowEditServerModal, setHasSubmitted, serverId, userId }) {
     const dispatch = useDispatch();
     const history = useHistory()
 
@@ -24,12 +24,14 @@ function EditServerForm({ setShowModal, serverId, userId }) {
         e.preventDefault();
         setErrors([]);
         return dispatch(editServerThunk({ name: serverName, server_img: serverImg }, serverId, userId))
-            .then(() => setShowModal(false))
+            .then(() => setHasSubmitted(prevValue => !prevValue))
+            .then(() => setShowEditServerModal(false))
     };
 
     const handleDelete = () => {
         return dispatch(deleteServerThunk(serverId, userId))
-            .then(() => setShowModal(false))
+            .then(() => setHasSubmitted(prevValue => !prevValue))
+            .then(() => setShowEditServerModal(false))
             .then(() => history.push('/main/friends'))
     }
 
