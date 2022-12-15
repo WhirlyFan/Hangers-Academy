@@ -1,8 +1,9 @@
 import styles from "../cssModules/AllServersView.module.css"
 import { postServerMemberThunk } from "../../store/server"
 import { useSelector, useDispatch } from "react-redux"
+import { getUserThunk } from "../../store/session"
 
-const ServerCard = ({ server, setShowModal }) => {
+const ServerCard = ({ server, setShowModal}) => {
     const currentUser = useSelector(state => state.session.user)
     const dispatch = useDispatch()
 
@@ -13,7 +14,8 @@ const ServerCard = ({ server, setShowModal }) => {
     }
     const addToServer = () => {
         dispatch(postServerMemberThunk(server.id, currentUser.id))
-        setShowModal(false)
+        .then(() => setShowModal(false))
+        .then(() => dispatch(getUserThunk(currentUser.id)))
     }
 
     return (

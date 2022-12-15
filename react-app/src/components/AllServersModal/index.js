@@ -3,7 +3,7 @@ import { Modal } from '../../context/Modal';
 import AllServersView from './AllServersView.js';
 import styles from '../cssModules/ServersView.module.css'
 
-function AllServerModal() {
+function AllServerModal({ setHasSubmitted }) {
     const [showModal, setShowModal] = useState(false);
 
     return (
@@ -13,7 +13,7 @@ function AllServerModal() {
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <AllServersView setShowModal={setShowModal} />
+                    <AllServersView setShowModal={setShowModal} setHasSubmitted={setHasSubmitted} />
                 </Modal>
             )}
         </>
