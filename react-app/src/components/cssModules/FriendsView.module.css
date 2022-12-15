@@ -19,6 +19,24 @@
     /* border: 3px solid blue; */
 }
 
+.friends_container::-webkit-scrollbar {
+    width: 0.6vw;
+    height: 90%;
+}
+
+.friends_container::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #1d1e21;
+    position: relative;
+    left: -5px;
+}
+
+.friends_container::-webkit-scrollbar-track {
+    border-radius: 10px;
+    /* background-color: #36393f; */
+    background-color: #2e3338;
+}
+
 .friend_card {
     display: flex;
     align-items: center;
@@ -81,5 +99,3 @@
 .no_friends {
     text-align: center;
 }
-
-
