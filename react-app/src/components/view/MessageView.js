@@ -35,8 +35,10 @@ export default function MessageView() {
   const sendChat = (e) => {
     e.preventDefault();
     socket.emit("chat", {
+      id: user.id,
       user: user.username,
       msg: chatInput,
+      channelId: channelId,
       room: serverId + "-" + channelId,
     });
     setChatInput("");

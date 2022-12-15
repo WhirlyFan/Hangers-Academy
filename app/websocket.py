@@ -1,4 +1,5 @@
 from flask_socketio import SocketIO, emit, send, join_room, leave_room
+from app.models import db, Message
 import os
 
 
@@ -39,13 +40,13 @@ def on_leave(data):
 
 @socketio.on("chat")
 def handle_chat(data):
-    # message = Message(
-    #     user_id=current_user.id,
-    #     channel_id=int(data['room']),
-    #     message=data['message']
-    # )
-    # db.session.add(message)
-    # db.session.commit()
+    message = Message(
+        user_id=data['id'],
+        channel_id=data["channelId"],
+        message_content=data['msg']
+    )
+    db.session.add(message)
+    db.session.commit()
 
     if data['room']:
         room = data['room']

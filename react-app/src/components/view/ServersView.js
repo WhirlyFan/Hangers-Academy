@@ -3,14 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 import { getUserThunk } from "../../store/session";
 import CreateServerModal from "../CreateServerModal";
+import AllServerModal from "../AllServersModal";
 import styles from "../cssModules/ServersView.module.css"
 
 export default function ServersView() {
     const dispatch = useDispatch()
     const history = useHistory()
-
     const [hasSubmitted, setHasSubmitted] = useState(false)
-
     const user = useSelector(state => state.session.user)
     const serversArr = user.public_servers
     const userId = user.id
@@ -27,12 +26,13 @@ export default function ServersView() {
         history.push('/main/friends')
     }
 
-    const redirectAllServersRoute = () => {
-        history.push('/main/servers')
-    }
+    // const redirectAllServersRoute = () => {
+    //     history.push('/main/servers')
+    // }
 
     // This function validates image urls for conditional rendering
     const imgValidator = (imgUrl) => {
+        if (!imgUrl) return false
         if (imgUrl.slice(imgUrl.length - 3) === "jpg" || imgUrl.slice(imgUrl.length - 3) === "png") return true
         else return false
     }
@@ -40,12 +40,12 @@ export default function ServersView() {
     return (
         <div className={styles.serversContainer}>
             <div className={styles.homeButton} onClick={() => redirectFriendsRoute()}>
-                <img className={styles.serverItemImage} src='https://cdn.discordapp.com/attachments/1049445170778738789/1051654101286527137/1.png' alt='home-button-icon'/>
+                <img className={styles.serverItemImage} src='https://cdn.discordapp.com/attachments/1049445170778738789/1051654101286527137/1.png' alt='home-button-icon' />
             </div>
             <div id={styles.homeBar}>
                 <hr />
             </div>
-            
+
             {/* Maps out all public server user is a member of */}
             <div>
                 {
@@ -62,8 +62,8 @@ export default function ServersView() {
             <div>
                 <CreateServerModal setHasSubmitted={setHasSubmitted} />
             </div>
-            <div className={styles.homeButton} onClick={() => redirectAllServersRoute()}>
-                <img className={styles.serverItemImage} src='https://cdn3.emoji.gg/emojis/6473-greencompass.png' alt='home-button-icon' />
+            <div>
+                <AllServerModal />
             </div>
         </div>
     )
