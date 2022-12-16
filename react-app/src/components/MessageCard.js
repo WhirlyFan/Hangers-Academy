@@ -18,29 +18,31 @@ const MessageCard = ({ message, allUsersObj, user, deleteMessage }) => {
     }
 
     return (
-        <div className={styles.message_container}>
-            <div className={styles.icon_container}>
-                <img
-                  className={styles.icon}
-                  src="https://cdn.discordapp.com/attachments/1049445170778738789/1051654101286527137/1.png"
-                  alt="default-icon"
-                  >
-                  </img>
-            </div>
-            <div className={styles.message_content}>
-                <div>
+        <div className={styles.wholeMessage}>
+            <div className={styles.message_container}>
+                <div className={styles.icon_container}>
+                    <img
+                    className={styles.icon}
+                    src="https://cdn.discordapp.com/attachments/1049445170778738789/1051654101286527137/1.png"
+                    alt="default-icon"
+                    >
+                    </img>
+                </div>
+                    <div className={styles.message_content}>
                     <div>
-                        <span className={styles.user}>{allUsersObj[message.user_id].username}</span>
-                        <span className={styles.created_at}>{formatDateTime(message.created_at)}</span>
+                        <div>
+                            <span className={styles.user}>{allUsersObj[message.user_id].username}</span>
+                            <span className={styles.created_at}>{formatDateTime(message.created_at)}</span>
+                        </div>
+                        <span className={styles.message}>{message.message_content}</span>
                     </div>
-                    <span className={styles.message}>{message.message_content}</span>
                 </div>
             </div>
-            {user.id === message.user_id && (
-                <div className={styles.popUp}>
+            <div className={styles.popUp}>
+                {user.id === message.user_id && (
                     <DeleteMessage deleteMessage={deleteMessage} message={message} />
-                </div>
-            )}
+                )}
+            </div>
         </div>
     )
 };
