@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding-left: .5vw;
+    padding-right: .5vw;
+}
+
+.container:hover {
+    cursor: pointer;
+}
+
+.text {
+    color: #d83c3e
+}

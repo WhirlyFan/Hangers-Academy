@@ -107,8 +107,9 @@
     /* border: 3px solid orange; */
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     width: 30%;
+    padding-left: 2vw;
 }
 
 .exit_btn {
@@ -126,6 +127,6 @@
 
 .escape {
     font-size: .8rem;
-    font-weight: 600;
+    font-weight: 400;
     text-align: center;
 }

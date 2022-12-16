@@ -3,10 +3,10 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { authenticate } from "./store/session";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import LoginForm from "./components/auth/LoginForm"
 import Login from "./components/Login";
 import Landing from "./components/Landing";
 import Main from "./components/Main"
+import { getAllServersThunk } from "./store/server";
 
 import "./index.css";
 
@@ -17,6 +17,7 @@ function App() {
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
+      await dispatch(getAllServersThunk());
       setLoaded(true);
     })();
   }, [dispatch]);
