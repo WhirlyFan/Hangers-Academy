@@ -72,14 +72,30 @@
 #discoverButton {
     border-radius: 20px;
     cursor: pointer;
-    transition: border-radius, 0.3s;
     height:38px;
     width:38px;
     margin-top:20px;
+    background-color: #36393f;
+    transition: background-color 0.33s, border-radius, 0.3s;
 }
 
 #discoverButton:hover {
     border-radius: 12px;
+    background-color: #3aa45f;
+}
+
+#discoverButtonImg {
+    height: 38px;
+    width: 38px;
+    border-radius: 20px;
+    font-size: 38px;
+    /* padding: 2px; */
+    color: #3aa45f;
+    transition: color 0.4s;
+}
+
+#discoverButtonImg:hover {
+    color: #ffffff;
 }
 
 #addBtn {
@@ -89,7 +105,7 @@
     transition: border-radius, 0.3s;
     height:38px;
     width:38px;
-    margin-top: .5vh; 
+    margin-top: .5vh;
     color: #3aa45f;
     display: flex;
     justify-content: center;

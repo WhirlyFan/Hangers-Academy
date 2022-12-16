@@ -9,7 +9,10 @@ function AllServerModal({ setHasSubmitted }) {
     return (
         <>
             <div id={styles.discoverButton} onClick={() => setShowModal(true)}>
-                <img className={styles.serverItem} src='https://cdn3.emoji.gg/emojis/6473-greencompass.png' alt='discover-button-icon' />
+                {/* <img className={styles.serverItem} src='https://cdn3.emoji.gg/emojis/6473-greencompass.png' alt='discover-button-icon' /> */}
+                <span className="material-symbols-outlined" id={styles.discoverButtonImg}>
+                    explore
+                </span>
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
