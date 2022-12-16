@@ -25,7 +25,7 @@ function App() {
       }
       setLoaded(true);
     })();
-  }, [dispatch]);
+  }, [dispatch, authenticated]);
 
   if (!loaded) {
     return null;
