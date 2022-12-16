@@ -95,10 +95,6 @@
     align-items: center;
 }
 
-.hashtagNameContainer > span {
-    /* width: 5px; */
-}
-
 .gearIconContainer {
     width: 7%;
     /* border: 1px red solid */

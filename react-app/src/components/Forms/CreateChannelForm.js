@@ -23,9 +23,9 @@ function CreateChannelForm({ setShowCreateChannelModal, setHasSubmitted, serverI
         setErrors(errors);
 
         if (!errors.length) {
+            setShowCreateChannelModal(false)
             const submitChannel = await dispatch(postServerChannelThunk({ server_id: serverId, name: channelName }))
                 .then(() => setHasSubmitted(prevValue => !prevValue))
-                .then(() => setShowCreateChannelModal(false))
             return submitChannel
         }
     };
