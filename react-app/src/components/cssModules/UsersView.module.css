@@ -1,7 +1,27 @@
 .container {
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
 }
+
+.container::-webkit-scrollbar {
+    width: 0.6vw;
+    height: 90%;
+    position: absolute;
+    right: 5px;
+  }
+  
+  .container::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #1d1e21;
+    position: relative;
+    left: -5px;
+  }
+  
+  .container::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #3c4045;
+  }
 
 .users_list {
     display: flex;
