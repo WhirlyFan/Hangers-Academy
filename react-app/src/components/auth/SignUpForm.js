@@ -5,7 +5,7 @@ import { signUp } from '../../store/session';
 import styles from '../cssModules/Login.module.css'
 
 const SignUpForm = () => {
-  const [errors, setErrors] = useState([]);
+  let [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,6 +16,11 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    // setErrors([])
+    if (password !== repeatPassword) {
+      setErrors(["Passwords do not match"])
+    }
+
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password));
       if (data) {
@@ -72,6 +77,8 @@ const SignUpForm = () => {
               value={username}
               className={styles.inputBar}
               required
+              maxLength={255}
+              minLength={3}
             />
           </div>
         </div>
@@ -87,6 +94,8 @@ const SignUpForm = () => {
               value={email}
               className={styles.inputBar}
               required
+              maxLength={255}
+              minLength={3}
             />
           </div>
         </div>
@@ -101,6 +110,8 @@ const SignUpForm = () => {
               onChange={updatePassword}
               value={password}
               className={styles.inputBar}
+              maxLength={255}
+              minLength={3}
               required
             />
           </div>
@@ -117,6 +128,7 @@ const SignUpForm = () => {
               value={repeatPassword}
               className={styles.inputBar}
               required
+              maxLength={255}
             />
         </div>
         <div id={styles.buttonContainer}>

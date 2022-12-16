@@ -54,7 +54,7 @@ const LoginForm = () => {
           <div className={styles.inputContainer}>
             <input
               name='email'
-              type='text'
+              type='email'
               value={email}
               onChange={updateEmail}
               className={styles.inputBar}
