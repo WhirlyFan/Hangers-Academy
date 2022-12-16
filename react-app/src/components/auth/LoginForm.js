@@ -20,6 +20,13 @@ const LoginForm = () => {
     }
   };
 
+  const loginDemo = async (e) => {
+    const data = await dispatch(login("demo@aa.io", "password"))
+    if (data) {
+      setErrors(data);
+    }
+  }
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -78,9 +85,17 @@ const LoginForm = () => {
           <div id={styles.buttonContainer}>
             <button type='submit' id={styles.button}>Log In</button>
           </div>
-          <div id={styles.registerContainer}>
+          <div id={styles.bottomTextContainer}>
+            <div id={styles.registerContainer}>
             Need an account? <span id={styles.register} onClick={registerRedirect}>Register</span>
+            </div>
+            <div id={styles.registerContainer}>
+            Want to use a <span id={styles.demo} onClick={loginDemo}> demo account?</span>
+            </div>
           </div>
+          {/* <div id={styles.registerContainer}>
+
+          </div> */}
         </div>
           </div>
       </form>

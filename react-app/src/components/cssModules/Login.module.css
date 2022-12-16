@@ -123,6 +123,15 @@
     text-decoration: underline;
 }
 
+#demo {
+    color: #00AFF4;
+    cursor: pointer;
+}
+
+#demo:hover {
+    text-decoration: underline;
+}
+
 .asterisk {
     color: #CA3F44;
 }
@@ -137,4 +146,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#bottomTextContainer {
+    display: flex;
+    justify-content: space-between;
 }
