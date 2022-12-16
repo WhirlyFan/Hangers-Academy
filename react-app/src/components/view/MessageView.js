@@ -19,14 +19,14 @@ export default function MessageView() {
   const [chatInput, setChatInput] = useState("");
   const [messages, setMessages] = useState([]);
   const user = useSelector((state) => state.session.user);
-  const allServers = useSelector(state => state.server.allServers)
+  const allServers = useSelector((state) => state.server.allServers);
   const { serverId, channelId } = useParams();
   const [hasClicked, setHasClicked] = useState(false);
-  const messageRef = useRef(null)
+  const messageRef = useRef(null);
 
   useEffect(() => {
     messageRef.current?.scrollIntoView();
-  }, [messages])
+  }, [messages]);
 
   useEffect(() => {
     dispatch(getAllUsers()).then((data) => {
@@ -47,6 +47,12 @@ export default function MessageView() {
         setMessages(messages.Messages);
       });
     });
+    socket.on("delete", () => {
+      dispatch(getChannelMessagesThunk(channelId)).then((messages) => {
+        setMessages(messages.Messages);
+        // setHasClicked(!hasClicked);
+      });
+    });
     //join room
     socket.emit("join", {
       user: user.username,
@@ -56,7 +62,7 @@ export default function MessageView() {
     return () => {
       socket.disconnect();
     };
-  }, [channelId, serverId, user.username, dispatch]);
+  }, [hasClicked, channelId, serverId, user.username, dispatch]);
 
   const updateChatInput = (e) => {
     setChatInput(e.target.value);
@@ -78,11 +84,12 @@ export default function MessageView() {
   if (!Object.keys(allUsersObj).length) return null;
 
   const deleteMessage = (messageId) => {
-    dispatch(deleteChannelMessageThunk(messageId)).then(() => {
-      setHasClicked(!hasClicked);
-    });
+    // dispatch(deleteChannelMessageThunk(messageId)).then(() => {
+    //   setHasClicked(!hasClicked);
+    // });
+    socket.emit("delete", { id: messageId, room: serverId + "-" + channelId });
   };
-  const server = allServers[+serverId]
+  const server = allServers[+serverId];
   // const channel = server.Channels.find(channel => channel.id === channelId)
 
   return (
@@ -91,45 +98,32 @@ export default function MessageView() {
         <div className={styles.header}>
           {server.private ? (
             <>
-              <h2>{server.name
-                .split("_")
-                .filter((name) => name !== user.username)
-                .join("")}</h2>
-              <span>This is the beginning of your direct message history with @{server.name
-                .split("_")
-                .filter((name) => name !== user.username)
-                .join("")}</span>
+              <h2>
+                {server.name
+                  .split("_")
+                  .filter((name) => name !== user.username)
+                  .join("")}
+              </h2>
+              <span>
+                This is the beginning of your direct message history with @
+                {server.name
+                  .split("_")
+                  .filter((name) => name !== user.username)
+                  .join("")}
+              </span>
             </>
-            ):
+          ) : (
             <h2>Welcome to {server.name}</h2>
-          }
+          )}
         </div>
         {messages.map((message, ind) => (
-          // <div key={`message-${ind}`} className={styles.message}>
-          //   <div className={styles.profile_pic}>
-          //     {/* <img src={allUsersObj[message.user_id].profile_pic} /> */}
-          //   </div>
-          //   <div className={styles.message_stuff}>
-          //     <div className={styles.non_buttons}>
-          //       <div className={styles.details}>
-          //         <div className={styles.username}>
-          //           {allUsersObj[message.user_id].username}
-          //         </div>
-          //         <div className={styles.created_at}>{message.created_at}</div>
-          //       </div>
-          //       <div className={styles.message_content}>
-          //         {message.message_content}
-          //       </div>
-          //     </div>
-          //     <div className={styles.buttons}>
-          //       {/* <button onClick={editMessage}>Edit</button> */}
-          //       <button onClick={() => deleteMessage(message.id)}>
-          //         Delete
-          //       </button>
-          //     </div>
-          //   </div>
-          // </div>
-          <MessageCard key={`message-${ind}`} message={message} allUsersObj={allUsersObj} user={user} deleteMessage={deleteMessage} />
+          <MessageCard
+            key={`message-${ind}`}
+            message={message}
+            allUsersObj={allUsersObj}
+            user={user}
+            deleteMessage={deleteMessage}
+          />
         ))}
 
         <div ref={messageRef} />
@@ -137,14 +131,14 @@ export default function MessageView() {
       <div className={styles.formContainer}>
         <form className={styles.form} onSubmit={sendChat}>
           <input
-          className={styles.chatBox}
-          value={chatInput}
-          onChange={updateChatInput}
-          placeholder={"Message"} />
+            className={styles.chatBox}
+            value={chatInput}
+            onChange={updateChatInput}
+            placeholder={"Message"}
+          />
           {/* <button type="submit">Send</button> */}
         </form>
       </div>
-
     </div>
   );
 }
