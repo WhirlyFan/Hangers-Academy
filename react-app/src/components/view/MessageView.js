@@ -22,7 +22,7 @@ export default function MessageView() {
 
   useEffect(() => {
     messageRef.current?.scrollIntoView();
-  }, [messages]);
+  }, [dispatch, messages]);
 
   useEffect(() => {
     dispatch(getAllUsers()).then((data) => {

@@ -81,7 +81,8 @@
 
 .message_container::-webkit-scrollbar-track {
   border-radius: 10px;
-  background-color: #3c4045;
+  /* background-color: #3c4045; */
+  background-color: #36393f;
 }
 
 .header {
