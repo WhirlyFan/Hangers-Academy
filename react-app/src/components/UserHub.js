@@ -9,7 +9,17 @@ export default function UserHub() {
 
     return (
         <div className={styles.hub}>
-            <span>{sessionUser.username}</span>
+            <div className={styles.left_side}>
+                <div className={styles.icon_container}>
+                    <img 
+                    className={styles.icon}
+                    src="https://cdn.discordapp.com/attachments/1049445170778738789/1051654101286527137/1.png"
+                    alt="default-icon"
+                    >
+                    </img>
+                </div>
+                <span>{sessionUser.username}</span>
+            </div>
             <UserSettings sessionUser={sessionUser} />
         </div>
     )

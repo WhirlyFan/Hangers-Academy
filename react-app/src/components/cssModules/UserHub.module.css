@@ -2,5 +2,21 @@
     display: flex;
     padding: .5vw;
     justify-content: space-between;
+    align-content: center;
     border-top: 1px solid #3b3e45;
+}
+
+.icon_container {
+    border-radius: 50%;
+    padding-right: .5vw;
+}
+
+.icon {
+    width: 1.5vw;
+    border-radius: 50%;
+}
+
+.left_side {
+    display: flex;
+    align-content: center;
 }
