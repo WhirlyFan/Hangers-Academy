@@ -1,13 +1,16 @@
+#outerContainer {
+    display: flex;
+    justify-content: center;
+}
+
 #allServersContainer {
     /* border: 1px solid red; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    width: 100%;
-    height: 90%;
-    /* background-color: #36393f; */
-    padding-bottom: 20px;
+    width: 93%;
+    height: 100%;
 }
 
 .serverCard {
@@ -20,6 +23,7 @@
     transition-property: box-shadow, transform;
     transition-duration: 0.25s;
     cursor: pointer;
+
 }
 
 .serverCard:hover {
@@ -54,6 +58,7 @@
     height: 41%;
     padding-left: 10px;
     padding-right: 10px;
+    margin-bottom: 20px;
 }
 
 .bannerContainer {
@@ -63,17 +68,37 @@
 }
 
 .banner {
+    margin-top: 30px;
     object-fit: cover;
     width: 100%;
+    border-radius: 5px;
 }
 
 #welcomeText {
     position: absolute;
-    top: 150px;
+    top: 180px;
     font-size: 25px;
     width: 50%;
     z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.allServerCardsContainer {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    gap: 5%;
+    align-items: center;
+    padding-bottom: 20px;
+    /* margin: 20px; */
+}
+
+.featuredCommunitiesText {
+    width: 100%;
+    font-size: 18px;
+    /* text-align: left; */
+    /* font-weight: bold; */
 }

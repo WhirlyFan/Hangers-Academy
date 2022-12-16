@@ -18,7 +18,7 @@ function App() {
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
-      await dispatch(getAllServersThunk());
+      // await dispatch(getAllServersThunk());
       setLoaded(true);
     })();
   }, [dispatch]);
