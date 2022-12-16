@@ -43,9 +43,9 @@ function EditServerForm({ setShowEditServerModal, setHasSubmitted, serverId, use
     };
 
     const handleDelete = () => {
+        setShowEditServerModal(false)
+        setHasSubmitted(prevValue => !prevValue)
         return dispatch(deleteServerThunk(serverId, userId))
-            .then(() => setHasSubmitted(prevValue => !prevValue))
-            .then(() => setShowEditServerModal(false))
             .then(() => history.push('/main/friends'))
     }
 

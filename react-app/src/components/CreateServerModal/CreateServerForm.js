@@ -26,12 +26,12 @@ function CreateServerForm({ setShowModal, setHasSubmitted }) {
         setErrors(errors);
 
         if (!errors.length) {
+            setShowModal(false)
             const submitServer = await dispatch(postServerThunk({ name: serverName, server_img: serverImg }))
                 .then((response) => {
                     history.push(`/main/servers/${response.server.id}/${response.channel.id}`)
                 })
                 .then(() => setHasSubmitted(prevValue => !prevValue))
-                .then(() => setShowModal(false))
             return submitServer
         }
     };
