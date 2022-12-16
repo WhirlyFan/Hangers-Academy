@@ -42,9 +42,9 @@ function EditChannelForm({ setShowEditChannelModal, setHasSubmitted, serverId })
         setErrors(errors);
 
         if (!errors.length) {
+            setShowEditChannelModal(false)
             const editChannel = await dispatch(editServerChannelThunk({ channel_id: channelId, name: channelName }))
                 .then(() => setHasSubmitted(prevValue => !prevValue))
-                .then(() => setShowEditChannelModal(false))
             return editChannel
         }
     };
@@ -63,9 +63,9 @@ function EditChannelForm({ setShowEditChannelModal, setHasSubmitted, serverId })
         setErrors(errors);
 
         if (!errors.length) {
+            setShowEditChannelModal(false)
+            setHasSubmitted(prevValue => !prevValue)
             const deleteChannel = await dispatch(deleteServerChannelThunk(channelId))
-                .then(() => setHasSubmitted(prevValue => !prevValue))
-                .then(() => setShowEditChannelModal(false))
                 .then(() => history.push(`/main/servers/${serverId}/${server[0].Channels[0]['id']}`))
             return deleteChannel
         }

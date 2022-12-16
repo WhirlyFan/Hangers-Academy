@@ -5,6 +5,7 @@
     height: 100%;
     padding-left: .5vw;
     padding-right: .5vw;
+    /* width: 50%; */
 }
 
 .container:hover {

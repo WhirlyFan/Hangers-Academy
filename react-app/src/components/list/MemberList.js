@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-// import { getAllServersThunk } from "../../store/server";
 
 import styles from "../cssModules/UsersView.module.css"
 
@@ -9,13 +8,9 @@ export default function MemberList() {
   const allServers = useSelector(state => state.server.allServers)
   const { serverId } = useParams()
 
-  // useEffect(() => {
-  //   dispatch(getAllServersThunk())
-  // }, [dispatch])
-
   if (!Object.keys(allServers).length) return null
 
-  const members = allServers[+serverId].Members
+  const members = allServers[+serverId]?.Members
 
   return (
     <div className={styles.container}>

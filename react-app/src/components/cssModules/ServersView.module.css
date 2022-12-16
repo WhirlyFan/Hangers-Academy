@@ -5,7 +5,28 @@
     justify-content: flex-start;
     /* width:100%; */
     height: 100%;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
 }
+
+.serversContainer::-webkit-scrollbar {
+    width: 0.6vw;
+    height: 90%;
+    position: absolute;
+    right: 5px;
+  }
+  
+  .serversContainer::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #1d1e21;
+    position: relative;
+    left: -5px;
+  }
+  
+  .serversContainer::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #3c4045;
+  }
 
 .homeButton {
     background-color: #36393f;
@@ -13,8 +34,8 @@
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    height:38px;
-    width:38px;
+    height:41px;
+    width:41px;
     margin-top: 10px;
     margin-bottom:0px;
     border-radius:20px;
@@ -40,9 +61,9 @@
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    height:38px;
-    width:38px;
-    margin-bottom:20px;
+    height:41px;
+    width:41px;
+    margin-bottom:10px;
     border-radius:20px;
     cursor: pointer;
     transition: border-radius 0.3s, background-color 0.3s;
@@ -72,14 +93,33 @@
 #discoverButton {
     border-radius: 20px;
     cursor: pointer;
-    transition: border-radius, 0.3s;
-    height:38px;
-    width:38px;
-    margin-top:20px;
+    height:41px;
+    width:41px;
+    margin-top:10px;
+    background-color: #36393f;
+    transition: background-color 0.33s, border-radius, 0.3s;
 }
 
 #discoverButton:hover {
     border-radius: 12px;
+    background-color: #3aa45f;
+}
+
+#discoverButtonImg {
+    height: 41px;
+    width: 41px;
+    border-radius: 20px;
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding: 2px; */
+    color: #3aa45f;
+    transition: color 0.4s;
+}
+
+#discoverButtonImg:hover {
+    color: #ffffff;
 }
 
 #addBtn {
@@ -87,9 +127,9 @@
     cursor: pointer;
     background-color: #36393f;
     transition: border-radius, 0.3s;
-    height:38px;
-    width:38px;
-    margin-top: .5vh; 
+    height:41px;
+    width:41px;
+    margin-top: .5vh;
     color: #3aa45f;
     display: flex;
     justify-content: center;
