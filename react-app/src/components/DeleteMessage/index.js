@@ -15,7 +15,7 @@ const UserSettings = ({ message, deleteMessage }) => {
             </div>
             {showModal && (
                 <DeleteMessageModal onClose={() => setShowModal(false)}>
-                    <DeleteMessage message={message} deleteMessage={deleteMessage} />
+                    <DeleteMessage message={message} deleteMessage={deleteMessage} setShowModal={setShowModal} />
                 </DeleteMessageModal>
             )}
         </>

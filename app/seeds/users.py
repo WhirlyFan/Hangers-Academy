@@ -5,26 +5,26 @@ from app.models import db, User, environment, SCHEMA
 def seed_users():
     demo = User(
         username='Demo', email='demo@aa.io', password='password')
-    marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
-    bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
-    linus = User(
-        username='linushnguyen', email='linus@aa.io', password='password')
-    preston = User(
-        username='bingusbhan', email='bing@aa.io', password='password')
-    kevin = User(
-        username='kevnguyen', email='kevkev@aa.io', password='password')
-    michael = User(
-        username='WhirlyFan', email='whirlyfan@aa.io', password='password')
+    # marnie = User(
+    #     username='marnie', email='marnie@aa.io', password='password')
+    # bobbie = User(
+    #     username='bobbie', email='bobbie@aa.io', password='password')
+    # linus = User(
+    #     username='linushnguyen', email='linus@aa.io', password='password')
+    # preston = User(
+    #     username='bingusbhan', email='bing@aa.io', password='password')
+    # kevin = User(
+    #     username='kevnguyen', email='kevkev@aa.io', password='password')
+    # michael = User(
+    #     username='WhirlyFan', email='whirlyfan@aa.io', password='password')
 
     db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
-    db.session.add(linus)
-    db.session.add(preston)
-    db.session.add(kevin)
-    db.session.add(michael)
+    # db.session.add(marnie)
+    # db.session.add(bobbie)
+    # db.session.add(linus)
+    # db.session.add(preston)
+    # db.session.add(kevin)
+    # db.session.add(michael)
     db.session.commit()
 
 
