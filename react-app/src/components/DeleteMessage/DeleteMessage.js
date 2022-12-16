@@ -5,7 +5,7 @@ const DeleteMessage = ({ message, deleteMessage }) => {
         <div onClick={() => deleteMessage(message.id)} className={styles.container}>
             <span className={styles.text}>DeleteMessage</span>
             <div className={styles.text}>
-                <span class="material-symbols-outlined">
+                <span className="material-symbols-outlined">
                     delete
                 </span>
             </div>

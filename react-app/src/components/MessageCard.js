@@ -2,6 +2,20 @@ import styles from "./cssModules/MessageCard.module.css";
 import DeleteMessage from "./DeleteMessage";
 
 const MessageCard = ({ message, allUsersObj, user, deleteMessage }) => {
+    const formatDateTime = (created_at) => {
+        let dateObj = new Date(created_at)
+        let month = dateObj.getMonth()
+        let day = dateObj.getDate()
+        let hour = dateObj.getHours()
+        let min = dateObj.getMinutes()
+        if (min < 10) min = "0" + +min
+        let PSThr = `${+hour + 8}`
+        let amPM;
+        if (hour > 13) amPM = "PM"
+        if (hour < 13) amPM = "AM"
+        let formattedDate = `${month}/${day} at ${PSThr}:${min}${amPM}`
+        return formattedDate
+    }
 
     return (
         <div className={styles.message_container}>
@@ -17,7 +31,7 @@ const MessageCard = ({ message, allUsersObj, user, deleteMessage }) => {
                 <div>
                     <div>
                         <span className={styles.user}>{allUsersObj[message.user_id].username}</span>
-                        <span className={styles.created_at}>{message.created_at}</span>
+                        <span className={styles.created_at}>{formatDateTime(message.created_at)}</span>
                     </div>
                     <span className={styles.message}>{message.message_content}</span>
                 </div>

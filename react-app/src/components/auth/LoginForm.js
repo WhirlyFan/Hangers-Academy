@@ -93,9 +93,6 @@ const LoginForm = () => {
             Want to use a <span id={styles.demo} onClick={loginDemo}> demo account?</span>
             </div>
           </div>
-          {/* <div id={styles.registerContainer}>
-
-          </div> */}
         </div>
           </div>
       </form>

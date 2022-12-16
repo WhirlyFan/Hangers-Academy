@@ -20,3 +20,14 @@
     display: flex;
     align-content: center;
 }
+
+.gear {
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 3px;
+    transition: background-color 0.33s;
+}
+
+.gear:hover {
+    background-color: #3b3e45;
+}

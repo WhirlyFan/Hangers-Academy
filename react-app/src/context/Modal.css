@@ -35,6 +35,8 @@
 #modal-content::-webkit-scrollbar {
     width: 0.6vw;
     height: 90%;
+    position: absolute;
+    right: 5px;
 }
 
 #modal-content::-webkit-scrollbar-thumb {
@@ -47,4 +49,8 @@
 #modal-content::-webkit-scrollbar-track {
     border-radius: 10px;
     background-color: #36393f;
+}
+
+#modal-content::-webkit-scrollbar-corner {
+    border: 2px red solid;
 }
