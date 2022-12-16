@@ -60,7 +60,7 @@ const LoginForm = () => {
               className={styles.inputBar}
               required
             />
-          </div>
+        </div>
         <div>
           <div className={styles.labelText}>
             <label htmlFor='password'>PASSWORD<span className={styles.asterisk}> *</span></label>
@@ -82,7 +82,7 @@ const LoginForm = () => {
             Need an account? <span id={styles.register} onClick={registerRedirect}>Register</span>
           </div>
         </div>
-        </div>
+          </div>
       </form>
     </div>
   );

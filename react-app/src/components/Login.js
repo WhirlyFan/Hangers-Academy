@@ -6,8 +6,10 @@ import login_background from "../assets/login_background.svg"
 export default function Login() {
   return (
     <div id={styles.loginView}>
-      <img alt="login-banner" src={login_background} id={styles.loginBackground}/>
-      <div id={styles.centeredLoginFormContainer}>
+      <div>
+        <img alt="login-banner" src={login_background} id={styles.loginBackground}/>
+      </div>
+      <div id={styles.centeredFormContainer}>
         <LoginForm />
       </div>
     </div>
