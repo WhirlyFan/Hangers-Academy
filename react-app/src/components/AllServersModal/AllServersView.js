@@ -20,11 +20,16 @@ export default function AllServersView({ setShowModal }) {
         return "Servers loading..."
     }
 
-    const publicServers = allServersArr.map(server => {
+    const publicServers = allServersArr.filter(server => {
+        return server.private === false
+    })
+
+    const memberIdFormattedServers = publicServers.map(server => {
         const memberIds = server.Members.map(member => member.id)
         return {...server, memberIds}
     });
-    const unjoinedServers = publicServers.filter(server => {
+
+    const unjoinedServers = memberIdFormattedServers.filter(server => {
         return !server.memberIds.includes(currentUser.id)
     })
 
