@@ -5,7 +5,28 @@
     justify-content: flex-start;
     /* width:100%; */
     height: 100%;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
 }
+
+.serversContainer::-webkit-scrollbar {
+    width: 0.6vw;
+    height: 90%;
+    position: absolute;
+    right: 5px;
+  }
+  
+  .serversContainer::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #1d1e21;
+    position: relative;
+    left: -5px;
+  }
+  
+  .serversContainer::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #3c4045;
+  }
 
 .homeButton {
     background-color: #36393f;
