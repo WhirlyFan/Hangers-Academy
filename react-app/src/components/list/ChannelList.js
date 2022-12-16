@@ -127,7 +127,10 @@ export default function ChannelList() {
                                     // console.log(channel.id)
                                     redirectChannel(channel.id)
                                 }}>
-                                    <div>
+                                    <div className={styles.hashtagNameContainer}>
+                                        <span class="material-symbols-outlined">
+                                            tag
+                                        </span>
                                         <div>
                                             {channel.name}
                                         </div>
