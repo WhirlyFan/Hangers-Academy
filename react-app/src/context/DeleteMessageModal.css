@@ -22,7 +22,7 @@
 #delete-message-modal-content {
     position: absolute;
     background-color: #18191c;
-    width: 10vw;
+    width: fit-content;
     height: 5vh;
     display: flex;
     flex-direction: column;
