@@ -53,7 +53,7 @@ const UserSettingsDisplay = ({ sessionUser, setShowModal }) => {
             </div>
             <div className={styles.right_container}>
                 <div onClick={(e) => handleClick(e)} className={styles.exit_btn}>
-                    <span style={{fontSize: "2.5rem"}} className="material-symbols-outlined exit">
+                    <span style={{fontSize: "2.5rem", fontWeight: "200"}} className="material-symbols-outlined exit">
                         cancel
                     </span>
                     <div className={styles.escape_container}>

@@ -41,6 +41,8 @@
     display: flex;
     align-items: center;
     color: #cbccce;
+    height: 2vh;
+    margin-top: 1vh;
 }
 
 .direct_message_card:hover {
