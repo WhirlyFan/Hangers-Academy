@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { authenticate } from "./store/session";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import LoginForm from "./components/auth/LoginForm"
+import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Landing from "./components/Landing";
 import Main from "./components/Main"
@@ -33,6 +33,9 @@ function App() {
         </Route>
         <Route path='/login' exact={true}>
           <Login />
+        </Route>
+        <Route path='/signup' exact={true}>
+          <Signup />
         </Route>
         <ProtectedRoute path='/main'>
           <Main />
