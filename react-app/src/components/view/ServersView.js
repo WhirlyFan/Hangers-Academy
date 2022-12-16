@@ -29,7 +29,7 @@ export default function ServersView() {
     // const redirectAllServersRoute = () => {
     //     history.push('/main/servers')
     // }
-
+    
     // This function validates image urls for conditional rendering
     const imgValidator = (imgUrl) => {
         if (!imgUrl) return false

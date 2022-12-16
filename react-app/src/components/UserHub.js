@@ -1,14 +1,16 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import UserSettingsModal from "./UserSettingsModal";
+import UserSettings from "./UserSettings";
+
+import styles from './cssModules/UserHub.module.css'
 
 export default function UserHub() {
-    const sessionUser = useSelector(state => state.session.user); 
+    const sessionUser = useSelector(state => state.session.user);
 
     return (
-        <div>
+        <div className={styles.hub}>
             <span>{sessionUser.username}</span>
-            <UserSettingsModal sessionUser={sessionUser} />
+            <UserSettings sessionUser={sessionUser} />
         </div>
     )
 };

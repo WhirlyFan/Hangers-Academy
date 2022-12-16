@@ -6,6 +6,7 @@ import App from './App';
 import { ModalProvider } from './context/Modal';
 import { ServerSettingsModalProvider } from './context/ServerSettingsModal';
 import configureStore from './store';
+import { UserSettingsModalProvider } from './context/UserSettingsModal';
 
 import * as serverActions from './store/server';
 import * as channelMessagesActions from './store/channelMessages'
@@ -26,7 +27,9 @@ ReactDOM.render(
     <Provider store={store}>
       <ModalProvider>
         <ServerSettingsModalProvider>
-          <App />
+          <UserSettingsModalProvider>
+            <App />
+          </UserSettingsModalProvider>
         </ServerSettingsModalProvider>
       </ModalProvider>
     </Provider>

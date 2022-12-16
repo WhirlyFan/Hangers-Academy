@@ -1,0 +1,6 @@
+.hub {
+    display: flex;
+    padding: .5vw;
+    justify-content: space-between;
+    border-top: 1px solid #3b3e45;
+}

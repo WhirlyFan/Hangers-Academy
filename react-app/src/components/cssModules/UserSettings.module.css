@@ -1,0 +1,131 @@
+.container {
+    display: flex;
+    /* border: 3px solid yellow; */
+    margin: 2vw;
+    height: 80%;
+}
+
+.left_container {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    /* border: 3px solid red; */
+}
+
+.left_top {
+    font-size: 1.2rem;
+    font-weight: 500;
+    height: 10%;
+    padding-bottom: 2vh;
+}
+
+.account_card {
+    /* border: 3px solid blue; */
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    border-radius: .5vw;
+}
+
+.top_banner {
+    background-color: #c58dc5;
+    /* border: 3px solid yellow; */
+    height: 30%;
+    border-radius: .5vw .5vw 0 0;
+}
+
+.bottom_half {
+    display: flex;
+    flex-direction: column;
+    background-color: #202225;
+    border-radius: 0 0 .5vw .5vw;
+}
+
+.logout_btn {
+    padding-right: 2vw;
+}
+
+.icon_container {
+    border-radius: 50%;
+    padding-right: .4vw;
+    z-index: 2;
+    position: absolute;
+    top: 17.15vh;
+    padding-left: 1vw;
+}
+
+.icon {
+    border: 7px solid #202225;
+    width: 3.5vw;
+    border-radius: 50%;
+}
+
+.user_lg {
+    display: flex;
+    padding-left: 5.5vw;
+    justify-content: space-between;
+    /* align-items: center; */
+    padding-top: 1.5vh;
+}
+
+.username {
+    font-size: 1.15rem;
+}
+
+.bot_bot {
+    /* border: 3px solid orange; */
+    margin-top: 4vh;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    margin-bottom: 2vh;
+    border-radius: .4vw;
+    background-color: #2f3136;
+}
+
+.user_info_container {
+    padding: .75vw;
+}
+
+.username_box {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1vh;
+}
+
+.name_label {
+    font-size: .72rem;
+    color: #b9bbbe;
+    padding-bottom: .75vh;
+}
+
+.name {
+    font-size: .85rem;
+    color: #ffffff;
+}
+
+.right_container {
+    /* border: 3px solid orange; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+}
+
+.exit_btn {
+    color: rgba(185, 187, 190, .8);
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.escape_container {
+    display: flex;
+    /* border: 3px solid red; */
+    justify-content: center;
+}
+
+.escape {
+    font-size: .8rem;
+    font-weight: 600;
+    text-align: center;
+}

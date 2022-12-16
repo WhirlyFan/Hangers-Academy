@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { authenticate } from "./store/session";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 import LoginForm from "./components/auth/LoginForm"
 import Landing from "./components/Landing";
 import Main from "./components/Main"
@@ -10,7 +11,6 @@ import "./index.css";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
-  // const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,9 +33,9 @@ function App() {
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
-        <Route path='/main'>
+        <ProtectedRoute path='/main'>
           <Main />
-        </Route>
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   )

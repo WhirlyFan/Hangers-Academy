@@ -1,6 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { BrowserRouter, Route, Switch, useHistory, useLocation } from "react-router-dom";
+import { BrowserRouter, Route, Switch, useLocation } from "react-router-dom";
 
 import ServersView from "./view/ServersView";
 import UserHub from "./UserHub";
@@ -13,18 +12,12 @@ import MessageView from "./view/MessageView";
 import AllServersView from "./AllServersModal/AllServersView";
 import ProfileView from "./view/ProfileView";
 import Header from "./Header";
+import ProtectedRoute from "./auth/ProtectedRoute";
 
 import '../index.css'
 
 export default function Main() {
-    const sessionUser = useSelector(state => state.session.user)
-    const history = useHistory()
     const location = useLocation()
-
-    if (!sessionUser) {
-        history.push('/')
-        return;
-    }
 
     return (
         <div id="main-div">
@@ -40,7 +33,7 @@ export default function Main() {
                         <Header />
                     </div>)}
                 <Switch>
-                    <Route path='/main/friends'>
+                    <ProtectedRoute path='/main/friends'>
                         <div className='message-view'>
                             <FriendsView />
                         </div>
@@ -50,7 +43,7 @@ export default function Main() {
                         <div className="member-list">
                             <UsersView />
                         </div>
-                    </Route>
+                    </ProtectedRoute>
                     <Route path='/main/servers/:serverId/:channelId' exact={true}>
                         <div className='channel-list'>
                             <ChannelList />
