@@ -134,14 +134,17 @@ export default function MessageView() {
 
         <div ref={messageRef} />
       </div>
-      <form className={styles.form} onSubmit={sendChat}>
-        <input
-        className={styles.chatBox}
-        value={chatInput}
-        onChange={updateChatInput}
-        placeholder={"Message"} />
-        {/* <button type="submit">Send</button> */}
-      </form>
+      <div className={styles.formContainer}>
+        <form className={styles.form} onSubmit={sendChat}>
+          <input
+          className={styles.chatBox}
+          value={chatInput}
+          onChange={updateChatInput}
+          placeholder={"Message"} />
+          {/* <button type="submit">Send</button> */}
+        </form>
+      </div>
+
     </div>
   );
 }

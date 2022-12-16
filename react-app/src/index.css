@@ -6,6 +6,7 @@ body {
     color: #fcfcff;
     font-family: 'Varela Round', sans-serif;
     font-weight: 400;
+    overflow: hidden;
 }
 
 .errors {

@@ -54,7 +54,7 @@ export default function Header() {
             {(locationPathArr.length === 5) && (
                 <div className={styles.headerContainer}>
                     <div className={styles.friendButtonContainer}>
-                        <span class="material-symbols-outlined">
+                        <span className="material-symbols-outlined">
                             tag
                         </span>
                     </div>
@@ -66,7 +66,7 @@ export default function Header() {
             {(locationPathArr.length === 6) && (
                 <div className={styles.headerContainer}>
                     <div className={styles.friendButtonContainer}>
-                        <span class="material-symbols-outlined">
+                        <span className="material-symbols-outlined">
                             alternate_email
                         </span>
                     </div>
