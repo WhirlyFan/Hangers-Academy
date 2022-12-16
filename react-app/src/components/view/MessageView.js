@@ -2,10 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { io } from "socket.io-client";
-import {
-  deleteChannelMessageThunk,
-  getChannelMessagesThunk,
-} from "../../store/channelMessages";
+import { getChannelMessagesThunk } from "../../store/channelMessages";
 import { normalize } from "../../store/server";
 import { getAllUsers } from "../../store/session";
 import MessageCard from "../MessageCard";
@@ -21,7 +18,6 @@ export default function MessageView() {
   const user = useSelector((state) => state.session.user);
   const allServers = useSelector((state) => state.server.allServers);
   const { serverId, channelId } = useParams();
-  const [hasClicked, setHasClicked] = useState(false);
   const messageRef = useRef(null);
 
   useEffect(() => {
@@ -36,7 +32,7 @@ export default function MessageView() {
     dispatch(getChannelMessagesThunk(channelId)).then((messages) => {
       setMessages(messages.Messages);
     });
-  }, [dispatch, channelId, hasClicked]);
+  }, [dispatch, channelId]);
 
   useEffect(() => {
     // open socket connection
@@ -50,7 +46,6 @@ export default function MessageView() {
     socket.on("delete", () => {
       dispatch(getChannelMessagesThunk(channelId)).then((messages) => {
         setMessages(messages.Messages);
-        // setHasClicked(!hasClicked);
       });
     });
     //join room
@@ -62,7 +57,7 @@ export default function MessageView() {
     return () => {
       socket.disconnect();
     };
-  }, [hasClicked, channelId, serverId, user.username, dispatch]);
+  }, [channelId, serverId, user.username, dispatch]);
 
   const updateChatInput = (e) => {
     setChatInput(e.target.value);
@@ -84,13 +79,9 @@ export default function MessageView() {
   if (!Object.keys(allUsersObj).length) return null;
 
   const deleteMessage = (messageId) => {
-    // dispatch(deleteChannelMessageThunk(messageId)).then(() => {
-    //   setHasClicked(!hasClicked);
-    // });
     socket.emit("delete", { id: messageId, room: serverId + "-" + channelId });
   };
   const server = allServers[+serverId];
-  // const channel = server.Channels.find(channel => channel.id === channelId)
 
   return (
     <div className={styles.view}>
