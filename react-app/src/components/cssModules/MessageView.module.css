@@ -87,8 +87,9 @@
   border-radius: .4vw;
   border: 3vw;
   color: #d5d6d8;
+  text-indent: 10px;
 }
 
 .chatBox:focus {
-  border: none;
+  outline: none;
 }
