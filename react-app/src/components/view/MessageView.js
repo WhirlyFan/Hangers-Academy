@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { io } from "socket.io-client";
@@ -20,6 +20,11 @@ export default function MessageView() {
   const user = useSelector((state) => state.session.user);
   const { serverId, channelId } = useParams();
   const [hasClicked, setHasClicked] = useState(false);
+  const messageRef = useRef(null)
+
+  useEffect(() => {
+    messageRef.current?.scrollIntoView();
+  }, [messages])
 
   useEffect(() => {
     dispatch(getAllUsers()).then((data) => {
@@ -105,6 +110,8 @@ export default function MessageView() {
             </div>
           </div>
         ))}
+
+        <div ref={messageRef} />
       </div>
       <form className={styles.form} onSubmit={sendChat}>
         <input value={chatInput} onChange={updateChatInput} />
