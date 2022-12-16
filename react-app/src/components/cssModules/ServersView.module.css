@@ -13,8 +13,8 @@
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    height:38px;
-    width:38px;
+    height:41px;
+    width:41px;
     margin-top: 10px;
     margin-bottom:0px;
     border-radius:20px;
@@ -40,8 +40,8 @@
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    height:38px;
-    width:38px;
+    height:41px;
+    width:41px;
     margin-bottom:20px;
     border-radius:20px;
     cursor: pointer;
@@ -72,8 +72,8 @@
 #discoverButton {
     border-radius: 20px;
     cursor: pointer;
-    height:38px;
-    width:38px;
+    height:41px;
+    width:41px;
     margin-top:20px;
     background-color: #36393f;
     transition: background-color 0.33s, border-radius, 0.3s;
@@ -85,10 +85,13 @@
 }
 
 #discoverButtonImg {
-    height: 38px;
-    width: 38px;
+    height: 41px;
+    width: 41px;
     border-radius: 20px;
-    font-size: 38px;
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     /* padding: 2px; */
     color: #3aa45f;
     transition: color 0.4s;
@@ -103,8 +106,8 @@
     cursor: pointer;
     background-color: #36393f;
     transition: border-radius, 0.3s;
-    height:38px;
-    width:38px;
+    height:41px;
+    width:41px;
     margin-top: .5vh;
     color: #3aa45f;
     display: flex;
