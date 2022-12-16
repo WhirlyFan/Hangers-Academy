@@ -8,11 +8,14 @@ const MessageCard = ({ message, allUsersObj, user, deleteMessage }) => {
         let day = dateObj.getDate()
         let hour = dateObj.getHours()
         let min = dateObj.getMinutes()
-        if (min < 10) min = "0" + +min
+        if (min < 10) min = "0" + min
         let PSThr = `${+hour + 8}`
         let amPM;
-        if (hour > 13) amPM = "PM"
-        if (hour < 13) amPM = "AM"
+        if (PSThr < 13) amPM = "AM"
+        if (+PSThr > 13) {
+            amPM = "PM"
+            PSThr -= 12
+        }
         let formattedDate = `${month}/${day} at ${PSThr}:${min}${amPM}`
         return formattedDate
     }
