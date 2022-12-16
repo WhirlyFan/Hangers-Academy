@@ -7,18 +7,22 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Landing from "./components/Landing";
 import Main from "./components/Main"
-// import { getAllServersThunk } from "./store/server";
+import { getAllServersThunk } from "./store/server";
 
 import "./index.css";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
+  const [authenticated, setAuthenticated] = useState(false)
   const dispatch = useDispatch();
 
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
-      // await dispatch(getAllServersThunk());
+      setAuthenticated(true)
+      if (authenticated) {
+        await dispatch(getAllServersThunk());      
+      }
       setLoaded(true);
     })();
   }, [dispatch]);

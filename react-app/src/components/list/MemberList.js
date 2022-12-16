@@ -6,15 +6,14 @@ import { getAllServersThunk } from "../../store/server";
 import styles from "../cssModules/UsersView.module.css"
 
 export default function MemberList() {
-  const dispatch = useDispatch()
   const allServers = useSelector(state => state.server.allServers)
   const { serverId } = useParams()
 
-  useEffect(() => {
-    dispatch(getAllServersThunk())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(getAllServersThunk())
+  // }, [dispatch])
 
-  if (!Object.keys(allServers).length) return null
+  // if (!Object.keys(allServers).length) return null
 
   const members = allServers[+serverId].Members
 
