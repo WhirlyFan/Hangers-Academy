@@ -4,7 +4,6 @@ import { useHistory, useParams } from "react-router-dom";
 import { getUserThunk } from "../../store/session";
 import styles from "../cssModules/ChannelList.module.css"
 import { ServerSettingsModal } from "../../context/ServerSettingsModal";
-import { Modal } from "../../context/Modal"
 import EditServerForm from "../Forms/EditServerForm";
 import CreateChannelForm from "../Forms/CreateChannelForm";
 import EditChannelForm from "../Forms/EditChannelForm";
@@ -64,13 +63,20 @@ export default function ChannelList() {
             .then(() => history.push('/main/friends'))
     }
 
+    const shortenName = (input) => {
+        if (input.length > 15) {
+            const firstHalf = input.slice(0, 15)
+            return firstHalf + '...'
+        } else return input
+    }
+
     return (
         <>
             <div className={styles.channelListContainer}>
                 {/* This is the top nav bar logic for opening menu and modals */}
                 <div className={styles.channelListNavBar} onClick={() => setShowMenu(true)}>
                     <div>
-                        {serverName}
+                        {shortenName(serverName)}
                     </div>
                     <div className={styles.channelListNavBarDropDown}>
                         <img src='https://www.pngkit.com/png/full/273-2739733_white-drop-down-arrow.png' alt="dropdown icon" />
@@ -135,9 +141,9 @@ export default function ChannelList() {
                                         </div>
                                     )}
                                     {showEditChannelModal && (
-                                        <Modal onClose={() => { setShowEditChannelModal(false) }}>
+                                        <ServerSettingsModal onClose={() => { setShowEditChannelModal(false) }}>
                                             {<EditChannelForm setShowEditChannelModal={setShowEditChannelModal} setHasSubmitted={setHasSubmitted} serverId={serverId} />}
-                                        </Modal>
+                                        </ServerSettingsModal>
                                     )}
                                 </div>
                             )

@@ -58,8 +58,7 @@ export const postServerThunk = (server, userId = false) => async (dispatch) => {
         dispatch(getAllServersThunk())
         return data
     } else {
-        const data = await response.json()
-        return data
+        throw response
     }
 }
 
@@ -99,7 +98,7 @@ export const postServerChannelThunk = (input, userId) => async (dispatch) => {
         dispatch(getAllServersThunk())
         return data
     } else {
-        return response
+        throw response
     }
 }
 

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { deleteServerThunk, editServerThunk } from "../../store/server";
+import styles from "../cssModules/CreateServerForm.module.css"
 
 function EditServerForm({ setShowEditServerModal, setHasSubmitted, serverId, userId }) {
     const dispatch = useDispatch();
@@ -20,12 +21,25 @@ function EditServerForm({ setShowEditServerModal, setHasSubmitted, serverId, use
     const [serverImg, setServerImg] = useState(prevServerImg)
     const [errors, setErrors] = useState([]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        setErrors([]);
-        return dispatch(editServerThunk({ name: serverName, server_img: serverImg }, serverId, userId))
-            .then(() => setHasSubmitted(prevValue => !prevValue))
-            .then(() => setShowEditServerModal(false))
+
+        const errors = [];
+
+        if (serverName.length > 50) {
+            errors.push(
+                "Please enter a server name that is less than 50 characters"
+            )
+        }
+
+        setErrors(errors);
+
+        if (!errors.length) {
+            const editServer = await dispatch(editServerThunk({ name: serverName, server_img: serverImg }, serverId, userId))
+                .then(() => setHasSubmitted(prevValue => !prevValue))
+                .then(() => setShowEditServerModal(false))
+            return editServer
+        }
     };
 
     const handleDelete = () => {
@@ -36,37 +50,44 @@ function EditServerForm({ setShowEditServerModal, setHasSubmitted, serverId, use
     }
 
     return (
-        <div>
-            <div>
-                Edit Server
+        <div className={styles.formContainer}>
+            <div className={styles.formHeader}>
+                Server Overview
             </div>
-            <div>
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <input
-                            type="text"
-                            value={serverName}
-                            onChange={(e) => setServerName(e.target.value)}
-                            placeholder='Server Name'
-                            required
-                        />
-                    </div>
-                    <div>
-                        <input
-                            type="text"
-                            value={serverImg}
-                            onChange={(e) => setServerImg(e.target.value)}
-                            placeholder='Server Image URL'
-                            required
-                        />
-                    </div>
-                    <ul className="errorList">
-                        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                    </ul>
-                    <button type="submit">Edit Server</button>
+            <form onSubmit={handleSubmit} className={styles.editServerform}>
+                <div className={styles.formInput}>
+                    <input
+                        type="text"
+                        value={serverName}
+                        onChange={(e) => setServerName(e.target.value)}
+                        placeholder='Server Name'
+                        required
+                    />
+                </div>
+                <div className={styles.errorMap}>
+                    {errors.length > 0 && (
+                        <div>
+                            {errors.map((error) => (
+                                <div key={error}>
+                                    {error}
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
+                <div className={styles.formInput}>
+                    <input
+                        type="url"
+                        value={serverImg}
+                        onChange={(e) => setServerImg(e.target.value)}
+                        placeholder='Server Image URL'
+                    />
+                </div>
+                <div className={styles.editServerButtons}>
+                    <button type="submit">Save Changes</button>
                     <button onClick={() => handleDelete()}>Delete Server</button>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
     );
 }
