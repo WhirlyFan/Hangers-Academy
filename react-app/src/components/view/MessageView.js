@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { io } from "socket.io-client";
-import { getChannelMessagesThunk } from "../../store/channelMessages";
+import {
+  deleteChannelMessageThunk,
+  getChannelMessagesThunk,
+} from "../../store/channelMessages";
 import { normalize } from "../../store/server";
 import { getAllUsers } from "../../store/session";
 import styles from "../cssModules/MessageView.module.css";
@@ -16,6 +19,7 @@ export default function MessageView() {
   const [messages, setMessages] = useState([]);
   const user = useSelector((state) => state.session.user);
   const { serverId, channelId } = useParams();
+  const [hasClicked, setHasClicked] = useState(false);
 
   useEffect(() => {
     dispatch(getAllUsers()).then((data) => {
@@ -25,7 +29,7 @@ export default function MessageView() {
     dispatch(getChannelMessagesThunk(channelId)).then((messages) => {
       setMessages(messages.Messages);
     });
-  }, [dispatch, channelId]);
+  }, [dispatch, channelId, hasClicked]);
 
   useEffect(() => {
     // open socket connection
@@ -65,9 +69,13 @@ export default function MessageView() {
 
   if (!hasLoaded) return null;
   if (!Object.keys(allUsersObj).length) return null;
-  // {
-  //   `${allUsersObj[message.user_id].username}: ${message.message_content}`;
-  // }
+
+  const deleteMessage = (messageId) => {
+    dispatch(deleteChannelMessageThunk(messageId)).then(() => {
+      setHasClicked(!hasClicked);
+    });
+  };
+
   return (
     <div className={styles.view}>
       <div className={styles.message_container}>
@@ -76,12 +84,24 @@ export default function MessageView() {
             <div className={styles.profile_pic}>
               {/* <img src={allUsersObj[message.user_id].profile_pic} /> */}
             </div>
-            <div>
-              <div className={styles.details}>
-                <div className={styles.username}>{allUsersObj[message.user_id].username}</div>
-                <div className={styles.created_at}>{message.created_at}</div>
+            <div className={styles.message_stuff}>
+              <div className={styles.non_buttons}>
+                <div className={styles.details}>
+                  <div className={styles.username}>
+                    {allUsersObj[message.user_id].username}
+                  </div>
+                  <div className={styles.created_at}>{message.created_at}</div>
+                </div>
+                <div className={styles.message_content}>
+                  {message.message_content}
+                </div>
               </div>
-              <div className={styles.message_content}>{message.message_content}</div>
+              <div className={styles.buttons}>
+                {/* <button onClick={editMessage}>Edit</button> */}
+                <button onClick={() => deleteMessage(message.id)}>
+                  Delete
+                </button>
+              </div>
             </div>
           </div>
         ))}

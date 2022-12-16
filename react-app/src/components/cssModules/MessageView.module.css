@@ -13,6 +13,14 @@
 /* .details > * {
 } */
 
+.button {
+    display: flex;
+}
+.message_stuff {
+    display: flex;
+    justify-content: space-between;
+}
+
 .created_at {
   margin-left: 0.5rem;
   font-size: 0.5rem;
