@@ -44,13 +44,15 @@ export const postServerThunk = (server, userId = false) => async (dispatch) => {
         const data = await response.json()
         if (data.private === true) {
             const channel = await dispatch(postServerChannelThunk({ server_id: data.id, name: "general" }))
-            dispatch(getUserThunk(data.owner_id))
-            dispatch(postServerMemberThunk(data.id, userId))
+            await dispatch(getUserThunk(data.owner_id))
+            await dispatch(postServerMemberThunk(data.id, userId))
+            await dispatch(getAllServersThunk())
             return { server: data, channel }
         }
         if (data.private === false) {
             const channel = await dispatch(postServerChannelThunk({ server_id: data.id, name: "general" }))
-            dispatch(getUserThunk(data.owner_id))
+            await dispatch(getUserThunk(data.owner_id))
+            await dispatch(getAllServersThunk())
             return { server: data, channel }
         }
         dispatch(getAllServersThunk())

@@ -7,6 +7,7 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Landing from "./components/Landing";
 import Main from "./components/Main"
+import { getAllServersThunk } from "./store/server";
 
 import "./index.css";
 
@@ -17,6 +18,7 @@ function App() {
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
+      await dispatch(getAllServersThunk());
       setLoaded(true);
     })();
   }, [dispatch]);

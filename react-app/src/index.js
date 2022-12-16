@@ -7,6 +7,7 @@ import { ModalProvider } from './context/Modal';
 import { ServerSettingsModalProvider } from './context/ServerSettingsModal';
 import configureStore from './store';
 import { UserSettingsModalProvider } from './context/UserSettingsModal';
+import { DeleteMessageModalProvider } from './context/DeleteMessageModal';
 
 import * as serverActions from './store/server';
 import * as channelMessagesActions from './store/channelMessages'
@@ -28,7 +29,9 @@ ReactDOM.render(
       <ModalProvider>
         <ServerSettingsModalProvider>
           <UserSettingsModalProvider>
-            <App />
+            <DeleteMessageModalProvider>
+              <App />
+            </DeleteMessageModalProvider>
           </UserSettingsModalProvider>
         </ServerSettingsModalProvider>
       </ModalProvider>
