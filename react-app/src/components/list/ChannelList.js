@@ -123,11 +123,11 @@ export default function ChannelList() {
                     {
                         channelsArr.map((channel) => {
                             return (
-                                <div className={styles.eachChannelContainer} key={channel.id}>
-                                    <div onClick={() => {
-                                        // console.log(channel.id)
-                                        redirectChannel(channel.id)
-                                    }}>
+                                <div className={styles.eachChannelContainer} key={channel.id} onClick={() => {
+                                    // console.log(channel.id)
+                                    redirectChannel(channel.id)
+                                }}>
+                                    <div>
                                         <div>
                                             {channel.name}
                                         </div>

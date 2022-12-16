@@ -13,7 +13,7 @@ export default function MemberList() {
   //   dispatch(getAllServersThunk())
   // }, [dispatch])
 
-  // if (!Object.keys(allServers).length) return null
+  if (!Object.keys(allServers).length) return null
 
   const members = allServers[+serverId].Members
 
