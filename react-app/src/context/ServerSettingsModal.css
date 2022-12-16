@@ -7,6 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 3;
 }
 
 #server-settings-modal-background {
@@ -15,16 +16,17 @@
     right: 0;
     left: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 #server-settings-modal-content {
     position: absolute;
-    background-color: white;
-    width: 600px;
-    height: 700px;
+    background-color: #4F545C;
+    width: 450px;
+    height: 400px;
     display: flex;
     flex-direction: column;
-    border-radius: 12px;
+    align-items: center;
+    border-radius: 7px;
     box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.2);
 }

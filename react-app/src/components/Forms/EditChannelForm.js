@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { editServerChannelThunk } from "../../store/server";
 import { deleteServerChannelThunk } from "../../store/server";
+import styles from "../cssModules/CreateServerForm.module.css"
 
 function EditChannelForm({ setShowEditChannelModal, setHasSubmitted, serverId }) {
     const dispatch = useDispatch();
     const history = useHistory()
     const params = useParams()
     const channelId = params.channelId
-    // console.log(params.channelId)
 
     //Grabbing the current information of server to place in field
     const user = useSelector(state => state.session.user)
@@ -28,44 +28,80 @@ function EditChannelForm({ setShowEditChannelModal, setHasSubmitted, serverId })
     const [channelName, setChannelName] = useState(prevChannelName)
     const [errors, setErrors] = useState([]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        setErrors([]);
-        return dispatch(editServerChannelThunk({ channel_id: channelId, name: channelName }))
-            .then(() => setHasSubmitted(prevValue => !prevValue))
-            .then(() => setShowEditChannelModal(false))
+
+        const errors = [];
+
+        if (channelName.length > 50) {
+            errors.push(
+                "Please enter a channel name that is less than 50 characters"
+            )
+        }
+
+        setErrors(errors);
+
+        if (!errors.length) {
+            const editChannel = await dispatch(editServerChannelThunk({ channel_id: channelId, name: channelName }))
+                .then(() => setHasSubmitted(prevValue => !prevValue))
+                .then(() => setShowEditChannelModal(false))
+            return editChannel
+        }
     };
 
-    const handleDelete = () => {
-        return dispatch(deleteServerChannelThunk(channelId))
-            .then(() => setHasSubmitted(prevValue => !prevValue))
-            .then(() => setShowEditChannelModal(false))
-            .then(() => history.push(`/main/servers/${serverId}/1`))
+    const handleDelete = async (e) => {
+        e.preventDefault();
+
+        const errors = [];
+
+        if (server[0].Channels.length === 1) {
+            errors.push(
+                "You cannot delete a channel on a server with only one channel"
+            )
+        }
+
+        setErrors(errors);
+
+        if (!errors.length) {
+            const deleteChannel = await dispatch(deleteServerChannelThunk(channelId))
+                .then(() => setHasSubmitted(prevValue => !prevValue))
+                .then(() => setShowEditChannelModal(false))
+                .then(() => history.push(`/main/servers/${serverId}/${server[0].Channels[0]['id']}`))
+            return deleteChannel
+        }
     }
 
     return (
-        <div>
-            <div>
-                Edit Channel
+        <div className={styles.formContainer}>
+            <div className={styles.formHeader}>
+                Channel Overview
             </div>
-            <div>
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <input
-                            type="text"
-                            value={channelName}
-                            onChange={(e) => setChannelName(e.target.value)}
-                            placeholder='Channel Name'
-                            required
-                        />
-                    </div>
-                    <ul className="errorList">
-                        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                    </ul>
-                    <button type="submit">Edit Channel</button>
-                    <button onClick={() => handleDelete()}>Delete Channel</button>
-                </form>
-            </div>
+            <form onSubmit={handleSubmit} className={styles.createChannelform}>
+                <div className={styles.formInput}>
+                    <input
+                        type="text"
+                        value={channelName}
+                        onChange={(e) => setChannelName(e.target.value)}
+                        placeholder='Channel Name'
+                        required
+                    />
+                </div>
+                <div className={styles.errorMap}>
+                    {errors.length > 0 && (
+                        <div>
+                            {errors.map((error) => (
+                                <div key={error}>
+                                    {error}
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
+                <div className={styles.editServerButtons}>
+                    <button type="submit">Save Changes</button>
+                    <button onClick={handleDelete}>Delete Channel</button>
+                </div>
+            </form>
         </div>
     );
 }
