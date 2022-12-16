@@ -55,7 +55,7 @@ def post_server_member(server_id):
 
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
-        user_id = form.data['user_id']
+        user_id = form.data["user_id"]
         user = User.query.get(user_id)
         server = Server.query.get(server_id)
 
@@ -120,6 +120,32 @@ def update_server(server_id):
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 
+@server_routes.route("/<int:server_id>/users", methods=["DELETE"])
+@login_required
+def delete_server_member(server_id):
+    """
+    Delete a a user from a server
+    """
+    server = Server.query.get(server_id)
+    user = User.query.get(current_user.id)
+
+    if not server:
+        return {"message": "Server couldn't be found"}, 404
+
+    server_members = server.members
+    user_servers = user.servers
+
+    print(user_servers)
+
+    for member in server_members:
+        if member.to_dict_base()["id"] == user.to_dict_base()["id"]:
+            server_members.remove(member)
+            db.session.commit()
+            return {"message": "Successfully deleted"}
+
+    return {"message": "You are not a member in this server"}, 401
+
+
 @server_routes.route("/<int:server_id>", methods=["DELETE"])
 @login_required
 def delete_server(server_id):
@@ -130,7 +156,7 @@ def delete_server(server_id):
 
     server_info = server.to_dict()
 
-    member_ids = [member['id'] for member in server_info['Members']]
+    member_ids = [member["id"] for member in server_info["Members"]]
 
     if server.private and (current_user.id in member_ids):
         db.session.delete(server)

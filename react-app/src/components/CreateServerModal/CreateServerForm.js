@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { postServerThunk } from "../../store/server";
 import { useHistory } from "react-router-dom";
+import styles from "../cssModules/CreateServerForm.module.css"
 
 function CreateServerForm({ setShowModal, setHasSubmitted }) {
     const dispatch = useDispatch();
@@ -11,48 +12,69 @@ function CreateServerForm({ setShowModal, setHasSubmitted }) {
     const [serverImg, setServerImg] = useState("")
     const [errors, setErrors] = useState([]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        setErrors([]);
-        return dispatch(postServerThunk({ name: serverName, server_img: serverImg }))
-            .then((response) => {
-                history.push(`/main/servers/${response.server.id}/${response.channel.id}`)
-            })
-            .then(() => setHasSubmitted(prevValue => !prevValue))
-            .then(() => setShowModal(false))
+
+        const errors = [];
+
+        if (serverName.length > 50) {
+            errors.push(
+                "Please enter a server name that is less than 50 characters"
+            )
+        }
+
+        setErrors(errors);
+
+        if (!errors.length) {
+            const submitServer = await dispatch(postServerThunk({ name: serverName, server_img: serverImg }))
+                .then((response) => {
+                    history.push(`/main/servers/${response.server.id}/${response.channel.id}`)
+                })
+                .then(() => setHasSubmitted(prevValue => !prevValue))
+                .then(() => setShowModal(false))
+            return submitServer
+        }
     };
 
     return (
-        <div>
-            <div>
-                Create Server
+        <div className={styles.formContainer}>
+            <div className={styles.formHeader}>
+                Customize your server
             </div>
-            <div>
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <input
-                            type="text"
-                            value={serverName}
-                            onChange={(e) => setServerName(e.target.value)}
-                            placeholder='Server Name'
-                            required
-                        />
-                    </div>
-                    <div>
-                        <input
-                            type="text"
-                            value={serverImg}
-                            onChange={(e) => setServerImg(e.target.value)}
-                            placeholder='Server Image URL'
-                            required
-                        />
-                    </div>
-                    <ul className="errorList">
-                        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                    </ul>
-                    <button type="submit">Create Server</button>
-                </form>
+            <div className={styles.formSubText}>
+                Give your new server a personality with a name and an icon. You can always change it later.
             </div>
+            <form onSubmit={handleSubmit} className={styles.form}>
+                <div className={styles.formInput}>
+                    <input
+                        type="text"
+                        value={serverName}
+                        onChange={(e) => setServerName(e.target.value)}
+                        placeholder='Server Name'
+                        required
+                    />
+                </div>
+                <div className={styles.errorMap}>
+                    {errors.length > 0 && (
+                        <div>
+                            {errors.map((error) => (
+                                <div key={error}>
+                                    {error}
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
+                <div className={styles.formInput}>
+                    <input
+                        type="url"
+                        value={serverImg}
+                        onChange={(e) => setServerImg(e.target.value)}
+                        placeholder='Server Image URL'
+                    />
+                </div>
+                <button type="submit">Create</button>
+            </form>
         </div>
     );
 }

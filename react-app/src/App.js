@@ -2,20 +2,27 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { authenticate } from "./store/session";
-import LoginForm from "./components/auth/LoginForm"
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import Signup from "./components/Signup";
+import Login from "./components/Login";
 import Landing from "./components/Landing";
 import Main from "./components/Main"
+import { getAllServersThunk } from "./store/server";
 
 import "./index.css";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
-  // const sessionUser = useSelector((state) => state.session.user);
+  const [authenticated, setAuthenticated] = useState(false)
   const dispatch = useDispatch();
 
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
+      setAuthenticated(true)
+      if (authenticated) {
+        await dispatch(getAllServersThunk());      
+      }
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -31,11 +38,14 @@ function App() {
           <Landing />
         </Route>
         <Route path='/login' exact={true}>
-          <LoginForm />
+          <Login />
         </Route>
-        <Route path='/main'>
+        <Route path='/signup' exact={true}>
+          <Signup />
+        </Route>
+        <ProtectedRoute path='/main'>
           <Main />
-        </Route>
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   )

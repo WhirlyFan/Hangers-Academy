@@ -4,11 +4,11 @@ import { useHistory, useParams } from "react-router-dom";
 import { getUserThunk } from "../../store/session";
 import styles from "../cssModules/ChannelList.module.css"
 import { ServerSettingsModal } from "../../context/ServerSettingsModal";
-import { Modal } from "../../context/Modal"
 import EditServerForm from "../Forms/EditServerForm";
 import CreateChannelForm from "../Forms/CreateChannelForm";
 import EditChannelForm from "../Forms/EditChannelForm";
 import ChannelSettingsGearIcon from "../../assets/channel-settings-gear.png"
+import { deleteServerMemberThunk } from "../../store/server";
 
 export default function ChannelList() {
     const dispatch = useDispatch()
@@ -57,13 +57,26 @@ export default function ChannelList() {
         history.push(`/main/servers/${server.id}/${channel_id}`)
     }
 
+    const leaveServerHandler = () => {
+        return dispatch(deleteServerMemberThunk(server.id))
+            .then(() => setHasSubmitted(prevValue => !prevValue))
+            .then(() => history.push('/main/friends'))
+    }
+
+    const shortenName = (input) => {
+        if (input.length > 15) {
+            const firstHalf = input.slice(0, 15)
+            return firstHalf + '...'
+        } else return input
+    }
+
     return (
         <>
             <div className={styles.channelListContainer}>
                 {/* This is the top nav bar logic for opening menu and modals */}
                 <div className={styles.channelListNavBar} onClick={() => setShowMenu(true)}>
                     <div>
-                        {serverName}
+                        {shortenName(serverName)}
                     </div>
                     <div className={styles.channelListNavBarDropDown}>
                         <img src='https://www.pngkit.com/png/full/273-2739733_white-drop-down-arrow.png' alt="dropdown icon" />
@@ -84,6 +97,16 @@ export default function ChannelList() {
                         </div>
                     </div>
                 )}
+                {/* Menu for a server members who aren't the owner to leave server */}
+                {showMenu && (user.id !== server.owner_id) && (
+                    <div className={styles.dropdownMenu}>
+                        <div className={styles.serverSettingsDiv}>
+                            <div className={styles.clickModal} onClick={() => leaveServerHandler()}>
+                                Leave Server
+                            </div>
+                        </div>
+                    </div>
+                )}
                 {showEditServerModal && (
                     <ServerSettingsModal onClose={() => { setShowEditServerModal(false) }} >
                         {<EditServerForm setShowEditServerModal={setShowEditServerModal} setHasSubmitted={setHasSubmitted} serverId={serverId} userId={user.id} />}
@@ -100,25 +123,30 @@ export default function ChannelList() {
                     {
                         channelsArr.map((channel) => {
                             return (
-                                <div className={styles.eachChannelContainer} key={channel.id}>
-                                    <div onClick={() => {
-                                        // console.log(channel.id)
-                                        redirectChannel(channel.id)
-                                    }}>
+                                <div className={styles.eachChannelContainer} key={channel.id} onClick={() => {
+                                    // console.log(channel.id)
+                                    redirectChannel(channel.id)
+                                }}>
+                                    <div className={styles.hashtagNameContainer}>
+                                        <span class="material-symbols-outlined">
+                                            tag
+                                        </span>
                                         <div>
                                             {channel.name}
                                         </div>
                                     </div>
-                                    <div className={styles.gearIconContainer} onClick={() => {
-                                        setShowEditChannelModal(true);
-                                        redirectChannel(channel.id)
-                                    }}>
-                                        <img src={ChannelSettingsGearIcon} alt='gear-icon' />
-                                    </div>
+                                    {(user.id === server.owner_id) && (
+                                        <div className={styles.gearIconContainer} onClick={() => {
+                                            setShowEditChannelModal(true);
+                                            redirectChannel(channel.id)
+                                        }}>
+                                            <img src={ChannelSettingsGearIcon} alt='gear-icon' />
+                                        </div>
+                                    )}
                                     {showEditChannelModal && (
-                                        <Modal onClose={() => { setShowEditChannelModal(false) }}>
+                                        <ServerSettingsModal onClose={() => { setShowEditChannelModal(false) }}>
                                             {<EditChannelForm setShowEditChannelModal={setShowEditChannelModal} setHasSubmitted={setHasSubmitted} serverId={serverId} />}
-                                        </Modal>
+                                        </ServerSettingsModal>
                                     )}
                                 </div>
                             )

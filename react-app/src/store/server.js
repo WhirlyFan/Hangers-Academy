@@ -44,20 +44,21 @@ export const postServerThunk = (server, userId = false) => async (dispatch) => {
         const data = await response.json()
         if (data.private === true) {
             const channel = await dispatch(postServerChannelThunk({ server_id: data.id, name: "general" }))
-            dispatch(getUserThunk(data.owner_id))
-            dispatch(postServerMemberThunk(data.id, userId))
+            await dispatch(getUserThunk(data.owner_id))
+            await dispatch(postServerMemberThunk(data.id, userId))
+            await dispatch(getAllServersThunk())
             return { server: data, channel }
         }
         if (data.private === false) {
             const channel = await dispatch(postServerChannelThunk({ server_id: data.id, name: "general" }))
-            dispatch(getUserThunk(data.owner_id))
+            await dispatch(getUserThunk(data.owner_id))
+            await dispatch(getAllServersThunk())
             return { server: data, channel }
         }
         dispatch(getAllServersThunk())
         return data
     } else {
-        const data = await response.json()
-        return data
+        throw response
     }
 }
 
@@ -97,7 +98,7 @@ export const postServerChannelThunk = (input, userId) => async (dispatch) => {
         dispatch(getAllServersThunk())
         return data
     } else {
-        return response
+        throw response
     }
 }
 
@@ -158,6 +159,20 @@ export const deleteServerThunk = (serverId, userId) => async (dispatch) => {
 
 export const deleteServerChannelThunk = (channel_id) => async (dispatch) => {
     const response = await fetch(`/api/channels/${channel_id}`, {
+        method: "DELETE"
+    })
+
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(getAllServersThunk())
+        return data
+    } else {
+        throw response
+    }
+}
+
+export const deleteServerMemberThunk = (serverId) => async (dispatch) => {
+    const response = await fetch(`/api/servers/${serverId}/users`, {
         method: "DELETE"
     })
 

@@ -3,15 +3,16 @@ from app.models import db, Channel, environment, SCHEMA
 
 # Adds a demo user, you can add other users here if you want
 def seed_channels():
-    general1 = Channel(
-        server_id=1, name='general')
-    general2 = Channel(
-        server_id=2, name='general')
-    general3 = Channel(
-        server_id=3, name='general')
+    # general1 = Channel(
+    #     server_id=1, name='general')
+    # general2 = Channel(
+    #     server_id=2, name='general')
+    # general3 = Channel(
+    #     server_id=3, name='general')
 
-    db.session.add_all([general1, general2, general3])
-    db.session.commit()
+    # db.session.add_all([general1, general2, general3])
+    # db.session.commit()
+    pass
 
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't

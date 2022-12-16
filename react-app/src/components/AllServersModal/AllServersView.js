@@ -20,26 +20,37 @@ export default function AllServersView({ setShowModal }) {
         return "Servers loading..."
     }
 
-    const publicServers = allServersArr.map(server => {
+    const publicServers = allServersArr.filter(server => {
+        return server.private === false
+    })
+
+    const memberIdFormattedServers = publicServers.map(server => {
         const memberIds = server.Members.map(member => member.id)
         return {...server, memberIds}
     });
-    const unjoinedServers = publicServers.filter(server => {
+
+    const unjoinedServers = memberIdFormattedServers.filter(server => {
         return !server.memberIds.includes(currentUser.id)
     })
 
     return (
-        <div id={styles.allServersContainer}>
-            <div className={styles.bannerContainer}>
-                <div id={styles.welcomeText}><span>Find your community on Discord</span></div>
-                <img src={guild_banner} alt="banner" className="banner"></img>
+        <div id={styles.outerContainer}>
+            <div id={styles.allServersContainer}>
+                <div className={styles.bannerContainer}>
+                    <div id={styles.welcomeText}><span>Find your community on Discord</span></div>
+                    <img src={guild_banner} alt="banner" className={styles.banner}></img>
+                </div>
+                <div className={styles.featuredCommunitiesText}>
+                    <span>Featured Communities</span>
+                </div>
+                <div className={styles.allServerCardsContainer}>
+                    {unjoinedServers.map((server) => (
+                        <div key={server.id} className={styles.serverCard}>
+                                <ServerCard server={server} setShowModal={setShowModal} />
+                            </div>
+                    ))}
+                </div>
             </div>
-
-            {unjoinedServers.map((server) => (
-                    <div key={server.id} className={styles.serverCard}>
-                        <ServerCard server={server} setShowModal={setShowModal} />
-                    </div>
-            ))}
         </div>
     )
 };

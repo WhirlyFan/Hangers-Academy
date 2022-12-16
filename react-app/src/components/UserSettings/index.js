@@ -1,28 +1,28 @@
 import { useState } from 'react';
-import { Modal } from '../../context/Modal';
+import { UserSettingsModal } from '../../context/UserSettingsModal';
 import UserSettingsDisplay from './UserSettingsDisplay';
 
-import settings_gear from "../../assets/settings_gear.svg"
+import settings_gear from "../../assets/settings_gear.png"
 
-const UserSettingsModal = ({ sessionUser }) => {
+const UserSettings = ({ sessionUser }) => {
     const [showModal , setShowModal] = useState(false);
 
     return (
         <>
-            <button onClick={() => setShowModal(true)}>
+            <div onClick={() => setShowModal(true)}>
                 <img
                 src={settings_gear}
                 alt='settings_gear'
                 >
                 </img>
-            </button>
+            </div>
             {showModal && (
-                <Modal onClose={() => setShowModal(false)}>
+                <UserSettingsModal onClose={() => setShowModal(false)}>
                     <UserSettingsDisplay sessionUser={sessionUser} setShowModal={setShowModal} />
-                </Modal>
+                </UserSettingsModal>
             )}
         </>
     )
 };
 
-export default UserSettingsModal;
+export default UserSettings;

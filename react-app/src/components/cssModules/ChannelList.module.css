@@ -12,6 +12,7 @@
     height: 4.8%;
     width: 100%;
     border-bottom: .5px solid #2a2d31;
+    /* border: 1px red solid */
 }
 
 .channelListNavBar:hover {
@@ -76,13 +77,30 @@
 .eachChannelContainer {
     display: flex;
     justify-content: space-between;
-    padding: 0 8%;
-    margin: 10% 0;
+    align-items: center;
+    padding: 0 5%;
+    margin: 2% 4%;
+    height: 35px;
+    border-radius: 6px;
+    /* border: 1px red solid */
+}
 
+.eachChannelContainer:hover {
+    cursor: pointer;
+    background-color: #40444b;
+}
+
+.hashtagNameContainer {
+    display: flex;
+    align-items: center;
+}
+
+.hashtagNameContainer > span {
+    /* width: 5px; */
 }
 
 .gearIconContainer {
-    width: 9%;
+    width: 7%;
     /* border: 1px red solid */
 }
 

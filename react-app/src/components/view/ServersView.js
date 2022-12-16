@@ -5,21 +5,25 @@ import { getUserThunk } from "../../store/session";
 import CreateServerModal from "../CreateServerModal";
 import AllServerModal from "../AllServersModal";
 import styles from "../cssModules/ServersView.module.css"
+import { getAllServersThunk } from "../../store/server";
 
 export default function ServersView() {
     const dispatch = useDispatch()
     const history = useHistory()
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const user = useSelector(state => state.session.user)
+    const servers = useSelector(state => state.server.allServers)
     const serversArr = user.public_servers
     const userId = user.id
 
     useEffect(() => {
         dispatch(getUserThunk(userId))
+        dispatch(getAllServersThunk())
     }, [dispatch, userId, hasSubmitted])
 
     const redirectServer = (serverId) => {
-        history.push(`/main/servers/${serverId}/1`)
+        const channelId = servers[serverId].Channels[0].id
+        history.push(`/main/servers/${serverId}/${channelId}`)
     }
 
     const redirectFriendsRoute = () => {
@@ -29,7 +33,7 @@ export default function ServersView() {
     // const redirectAllServersRoute = () => {
     //     history.push('/main/servers')
     // }
-
+    
     // This function validates image urls for conditional rendering
     const imgValidator = (imgUrl) => {
         if (!imgUrl) return false
@@ -50,6 +54,8 @@ export default function ServersView() {
             <div>
                 {
                     serversArr.map((server) => {
+
+
                         return (
                             <div className={styles.serverItem} key={server.id} onClick={() => redirectServer(server.id)}>
                                 {imgValidator(server.server_img) ? <img className={styles.serverItemImage} src={server.server_img} alt='server_img' /> : server.name[0]}

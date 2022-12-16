@@ -3,15 +3,16 @@ from app.models import db, Message, environment, SCHEMA
 
 # Adds a demo user, you can add other users here if you want
 def seed_messages():
-    message1 = Message(
-        message_content="Sup guys!", channel_id=1, user_id=1)
-    message2 = Message(
-        message_content="gang gang", channel_id=1, user_id=1)
-    message3 = Message(
-        message_content="lazer hot dog", channel_id=1, user_id=1)
+    # message1 = Message(
+    #     message_content="Sup guys!", channel_id=1, user_id=1)
+    # message2 = Message(
+    #     message_content="gang gang", channel_id=1, user_id=1)
+    # message3 = Message(
+    #     message_content="lazer hot dog", channel_id=1, user_id=1)
 
-    db.session.add_all([message1, message2, message3])
-    db.session.commit()
+    # db.session.add_all([message1, message2, message3])
+    # db.session.commit()
+    pass
 
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
