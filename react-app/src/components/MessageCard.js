@@ -38,11 +38,11 @@ const MessageCard = ({ message, allUsersObj, user, deleteMessage }) => {
                     </div>
                 </div>
             </div>
-            <div className={styles.popUp}>
-                {user.id === message.user_id && (
-                    <DeleteMessage deleteMessage={deleteMessage} message={message} />
-                )}
-            </div>
+            {user.id === message.user_id && (
+                <div className={styles.popUp}>
+                        <DeleteMessage deleteMessage={deleteMessage} message={message} />
+                </div>
+            )}
         </div>
     )
 };
