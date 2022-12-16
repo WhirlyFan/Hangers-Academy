@@ -1,11 +1,16 @@
 /* TODO Add site wide styles */
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
     color: #fcfcff;
     font-family: 'Varela Round', sans-serif;
     font-weight: 400;
+    overflow: hidden;
 }
 
 .errors {
@@ -24,13 +29,21 @@ body {
     border: 3px solid teal;
 } */
 
+/* .all {
+    width: 100%;
+    border: 3px solid red;
+    margin: 0;
+} */
+
 #main-div {
     display: grid;
+    width: 100%;
     grid-template-columns: 4% 0.5fr 2.4fr 0.6fr;
     grid-template-rows: 0.15fr 2.8fr 0.2fr;
     gap: 0px 0px;
     grid-auto-flow: row;
     height: 100vh;
+    /* overflow: hidden; */
   }
 
 #server-list {
