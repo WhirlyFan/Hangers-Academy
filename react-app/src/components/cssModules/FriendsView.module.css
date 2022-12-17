@@ -56,6 +56,10 @@
     background-color: #40444b;
 }
 
+.friend_card:hover .message_icon_container {
+    background-color: #202225;
+}
+
 .left_half {
     display: flex;
 }
@@ -92,11 +96,18 @@
 
 .message_icon_container:hover{
     cursor: pointer;
+    background-color: #202225;
 }
 
 .message_icon{
     padding: .5vh;
     width: 1.2vw;
+}
+
+.chat_bubble {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .no_friends {

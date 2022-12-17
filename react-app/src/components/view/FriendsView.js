@@ -77,22 +77,20 @@ export default function FriendsView() {
                                     <div 
                                     className={styles.message_icon_container} 
                                     onClick={() => messageFriend(friend)}>
-                                        <img
-                                        className={styles.message_icon}
-                                        src={message_icon2}
-                                        alt='messageicon'
-                                        >                                    
-                                        </img>
+                                        <div className={styles.chat_bubble}> 
+                                            <span style={{
+                                                fontSize: ".95rem"
+                                            }} className="material-symbols-outlined">
+                                                chat_bubble
+                                            </span>
+                                        </div>
                                     </div>
                                     <div
                                     className={styles.message_icon_container} 
                                     onClick={() => deleteFriend(sessionUser.id,friend.id)}>
-                                        <img
-                                        className={styles.message_icon}
-                                        src={remove_btn}
-                                        alt='remove-btn'
-                                        >                                    
-                                        </img>
+                                        <span class="material-symbols-outlined">
+                                            close
+                                        </span>
                                     </div>
                                 </div>
                             </div>
