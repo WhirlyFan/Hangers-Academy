@@ -61,44 +61,44 @@ export default function FriendsView() {
             <div>
                 <p className={styles.friend_label}>FRIENDS - {friends.length}</p>
             </div>
-            <div className={styles.friends_container}>
-                <div>
-                    {friends.length > 0 ? friends.map(friend => (
-                        <div className={styles.friend_card} key={friend.id}>
-                            <div className={styles.left_half}>
-                                <div className="profile-icon-container">
+            <div className={styles.actual_div}>
+                <div className={styles.friends_container}>   
+                        {friends.length > 0 ? friends.map(friend => (
+                            <div className={styles.friend_card} key={friend.id}>
+                                <div className={styles.left_half}>
+                                    <div className="profile-icon-container">
+                                    </div>
+                                    <div className={styles.friend}>
+                                        <span className={styles.username}>{friend.username}</span>
+                                        <span className={styles.status}>Online</span>
+                                    </div>    
                                 </div>
-                                <div className={styles.friend}>
-                                    <span className={styles.username}>{friend.username}</span>
-                                    <span className={styles.status}>Online</span>
-                                </div>    
+                                <div className={styles.right_half}>
+                                    <div 
+                                    className={styles.message_icon_container} 
+                                    onClick={() => messageFriend(friend)}>
+                                        <img
+                                        className={styles.message_icon}
+                                        src={message_icon2}
+                                        alt='messageicon'
+                                        >                                    
+                                        </img>
+                                    </div>
+                                    <div
+                                    className={styles.message_icon_container} 
+                                    onClick={() => deleteFriend(sessionUser.id,friend.id)}>
+                                        <img
+                                        className={styles.message_icon}
+                                        src={remove_btn}
+                                        alt='remove-btn'
+                                        >                                    
+                                        </img>
+                                    </div>
+                                </div>
                             </div>
-                            <div className={styles.right_half}>
-                                <div 
-                                className={styles.message_icon_container} 
-                                onClick={() => messageFriend(friend)}>
-                                    <img
-                                    className={styles.message_icon}
-                                    src={message_icon2}
-                                    alt='messageicon'
-                                    >                                    
-                                    </img>
-                                </div>
-                                <div
-                                className={styles.message_icon_container} 
-                                onClick={() => deleteFriend(sessionUser.id,friend.id)}>
-                                     <img
-                                    className={styles.message_icon}
-                                    src={remove_btn}
-                                    alt='remove-btn'
-                                    >                                    
-                                    </img>
-                                </div>
-                            </div>
-                        </div>
-                    )) :
-                    <h3 className={styles.no_friends}>Try adding a friend from the Users list!</h3>
-                }
+                        )) :
+                        <h3 className={styles.no_friends}>Try adding a friend from the Users list!</h3>
+                    }
                 </div>
             </div>
         </div>
