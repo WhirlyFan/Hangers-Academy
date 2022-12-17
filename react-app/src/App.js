@@ -18,8 +18,10 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      await dispatch(authenticate());
-      setAuthenticated(true)
+      const data = await dispatch(authenticate());
+      if (!data) {
+        setAuthenticated(true)
+      }
       if (authenticated) {
         await dispatch(getAllServersThunk());      
       }
