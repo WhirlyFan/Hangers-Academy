@@ -1,6 +1,7 @@
 .container {
     display: flex;
     flex-direction: column;
+    /* overflow-y: scroll; */
     /* border: 3px solid red; */
 }
 
@@ -15,25 +16,30 @@
 .friends_container{
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
+    align-items: center;
+    /* overflow-y: scroll; */
+    /* overflow-x: hidden; */
+    /* height: 2%; */
     /* border: 3px solid blue; */
+    overflow-y: scroll;
+    height: 90vh;
+    margin: .3vw;
 }
 
 .friends_container::-webkit-scrollbar {
-    width: 0.6vw;
+    width: 0.45vw;
     height: 90%;
 }
 
 .friends_container::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background-color: #1d1e21;
+    background-color: #202225;
     position: relative;
     left: -5px;
 }
 
 .friends_container::-webkit-scrollbar-track {
     border-radius: 10px;
-    /* background-color: #36393f; */
     background-color: #2e3338;
 }
 
@@ -41,16 +47,17 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* margin-top: 2vh; */
     border-top: 1px solid #42464d;
-    /* padding: 2vh; */
     padding: 2vh;
-    /* height: 100%; */
-    /* border: 3px solid orange; */
+    width: 95%;
 }
 
 .friend_card:hover {
     background-color: #40444b;
+}
+
+.friend_card:hover .message_icon_container {
+    background-color: #202225;
 }
 
 .left_half {
@@ -89,11 +96,18 @@
 
 .message_icon_container:hover{
     cursor: pointer;
+    background-color: #202225;
 }
 
 .message_icon{
     padding: .5vh;
     width: 1.2vw;
+}
+
+.chat_bubble {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .no_friends {
