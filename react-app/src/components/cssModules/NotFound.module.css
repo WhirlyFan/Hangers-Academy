@@ -1,164 +1,164 @@
 .bigContainer {
-    color: black;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: space-between;
-    font-family: 'Varela Round', sans-serif;
-    font-weight: 400;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    overflow-y: auto;
+  color: black;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  font-family: "Varela Round", sans-serif;
+  font-weight: 400;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  overflow-y: auto;
 }
 
 .centeredContainer {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 10px 50px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px 50px;
 }
 
 .headerContainer {
-    width: 100%;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .discordButton {
-    color: #fcfcff;
-    font-family: 'Varela Round', sans-serif;
-    font-weight: 400;
-    background-color: #5865F2;
-    border: none;
-    border-radius: 20px;
-    padding: 10px 16px 10px 16px;
-    font-size: 17px;
-    cursor: pointer;
-    transition: background-color 0.2s, box-shadow 0.2s;
+  color: #fcfcff;
+  font-family: "Varela Round", sans-serif;
+  font-weight: 400;
+  background-color: #5865f2;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 16px 10px 16px;
+  font-size: 17px;
+  cursor: pointer;
+  transition: background-color 0.2s, box-shadow 0.2s;
 }
 
 .discordButton:hover {
-    background-color: #6e7afd;
-    box-shadow: 0px 3px 7px rgb(70, 70, 70);
+  background-color: #6e7afd;
+  box-shadow: 0px 3px 7px rgb(70, 70, 70);
 }
 
 .bodyContainer {
-    width: 100%;
-    height: 50vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 60px;
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
 }
 
 .textContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    width: 500px;
-    height: 328px;
-    margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 500px;
+  height: 328px;
+  margin-left: 50px;
 }
 
 #wrongTurn {
-    color: #5865F2;
-    font-family: 'Rubik Mono One', sans-serif;
-    letter-spacing: 0px;
-    font-size: 50px;
-    font-weight: bold;
-    display: flex;
-    gap: 15px;
+  color: #5865f2;
+  font-family: "Rubik Mono One", sans-serif;
+  letter-spacing: 0px;
+  font-size: 50px;
+  font-weight: bold;
+  display: flex;
+  gap: 15px;
 }
 
 #youLookLost {
-    margin-top: 20px;
-    font-size: 19px;
-    line-height: 28px;
+  margin-top: 20px;
+  font-size: 19px;
+  line-height: 28px;
 }
 
 .ramenContainer {
-    height: 100%;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    width: 500px;
+  height: 100%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 500px;
 }
 
 .ramenGif {
-    height: 328px;
-    width: 350px;
+  height: 328px;
+  width: 350px;
 }
 
 .footerContainer {
-    height: 400px;
-    width: 100%;
-    background-color: #23272a;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 0px 50px;
+  height: 400px;
+  width: 100%;
+  background-color: #23272a;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0px 50px;
 }
 
 .centeredFoot {
-    width: 100%;
-    height: 15vh;
-    display: flex;
-    justify-content: center;
-    gap: 35px;
-    align-items: flex-end;
-    color: #5865F2;
-    font-weight: bold;
+  width: 100%;
+  height: 15vh;
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  align-items: flex-end;
+  color: #5865f2;
+  font-weight: bold;
 }
 
 .imagineContainer {
-    font-family: 'Rubik Mono One', sans-serif;
-    font-size: 32px;
-    width: 200px;
+  font-family: "Rubik Mono One", sans-serif;
+  font-size: 32px;
+  width: 200px;
 }
 
 #APlace {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .nameCard {
-    width: 150px;
-    font-size: 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+  width: 150px;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .gitContainer {
-    display: flex;
-    gap: 3px;
-    text-decoration: none;
+  display: flex;
+  gap: 3px;
+  text-decoration: none;
 }
 
 .gitText {
-    color: #fcfcff;
-    line-height: 30px;
-    font-weight: 400;
-    text-decoration: none;
+  color: #fcfcff;
+  line-height: 30px;
+  font-weight: 400;
+  text-decoration: none;
 }
 
 .gitText:hover {
-    cursor: pointer;
-    text-decoration: underline;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .hrBar {
-    border: #5865F2 solid 1px;
-    border-radius: 4px;
+  border: #5865f2 solid 1px;
+  border-radius: 4px;
 }
 
 #bottomButtonContainer {
-    display: flex;
-    justify-content: right;
-    align-items: flex-start;
-    height: 100px;
+  display: flex;
+  justify-content: right;
+  align-items: flex-start;
+  height: 100px;
 }

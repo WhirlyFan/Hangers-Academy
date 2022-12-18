@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Redirect, useHistory } from 'react-router-dom';
-import { login } from '../../store/session';
-import styles from "../cssModules/Login.module.css"
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Redirect, useHistory } from "react-router-dom";
+import { login } from "../../store/session";
+import styles from "../cssModules/Login.module.css";
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const user = useSelector(state => state.session.user);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -21,11 +21,11 @@ const LoginForm = () => {
   };
 
   const loginDemo = async (e) => {
-    const data = await dispatch(login("demo@aa.io", "password"))
+    const data = await dispatch(login("demo@aa.io", "password"));
     if (data) {
       setErrors(data);
     }
-  }
+  };
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
@@ -36,18 +36,22 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/main/friends' />;
+    return <Redirect to="/main/friends" />;
   }
 
   const registerRedirect = (e) => {
     e.preventDefault();
-    history.push('/signup')
-  }
+    history.push("/signup");
+  };
 
   return (
     <div className={styles.loginFormBox}>
-      <div id={styles.header} className={styles.welcomeText}><span>Welcome back!</span></div>
-      <div id={styles.subheader} className={styles.welcomeText} ><span>We're so excited to see you again!</span></div>
+      <div id={styles.header} className={styles.welcomeText}>
+        <span>Welcome back!</span>
+      </div>
+      <div id={styles.subheader} className={styles.welcomeText}>
+        <span>We're so excited to see you again!</span>
+      </div>
       <form onSubmit={onLogin} id={styles.form}>
         <div className="errors">
           {errors.map((error, ind) => (
@@ -56,45 +60,58 @@ const LoginForm = () => {
         </div>
         <div>
           <div className={styles.labelText}>
-            <label htmlFor='email'>EMAIL<span className={styles.asterisk}> *</span></label>
+            <label htmlFor="email">
+              EMAIL<span className={styles.asterisk}> *</span>
+            </label>
           </div>
           <div className={styles.inputContainer}>
             <input
-              name='email'
-              type='email'
+              name="email"
+              type="email"
               value={email}
               onChange={updateEmail}
               className={styles.inputBar}
               required
             />
-        </div>
-        <div>
-          <div className={styles.labelText}>
-            <label htmlFor='password'>PASSWORD<span className={styles.asterisk}> *</span></label>
           </div>
-          <div className={styles.inputContainer}>
-            <input
-              name='password'
-              type='password'
-              value={password}
-              onChange={updatePassword}
-              className={styles.inputBar}
-              required
-            />
-          </div>
-          <div id={styles.buttonContainer}>
-            <button type='submit' id={styles.button}>Log In</button>
-          </div>
-          <div id={styles.bottomTextContainer}>
-            <div id={styles.registerContainer}>
-            Need an account? <span id={styles.register} onClick={registerRedirect}>Register</span>
+          <div>
+            <div className={styles.labelText}>
+              <label htmlFor="password">
+                PASSWORD<span className={styles.asterisk}> *</span>
+              </label>
             </div>
-            <div id={styles.registerContainer}>
-            Want to use a <span id={styles.demo} onClick={loginDemo}> demo account?</span>
+            <div className={styles.inputContainer}>
+              <input
+                name="password"
+                type="password"
+                value={password}
+                onChange={updatePassword}
+                className={styles.inputBar}
+                required
+              />
+            </div>
+            <div id={styles.buttonContainer}>
+              <button type="submit" id={styles.button}>
+                Log In
+              </button>
+            </div>
+            <div id={styles.bottomTextContainer}>
+              <div id={styles.registerContainer}>
+                Need an account?{" "}
+                <span id={styles.register} onClick={registerRedirect}>
+                  Register
+                </span>
+              </div>
+              <div id={styles.registerContainer}>
+                Want to use a{" "}
+                <span id={styles.demo} onClick={loginDemo}>
+                  {" "}
+                  demo account?
+                </span>
+              </div>
             </div>
           </div>
         </div>
-          </div>
       </form>
     </div>
   );

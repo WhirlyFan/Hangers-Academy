@@ -1,26 +1,26 @@
 /* TODO Add site wide styles */
 
 html {
-    overflow-y: hidden;
+  overflow-y: hidden;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    color: #fcfcff;
-    font-family: 'Varela Round', sans-serif;
-    font-weight: 400;
-    /* overflow: hidden; */
+  margin: 0;
+  padding: 0;
+  color: #fcfcff;
+  font-family: "Varela Round", sans-serif;
+  font-weight: 400;
+  /* overflow: hidden; */
 }
 
 .errors {
-    color: #F38688;
-    margin-top: 10px;
-    margin-bottom: -5px;
+  color: #f38688;
+  margin-top: 10px;
+  margin-bottom: -5px;
 }
 
 /* #main-div {
@@ -40,57 +40,56 @@ body {
 } */
 
 #main-div {
-    display: grid;
-    grid-template-columns: 70px 215px 2.4fr 205px;
-    width: 100%;
-    grid-template-rows: 0.15fr 2.8fr 0.2fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    height: 100vh;
-    /* overflow: hidden; */
-  }
+  display: grid;
+  grid-template-columns: 70px 215px 2.4fr 205px;
+  width: 100%;
+  grid-template-rows: 0.15fr 2.8fr 0.2fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  height: 100vh;
+  /* overflow: hidden; */
+}
 
 #server-list {
-    grid-area: 1 / 1 / 4 / 2;
-    /* border: 3px solid red; */
-    background-color: #202225;
+  grid-area: 1 / 1 / 4 / 2;
+  /* border: 3px solid red; */
+  background-color: #202225;
 }
 
 .channel-list {
-    grid-area: 1 / 2 / 4 / 3;
-    /* border: 3px solid blue; */
-    background-color: #2f3136;
+  grid-area: 1 / 2 / 4 / 3;
+  /* border: 3px solid blue; */
+  background-color: #2f3136;
 }
 
 #header {
-    grid-area: 1 / 3 / 2 / 5;
-    /* border: 3px solid yellow; */
-    background-color: #36393f;
-    position: sticky;
-    border-bottom: .5px solid #2a2d31;
-    /* z-index: 1; */
-    box-shadow: 0px 1px #2a2d31 ;
+  grid-area: 1 / 3 / 2 / 5;
+  /* border: 3px solid yellow; */
+  background-color: #36393f;
+  position: sticky;
+  border-bottom: 0.5px solid #2a2d31;
+  /* z-index: 1; */
+  box-shadow: 0px 1px #2a2d31;
 }
 
 .message-view {
-    grid-area: 2 / 3 / 4 / 4;
-    /* border: 3px solid green; */
-    background-color: #36393f;
+  grid-area: 2 / 3 / 4 / 4;
+  /* border: 3px solid green; */
+  background-color: #36393f;
 }
 
 .member-list {
-    grid-area: 2 / 4 / 4 / 5;
-    /* border: 3px solid orange;  */
-    background-color: #2f3136;
+  grid-area: 2 / 4 / 4 / 5;
+  /* border: 3px solid orange;  */
+  background-color: #2f3136;
 }
 
 #user-hub {
-    grid-area: 3 / 2 / 4 / 3;
-    /* border: 3px solid purple;  */
-    background-color: #292b2f;
-    z-index: 1;
+  grid-area: 3 / 2 / 4 / 3;
+  /* border: 3px solid purple;  */
+  background-color: #292b2f;
+  z-index: 1;
 }
-
 
 /* #server-list {
     grid-area: server-list;

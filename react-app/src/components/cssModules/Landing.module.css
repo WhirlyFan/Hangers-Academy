@@ -196,7 +196,7 @@
 .footer_title {
   color: #5865f2;
   font-weight: 800;
-  font-family: 'Rubik Mono One', sans-serif;
+  font-family: "Rubik Mono One", sans-serif;
   font-size: 1.5rem;
   font-weight: 200;
   /* border: 3px solid yellow; */
@@ -220,11 +220,11 @@
   color: white;
   display: flex;
   align-items: center;
-  gap: .25vw;
+  gap: 0.25vw;
 }
 
 .link_container {
   display: flex;
   align-items: center;
-  gap: .25vw;
+  gap: 0.25vw;
 }

@@ -1,24 +1,24 @@
 .icon_container {
-    border-radius: 50%;
-    padding-right: .5vw;
+  border-radius: 50%;
+  padding-right: 0.5vw;
 }
 
 .icon {
-    width: 2.2rem;
-    border-radius: 50%;
+  width: 2.2rem;
+  border-radius: 50%;
 }
 
 .message_container {
-    display: flex;
-    /* border: 3px solid red; */
-    padding-bottom: 2vh;
+  display: flex;
+  /* border: 3px solid red; */
+  padding-bottom: 2vh;
 }
 
 .message_container:hover {
-    background-color: #32353b;
+  background-color: #32353b;
 }
 .wholeMessage:hover {
-    background-color: #32353b;
+  background-color: #32353b;
 }
 
 /* .message_container:hover:not(.username, .message_content) {
@@ -26,52 +26,52 @@
 } */
 
 .message_content {
-    display: flex;
-    flex-direction: column;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    hyphens: auto;
-    /* border: 1px red solid; */
+  display: flex;
+  flex-direction: column;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  /* border: 1px red solid; */
 }
 
 .user {
-    font-size: .95rem;
-    font-weight: 600;
+  font-size: 0.95rem;
+  font-weight: 600;
 }
 
 .message {
-    font-size: .9rem
+  font-size: 0.9rem;
 }
 
 .created_at {
-    padding-left: .5vw;
-    font-size: .6rem;
-    color: #a3a6aa;
+  padding-left: 0.5vw;
+  font-size: 0.6rem;
+  color: #a3a6aa;
 }
 
 .message_container:hover .popUp {
-    color: #dbdcdd;
-    z-index: 10;
-    /* margin-left: 45vw; */
-    background-color: #36393f;
-    /* background-color: orange; */
-    /* border: 3px solid red; */
-    width: 2vw;
-    height: 2vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 12px solid #444444;
-    border-radius: .2vw;
-    display: flex;
-    position: relative;
-    bottom: 1vh;
-    right: -40vw;
-    /* margin-bottom: 10vh; */
+  color: #dbdcdd;
+  z-index: 10;
+  /* margin-left: 45vw; */
+  background-color: #36393f;
+  /* background-color: orange; */
+  /* border: 3px solid red; */
+  width: 2vw;
+  height: 2vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 12px solid #444444;
+  border-radius: 0.2vw;
+  display: flex;
+  position: relative;
+  bottom: 1vh;
+  right: -40vw;
+  /* margin-bottom: 10vh; */
 }
 
 .popUp {
-    /* color: #dbdcdd;
+  /* color: #dbdcdd;
     z-index: 3;
     margin-left: 45vw;
     background-color: #36393f;
@@ -83,42 +83,42 @@
     border: 1px solid #444444;
     border-radius: .2vw;
     margin-bottom: 2vh; */
-    display: none;
-    /* background-color: orange;
+  display: none;
+  /* background-color: orange;
     border: 3px solid red; */
 }
 
 .popUp:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .wholeMessage:hover {
-    /* /* display: flex; */
-    /* justify-content: center; */
-    /* border: 3px solid orange; */
-    /* justify-content: center; */
-    display: flex;
-    justify-content: space-between;
+  /* /* display: flex; */
+  /* justify-content: center; */
+  /* border: 3px solid orange; */
+  /* justify-content: center; */
+  display: flex;
+  justify-content: space-between;
 }
 
 .wholeMessage:hover .popUp {
-    color: #dbdcdd;
-    z-index: 10;
-    /* margin-left: 45vw; */
-    background-color: #36393f;
-    /* background-color: orange; */
-    border: 3px solid red;
-    width: 2rem;
-    height: 2vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 12px solid #444444;
-    border-radius: .2vw;
-    display: flex;
-    position: relative;
-    margin-right: 2vw;
-    /* bottom: 1vh;
+  color: #dbdcdd;
+  z-index: 10;
+  /* margin-left: 45vw; */
+  background-color: #36393f;
+  /* background-color: orange; */
+  border: 3px solid red;
+  width: 2rem;
+  height: 2vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 12px solid #444444;
+  border-radius: 0.2vw;
+  display: flex;
+  position: relative;
+  margin-right: 2vw;
+  /* bottom: 1vh;
     right: -40vw; */
-    /* margin-bottom: 10vh; */
+  /* margin-bottom: 10vh; */
 }

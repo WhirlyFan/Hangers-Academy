@@ -1,83 +1,83 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    overflow-y: scroll;
-    height: 95vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  height: 95vh;
 }
 
 .container::-webkit-scrollbar {
-    width: 0.6vw;
-    height: 90%;
-    position: absolute;
-    right: 5px;
-  }
-  
-  .container::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: #1d1e21;
-    position: relative;
-    left: -5px;
-  }
-  
-  .container::-webkit-scrollbar-track {
-    border-radius: 10px;
-    background-color: #3c4045;
-  }
+  width: 0.6vw;
+  height: 90%;
+  position: absolute;
+  right: 5px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #1d1e21;
+  position: relative;
+  left: -5px;
+}
+
+.container::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #3c4045;
+}
 
 .users_list {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .user_card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.7vh;
-    color: #b0b2b7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.7vh;
+  color: #b0b2b7;
 }
 
 .user_card:hover {
-    background-color: #40444b;
-    color: #fbfdfe;
+  background-color: #40444b;
+  color: #fbfdfe;
 }
 
 .icon_container {
-    border-radius: 50%;
-    padding-right: .5vw;
+  border-radius: 50%;
+  padding-right: 0.5vw;
 }
 
 .icon {
-    width: 2vw;
-    border-radius: 50%;
+  width: 2vw;
+  border-radius: 50%;
 }
 
 .icon:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .left {
-    display: flex;
-    align-items: center;
-    /* color: #b0b2b7; */
+  display: flex;
+  align-items: center;
+  /* color: #b0b2b7; */
 }
 
 .right {
-    padding-right: 2vw;
+  padding-right: 2vw;
 }
 
 .right:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .add_friends {
-    padding: 2vh
+  padding: 2vh;
 }
 
 .user_box {
-    /* border: 3px solid red; */
-    width: 5vw;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+  /* border: 3px solid red; */
+  width: 5vw;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }

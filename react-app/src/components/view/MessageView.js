@@ -19,12 +19,11 @@ export default function MessageView() {
   const allServers = useSelector((state) => state.server.allServers);
   const { serverId, channelId } = useParams();
   const messageRef = useRef(null);
-  const history = useHistory()
-
+  const history = useHistory();
 
   useEffect(() => {
     if (!allServers[+serverId]) {
-      history.push('/main/friends')
+      history.push("/main/friends");
       return null;
     }
     messageRef.current?.scrollIntoView();

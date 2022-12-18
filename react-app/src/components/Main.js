@@ -13,82 +13,80 @@ import Header from "./Header";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import NotFound from "./NotFound";
 
-import '../index.css'
+import "../index.css";
 
 export default function Main() {
-
-    return (
-        <div className="all">
-
-            <div id="main-div">
-                <BrowserRouter>
-                    <Switch>
-                        <ProtectedRoute exact={true} path='/main/friends'>
-                            <div id='server-list'>
-                                <ServersView />
-                            </div>
-                            <div id='user-hub'>
-                                <UserHub />
-                            </div>
-                            <div id='header'>
-                                <Header />
-                            </div>
-                            <div className='message-view'>
-                                <FriendsView />
-                            </div>
-                            <div className='channel-list'>
-                                <DirectMessagesView />
-                            </div>
-                            <div className="member-list">
-                                <UsersView />
-                            </div>
-                        </ProtectedRoute>
-                        <Route path='/main/servers/:serverId/:channelId' exact={true}>
-                            <div id='server-list'>
-                                <ServersView />
-                            </div>
-                            <div id='user-hub'>
-                                <UserHub />
-                            </div>
-                            <div id='header'>
-                                <Header />
-                            </div>
-                            <div className='channel-list'>
-                                <ChannelList />
-                            </div>
-                            <div className='member-list'>
-                                <MemberList />
-                            </div>
-                            <div className='message-view'>
-                                <MessageView />
-                            </div>
-                        </Route>
-                        <Route path='/main/servers/me/:serverId/:channelId' exact={true}>
-                            <div id='server-list'>
-                                <ServersView />
-                            </div>
-                            <div id='user-hub'>
-                                <UserHub />
-                            </div>
-                            <div id='header'>
-                                <Header />
-                            </div>
-                            <div className='channel-list'>
-                                <DirectMessagesView />
-                            </div>
-                            <div className='member-list'>
-                                <MemberList />
-                            </div>
-                            <div className='message-view'>
-                                <MessageView />
-                            </div>
-                        </Route>
-                        <Route>
-                            <NotFound />
-                        </Route>
-                    </Switch>
-                </BrowserRouter>
-            </div>
-        </div>
-    )
-};
+  return (
+    <div className="all">
+      <div id="main-div">
+        <BrowserRouter>
+          <Switch>
+            <ProtectedRoute exact={true} path="/main/friends">
+              <div id="server-list">
+                <ServersView />
+              </div>
+              <div id="user-hub">
+                <UserHub />
+              </div>
+              <div id="header">
+                <Header />
+              </div>
+              <div className="message-view">
+                <FriendsView />
+              </div>
+              <div className="channel-list">
+                <DirectMessagesView />
+              </div>
+              <div className="member-list">
+                <UsersView />
+              </div>
+            </ProtectedRoute>
+            <Route path="/main/servers/:serverId/:channelId" exact={true}>
+              <div id="server-list">
+                <ServersView />
+              </div>
+              <div id="user-hub">
+                <UserHub />
+              </div>
+              <div id="header">
+                <Header />
+              </div>
+              <div className="channel-list">
+                <ChannelList />
+              </div>
+              <div className="member-list">
+                <MemberList />
+              </div>
+              <div className="message-view">
+                <MessageView />
+              </div>
+            </Route>
+            <Route path="/main/servers/me/:serverId/:channelId" exact={true}>
+              <div id="server-list">
+                <ServersView />
+              </div>
+              <div id="user-hub">
+                <UserHub />
+              </div>
+              <div id="header">
+                <Header />
+              </div>
+              <div className="channel-list">
+                <DirectMessagesView />
+              </div>
+              <div className="member-list">
+                <MemberList />
+              </div>
+              <div className="message-view">
+                <MessageView />
+              </div>
+            </Route>
+            <Route>
+              <NotFound />
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </div>
+    </div>
+  );
+}
