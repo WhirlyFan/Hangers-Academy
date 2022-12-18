@@ -134,10 +134,12 @@ export default function Landing() {
                   className={styles.links}
                   href="https://github.com/linushuynh"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <img
                     className={styles.githubImg}
                     src="https://img.icons8.com/ios-glyphs/30/FFFFFF/github.png"
+                    alt="github_icon"
                   />
                   <span>Github</span>
                 </a>
@@ -150,10 +152,12 @@ export default function Landing() {
                   className={styles.links}
                   href="https://github.com/WhirlyFan"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <img
                     className={styles.githubImg}
                     src="https://img.icons8.com/ios-glyphs/30/FFFFFF/github.png"
+                    alt="github_icon"
                   />
                   <span>Github</span>
                 </a>
@@ -166,10 +170,12 @@ export default function Landing() {
                   className={styles.links}
                   href="https://github.com/kevintvu123"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <img
                     className={styles.githubImg}
                     src="https://img.icons8.com/ios-glyphs/30/FFFFFF/github.png"
+                    alt="github_icon"
                   />
                   <span>Github</span>
                 </a>
@@ -182,10 +188,12 @@ export default function Landing() {
                   className={styles.links}
                   href="https://github.com/prestonprince"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <img
                     className={styles.githubImg}
                     src="https://img.icons8.com/ios-glyphs/30/FFFFFF/github.png"
+                    alt="github_icon"
                   />
                   <span>Github</span>
                 </a>
