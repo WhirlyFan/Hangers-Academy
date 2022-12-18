@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch, useLocation } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import ServersView from "./view/ServersView";
 import UserHub from "./UserHub";
@@ -9,8 +9,6 @@ import UsersView from "./view/UsersView";
 import ChannelList from "./list/ChannelList";
 import MemberList from "./list/MemberList";
 import MessageView from "./view/MessageView";
-import AllServersView from "./AllServersModal/AllServersView";
-import ProfileView from "./view/ProfileView";
 import Header from "./Header";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import NotFound from "./NotFound";
@@ -18,7 +16,6 @@ import NotFound from "./NotFound";
 import '../index.css'
 
 export default function Main() {
-    const location = useLocation()
 
     return (
         <div className="all">

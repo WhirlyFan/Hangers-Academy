@@ -28,7 +28,7 @@ export default function MessageView() {
       return null;
     }
     messageRef.current?.scrollIntoView();
-  }, [dispatch, messages]);
+  }, [dispatch, messages, allServers, serverId, history]);
 
   useEffect(() => {
     dispatch(getAllUsers()).then((data) => {

@@ -5,17 +5,15 @@ import { deleteFriendThunk, getUserThunk } from "../../store/session";
 import { postServerThunk, deleteServerThunk } from "../../store/server";
 
 import styles from '../cssModules/FriendsView.module.css'
-import message_icon2 from "../../assets/message_icon2.png"
-import remove_btn from "../../assets/remove_btn.png"
 
 export default function FriendsView() {
     const sessionUser = useSelector(state => state.session.user)
     const dispatch = useDispatch();
     const [hasClicked, setHasClicked] = useState(false)
     const history = useHistory()
-    
+
     const { friends } = sessionUser;
-    
+
     useEffect(() => {
         dispatch(getUserThunk(sessionUser.id))
     }, [dispatch, hasClicked, sessionUser.id]);
@@ -62,7 +60,7 @@ export default function FriendsView() {
                 <p className={styles.friend_label}>FRIENDS - {friends.length}</p>
             </div>
             <div className={styles.actual_div}>
-                <div className={styles.friends_container}>   
+                <div className={styles.friends_container}>
                         {friends.length > 0 ? friends.map(friend => (
                             <div className={styles.friend_card} key={friend.id}>
                                 <div className={styles.left_half}>
@@ -71,13 +69,13 @@ export default function FriendsView() {
                                     <div className={styles.friend}>
                                         <span className={styles.username}>{friend.username}</span>
                                         <span className={styles.status}>Online</span>
-                                    </div>    
+                                    </div>
                                 </div>
                                 <div className={styles.right_half}>
-                                    <div 
-                                    className={styles.message_icon_container} 
+                                    <div
+                                    className={styles.message_icon_container}
                                     onClick={() => messageFriend(friend)}>
-                                        <div className={styles.chat_bubble}> 
+                                        <div className={styles.chat_bubble}>
                                             <span style={{
                                                 fontSize: ".95rem"
                                             }} className="material-symbols-outlined">
@@ -86,7 +84,7 @@ export default function FriendsView() {
                                         </div>
                                     </div>
                                     <div
-                                    className={styles.message_icon_container} 
+                                    className={styles.message_icon_container}
                                     onClick={() => deleteFriend(sessionUser.id,friend.id)}>
                                         <span class="material-symbols-outlined">
                                             close
