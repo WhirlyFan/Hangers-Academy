@@ -2,12 +2,18 @@ import React from "react";
 import styles from "./cssModules/NotFound.module.css"
 import ramen from "../assets/404ramen.gif"
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function NotFound() {
     const history = useHistory();
+    const user = useSelector(state => state.session.user)
 
     function redirectToDiscord() {
-        history.push('/login')
+        if (user) {
+            history.push('/main/friends')
+        } else {
+            history.push('/login')
+        }
     }
 
     return (

@@ -10,7 +10,6 @@ export default function MemberList() {
   const history = useHistory()
 
   if (!Object.keys(allServers).length) return null
-  console.log("HELLOOOOOOOOOOOOOOOOOOOOOOOO",allServers[+serverId])
   if (!allServers[+serverId]) {
     history.push('/hahaha')
     return null

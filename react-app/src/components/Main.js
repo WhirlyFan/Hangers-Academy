@@ -25,18 +25,17 @@ export default function Main() {
 
             <div id="main-div">
                 <BrowserRouter>
-                    <div id='server-list'>
-                        <ServersView />
-                    </div>
-                    <div id='user-hub'>
-                        <UserHub />
-                    </div>
-                    {location.pathname !== "/main/servers" && (
-                        <div id='header'>
-                            <Header />
-                        </div>)}
                     <Switch>
                         <ProtectedRoute exact={true} path='/main/friends'>
+                            <div id='server-list'>
+                                <ServersView />
+                            </div>
+                            <div id='user-hub'>
+                                <UserHub />
+                            </div>
+                            <div id='header'>
+                                <Header />
+                            </div>
                             <div className='message-view'>
                                 <FriendsView />
                             </div>
@@ -48,6 +47,15 @@ export default function Main() {
                             </div>
                         </ProtectedRoute>
                         <Route path='/main/servers/:serverId/:channelId' exact={true}>
+                            <div id='server-list'>
+                                <ServersView />
+                            </div>
+                            <div id='user-hub'>
+                                <UserHub />
+                            </div>
+                            <div id='header'>
+                                <Header />
+                            </div>
                             <div className='channel-list'>
                                 <ChannelList />
                             </div>
@@ -59,6 +67,15 @@ export default function Main() {
                             </div>
                         </Route>
                         <Route path='/main/servers/me/:serverId/:channelId' exact={true}>
+                            <div id='server-list'>
+                                <ServersView />
+                            </div>
+                            <div id='user-hub'>
+                                <UserHub />
+                            </div>
+                            <div id='header'>
+                                <Header />
+                            </div>
                             <div className='channel-list'>
                                 <DirectMessagesView />
                             </div>
@@ -69,17 +86,7 @@ export default function Main() {
                                 <MessageView />
                             </div>
                         </Route>
-                        <Route path='/main/servers' exact={true}>
-                            <div>
-                                <AllServersView />
-                            </div>
-                        </Route>
-                        <Route path='/main/me'>
-                            <div id='profile-view'>
-                                <ProfileView />
-                            </div>
-                        </Route>
-                        <Route path='/main'>
+                        <Route>
                             <NotFound />
                         </Route>
                     </Switch>

@@ -33,9 +33,9 @@ function EditChannelForm({ setShowEditChannelModal, setHasSubmitted, serverId })
 
         const errors = [];
 
-        if (channelName.length > 50) {
+        if (channelName.length > 25) {
             errors.push(
-                "Please enter a channel name that is less than 50 characters"
+                "Please enter a channel name that is less than 25 characters"
             )
         }
 
