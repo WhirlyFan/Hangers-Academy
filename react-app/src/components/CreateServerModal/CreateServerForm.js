@@ -70,7 +70,7 @@ function CreateServerForm({ setShowModal, setHasSubmitted }) {
                         type="url"
                         value={serverImg}
                         onChange={(e) => setServerImg(e.target.value)}
-                        placeholder='Server Image URL'
+                        placeholder='Server Image URL (Optional)'
                     />
                 </div>
                 <button type="submit">Create</button>
