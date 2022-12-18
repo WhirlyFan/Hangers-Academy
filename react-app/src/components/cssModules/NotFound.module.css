@@ -151,21 +151,14 @@
     text-decoration: underline;
 }
 
-.hrBarContainer {
-    /* border: 1px solid red; */
-}
-
 .hrBar {
     border: #5865F2 solid 1px;
     border-radius: 4px;
-    margin-bottom: -80px;
 }
 
 #bottomButtonContainer {
     display: flex;
     justify-content: right;
-    /* margin-top: -70px; */
-    /* margin-bottom: 30px; */
-    align-items: center;
+    align-items: flex-start;
     height: 100px;
 }
