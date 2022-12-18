@@ -13,6 +13,7 @@ import AllServersView from "./AllServersModal/AllServersView";
 import ProfileView from "./view/ProfileView";
 import Header from "./Header";
 import ProtectedRoute from "./auth/ProtectedRoute";
+import NotFound from "./NotFound";
 
 import '../index.css'
 
@@ -35,7 +36,7 @@ export default function Main() {
                             <Header />
                         </div>)}
                     <Switch>
-                        <ProtectedRoute path='/main/friends'>
+                        <ProtectedRoute exact={true} path='/main/friends'>
                             <div className='message-view'>
                                 <FriendsView />
                             </div>
@@ -77,6 +78,9 @@ export default function Main() {
                             <div id='profile-view'>
                                 <ProfileView />
                             </div>
+                        </Route>
+                        <Route path='/main'>
+                            <NotFound />
                         </Route>
                     </Switch>
                 </BrowserRouter>

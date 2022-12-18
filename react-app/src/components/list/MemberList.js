@@ -1,14 +1,20 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 import styles from "../cssModules/UsersView.module.css"
 
 export default function MemberList() {
   const allServers = useSelector(state => state.server.allServers)
   const { serverId } = useParams()
+  const history = useHistory()
 
   if (!Object.keys(allServers).length) return null
+  console.log("HELLOOOOOOOOOOOOOOOOOOOOOOOO",allServers[+serverId])
+  if (!allServers[+serverId]) {
+    history.push('/hahaha')
+    return null
+  }
 
   const members = allServers[+serverId]?.Members
 
