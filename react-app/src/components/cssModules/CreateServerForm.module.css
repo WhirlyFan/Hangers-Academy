@@ -105,10 +105,13 @@
     color: white;
     height: 40px;
     width: 100px;
+    transition: background-color 0.2s, box-shadow 0.2s;
 }
 
 .editServerButtons>button:hover {
     cursor: pointer;
+    background-color: #414bb7;
+    box-shadow: 0px 1px 3px #292b31;
 }
 
 .createChannelform>button {
@@ -120,11 +123,13 @@
     width: 130px;
     margin-top: 10%;
     margin-left: 60%;
+    transition: background-color 0.2s, box-shadow 0.2s;
 }
 
 .createChannelform>button:hover {
     cursor: pointer;
-    background-color: #4e59d1;
+    background-color: #414bb7;
+    box-shadow: 0px 1px 3px #292b31;
 }
 
 .errorMap {
