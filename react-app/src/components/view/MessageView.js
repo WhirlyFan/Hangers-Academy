@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { io } from "socket.io-client";
 import { getChannelMessagesThunk } from "../../store/channelMessages";
 import { normalize } from "../../store/server";
@@ -19,8 +19,14 @@ export default function MessageView() {
   const allServers = useSelector((state) => state.server.allServers);
   const { serverId, channelId } = useParams();
   const messageRef = useRef(null);
+  const history = useHistory()
 
+  
   useEffect(() => {
+    if (!allServers[+serverId]) {
+      history.push('/main/friends')
+      return null;
+    }
     messageRef.current?.scrollIntoView();
   }, [dispatch, messages]);
 
@@ -82,6 +88,7 @@ export default function MessageView() {
     socket.emit("delete", { id: messageId, room: serverId + "-" + channelId });
   };
   const server = allServers[+serverId];
+  // console.log("HELLOOOOOOOOOOOOOOOOOOOOOOOO",server)
 
   return (
     <div className={styles.view}>

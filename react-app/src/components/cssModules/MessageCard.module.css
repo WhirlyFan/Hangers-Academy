@@ -17,6 +17,9 @@
 .message_container:hover {
     background-color: #32353b;
 }
+.wholeMessage:hover {
+    background-color: #32353b;
+}
 
 /* .message_container:hover:not(.username, .message_content) {
     border: 1px red solid;

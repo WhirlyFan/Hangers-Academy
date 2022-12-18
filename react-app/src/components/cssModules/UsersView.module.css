@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
+    height: 95vh;
 }
 
 .container::-webkit-scrollbar {
@@ -71,4 +72,12 @@
 
 .add_friends {
     padding: 2vh
+}
+
+.user_box {
+    /* border: 3px solid red; */
+    width: 5vw;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }

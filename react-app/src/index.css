@@ -1,5 +1,9 @@
 /* TODO Add site wide styles */
 
+html {
+    overflow-y: hidden;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -10,7 +14,7 @@ body {
     color: #fcfcff;
     font-family: 'Varela Round', sans-serif;
     font-weight: 400;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .errors {

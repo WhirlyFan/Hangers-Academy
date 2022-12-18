@@ -47,17 +47,17 @@ export default function UsersView() {
                     >
                     </img>
                   </div>
-                  <div>{user.username}</div>
+                  <div className={styles.user_box}>
+                    {user.username}
+                  </div>
                 </div>
                 <div 
                 onClick={() => addFriend(sessionUser.id, user.id)}
                 className={styles.right}
                 >
-                  <img
-                  src={add_btn}
-                  alt='addbtn'
-                  >
-                  </img>
+                  <span className="material-symbols-outlined">
+                    add
+                  </span>
                 </div>
               </div>
             )

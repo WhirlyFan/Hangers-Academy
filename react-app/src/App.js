@@ -7,6 +7,7 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Landing from "./components/Landing";
 import Main from "./components/Main"
+import NotFound from "./components/NotFound";
 import { getAllServersThunk } from "./store/server";
 
 import "./index.css";
@@ -18,10 +19,12 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      await dispatch(authenticate());
-      setAuthenticated(true)
+      const data = await dispatch(authenticate());
+      if (!data) {
+        setAuthenticated(true)
+      }
       if (authenticated) {
-        await dispatch(getAllServersThunk());      
+        await dispatch(getAllServersThunk());
       }
       setLoaded(true);
     })();
@@ -46,6 +49,9 @@ function App() {
         <ProtectedRoute path='/main'>
           <Main />
         </ProtectedRoute>
+        <Route>
+          <NotFound />
+        </Route>
       </Switch>
     </BrowserRouter>
   )
