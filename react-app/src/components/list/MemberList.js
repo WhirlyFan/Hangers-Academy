@@ -2,20 +2,20 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 
-import styles from "../cssModules/UsersView.module.css"
+import styles from "../cssModules/UsersView.module.css";
 
 export default function MemberList() {
-  const allServers = useSelector(state => state.server.allServers)
-  const { serverId } = useParams()
-  const history = useHistory()
+  const allServers = useSelector((state) => state.server.allServers);
+  const { serverId } = useParams();
+  const history = useHistory();
 
-  if (!Object.keys(allServers).length) return null
+  if (!Object.keys(allServers).length) return null;
   if (!allServers[+serverId]) {
-    history.push('/hahaha')
-    return null
+    history.push("/hahaha");
+    return null;
   }
 
-  const members = allServers[+serverId]?.Members
+  const members = allServers[+serverId]?.Members;
 
   return (
     <div className={styles.container}>
@@ -30,16 +30,15 @@ export default function MemberList() {
                     className={styles.icon}
                     src="https://cdn.discordapp.com/attachments/1049445170778738789/1051654101286527137/1.png"
                     alt="default-icon"
-                  >
-                  </img>
+                  ></img>
                 </div>
                 <div>{user.username}</div>
               </div>
             </div>
-          )
+          );
         })}
       </div>
     </div>
     // <div></div>
-  )
-};
+  );
+}

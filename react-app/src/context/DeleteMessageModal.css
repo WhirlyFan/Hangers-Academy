@@ -1,31 +1,31 @@
 #delete-message-modal {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 3;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
 }
 
 #delete-message-modal-background {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    /* background-color: rgba(0, 0, 0, 0.4); */
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  /* background-color: rgba(0, 0, 0, 0.4); */
 }
 
 #delete-message-modal-content {
-    position: absolute;
-    background-color: #18191c;
-    width: fit-content;
-    height: 5vh;
-    display: flex;
-    flex-direction: column;
-    border-radius: 12px;
-    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  background-color: #18191c;
+  width: fit-content;
+  height: 5vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.2);
 }

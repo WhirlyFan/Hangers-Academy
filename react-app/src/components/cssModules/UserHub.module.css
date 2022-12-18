@@ -1,33 +1,33 @@
 .hub {
-    display: flex;
-    padding: .5vw;
-    justify-content: space-between;
-    align-content: center;
-    border-top: 1px solid #3b3e45;
+  display: flex;
+  padding: 0.5vw;
+  justify-content: space-between;
+  align-content: center;
+  border-top: 1px solid #3b3e45;
 }
 
 .icon_container {
-    border-radius: 50%;
-    padding-right: .5vw;
+  border-radius: 50%;
+  padding-right: 0.5vw;
 }
 
 .icon {
-    width: 1.5vw;
-    border-radius: 50%;
+  width: 1.5vw;
+  border-radius: 50%;
 }
 
 .left_side {
-    display: flex;
-    align-content: center;
+  display: flex;
+  align-content: center;
 }
 
 .gear {
-    cursor: pointer;
-    border-radius: 3px;
-    padding: 3px;
-    transition: background-color 0.33s;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 3px;
+  transition: background-color 0.33s;
 }
 
 .gear:hover {
-    background-color: #3b3e45;
+  background-color: #3b3e45;
 }

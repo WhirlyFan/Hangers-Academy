@@ -1,143 +1,143 @@
 .serversContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    /* width:100%; */
-    height: 95vh;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  /* width:100%; */
+  height: 95vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
 .serversContainer::-webkit-scrollbar {
-    width: 0.6vw;
-    height: 90%;
-    position: absolute;
-    right: 5px;
-  }
-  
-  .serversContainer::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: #1d1e21;
-    position: relative;
-    left: -5px;
-  }
-  
-  .serversContainer::-webkit-scrollbar-track {
-    border-radius: 10px;
-    background-color: #3c4045;
-  }
+  width: 0.6vw;
+  height: 90%;
+  position: absolute;
+  right: 5px;
+}
+
+.serversContainer::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #1d1e21;
+  position: relative;
+  left: -5px;
+}
+
+.serversContainer::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #3c4045;
+}
 
 .homeButton {
-    background-color: #36393f;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    height:41px;
-    width:41px;
-    margin-top: 10px;
-    margin-bottom:0px;
-    border-radius:20px;
-    cursor: pointer;
+  background-color: #36393f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  height: 41px;
+  width: 41px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
 #homeBar {
-    width: 70%;
-    /* border-bottom: red solid 1px;
+  width: 70%;
+  /* border-bottom: red solid 1px;
     border-color: red; */
 }
 
 #homeBar > hr {
-    border: none;
-    background-color: #36393f;
-    height: 2px;
-    border-radius: 15px;
+  border: none;
+  background-color: #36393f;
+  height: 2px;
+  border-radius: 15px;
 }
 
 .serverItem {
-    background-color: #36393f;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    height:41px;
-    width:41px;
-    margin-bottom:10px;
-    border-radius:20px;
-    cursor: pointer;
-    transition: border-radius 0.3s, background-color 0.3s;
-    /* text-align: center; */
-    /* right */
-    /* border: 2px solid red; */
+  background-color: #36393f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  height: 41px;
+  width: 41px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: border-radius 0.3s, background-color 0.3s;
+  /* text-align: center; */
+  /* right */
+  /* border: 2px solid red; */
 }
 
 .serverItem:hover {
-    border-radius: 13px;
-    background-color: #5865f2;
+  border-radius: 13px;
+  background-color: #5865f2;
 }
 
 .serverItemImage {
-    max-width: 100%;
-    max-height: 100%;
-    transition: border-radius, 0.33s;
-    border-radius:20px;
-    cursor: pointer;
+  max-width: 100%;
+  max-height: 100%;
+  transition: border-radius, 0.33s;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
 .serverItemImage:hover {
-    border-radius: 13px;
-    /* background-color: #5865f2; */
+  border-radius: 13px;
+  /* background-color: #5865f2; */
 }
 
 #discoverButton {
-    border-radius: 20px;
-    cursor: pointer;
-    height:41px;
-    width:41px;
-    margin-top:10px;
-    background-color: #36393f;
-    transition: background-color 0.33s, border-radius, 0.3s;
+  border-radius: 20px;
+  cursor: pointer;
+  height: 41px;
+  width: 41px;
+  margin-top: 10px;
+  background-color: #36393f;
+  transition: background-color 0.33s, border-radius, 0.3s;
 }
 
 #discoverButton:hover {
-    border-radius: 12px;
-    background-color: #3aa45f;
+  border-radius: 12px;
+  background-color: #3aa45f;
 }
 
 #discoverButtonImg {
-    height: 41px;
-    width: 41px;
-    border-radius: 20px;
-    font-size: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* padding: 2px; */
-    color: #3aa45f;
-    transition: color 0.4s;
+  height: 41px;
+  width: 41px;
+  border-radius: 20px;
+  font-size: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding: 2px; */
+  color: #3aa45f;
+  transition: color 0.4s;
 }
 
 #discoverButtonImg:hover {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 #addBtn {
-    border-radius: 20px;
-    cursor: pointer;
-    background-color: #36393f;
-    transition: border-radius, 0.3s;
-    height:41px;
-    width:41px;
-    margin-top: .5vh;
-    color: #3aa45f;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #36393f;
+  transition: border-radius, 0.3s;
+  height: 41px;
+  width: 41px;
+  margin-top: 0.5vh;
+  color: #3aa45f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #addBtn:hover {
-    border-radius: 12px;
-    background-color: #3aa45f;
-    color: white;
+  border-radius: 12px;
+  background-color: #3aa45f;
+  color: white;
 }

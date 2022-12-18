@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux'
-import { Redirect, useHistory } from 'react-router-dom';
-import { signUp } from '../../store/session';
-import styles from '../cssModules/Login.module.css'
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Redirect, useHistory } from "react-router-dom";
+import { signUp } from "../../store/session";
+import styles from "../cssModules/Login.module.css";
 
 const SignUpForm = () => {
   let [errors, setErrors] = useState([]);
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
-  const user = useSelector(state => state.session.user);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
+  const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -18,13 +18,13 @@ const SignUpForm = () => {
     e.preventDefault();
     // setErrors([])
     if (password !== repeatPassword) {
-      setErrors(["Passwords do not match"])
+      setErrors(["Passwords do not match"]);
     }
 
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password));
       if (data) {
-        setErrors(data)
+        setErrors(data);
       }
     }
   };
@@ -46,13 +46,13 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to="/" />;
   }
 
   const loginRedirect = (e) => {
     e.preventDefault();
-    history.push('/login')
-  }
+    history.push("/login");
+  };
 
   return (
     <div className={styles.signupFormBox}>
@@ -71,8 +71,8 @@ const SignUpForm = () => {
           </div>
           <div className={styles.inputContainer}>
             <input
-              type='text'
-              name='username'
+              type="text"
+              name="username"
               onChange={updateUsername}
               value={username}
               className={styles.inputBar}
@@ -88,8 +88,8 @@ const SignUpForm = () => {
           </div>
           <div className={styles.inputContainer}>
             <input
-              type='email'
-              name='email'
+              type="email"
+              name="email"
               onChange={updateEmail}
               value={email}
               className={styles.inputBar}
@@ -105,8 +105,8 @@ const SignUpForm = () => {
           </div>
           <div className={styles.inputContainer}>
             <input
-              type='password'
-              name='password'
+              type="password"
+              name="password"
               onChange={updatePassword}
               value={password}
               className={styles.inputBar}
@@ -122,22 +122,26 @@ const SignUpForm = () => {
           </div>
           <div className={styles.inputContainer}>
             <input
-              type='password'
-              name='repeat_password'
+              type="password"
+              name="repeat_password"
               onChange={updateRepeatPassword}
               value={repeatPassword}
               className={styles.inputBar}
               required
               maxLength={255}
             />
+          </div>
+          <div id={styles.buttonContainer}>
+            <button type="submit" id={styles.button}>
+              Continue
+            </button>
+          </div>
+          <div id={styles.registerContainer}>
+            <span id={styles.register} onClick={loginRedirect}>
+              Already have an account?
+            </span>
+          </div>
         </div>
-        <div id={styles.buttonContainer}>
-          <button type='submit' id={styles.button}>Continue</button>
-        </div>
-        <div id={styles.registerContainer}>
-            <span id={styles.register} onClick={loginRedirect}>Already have an account?</span>
-        </div>
-            </div>
       </form>
     </div>
   );

@@ -1,154 +1,154 @@
 #loginView {
-    /* border: 2px red solid; */
-    box-sizing: border-box;
-    width: 100%;
-    height: 100vh;
-    overflow-x: hidden;
+  /* border: 2px red solid; */
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
 }
 
 #loginBackground {
-    position: absolute;
-    object-fit: fill;
-    z-index: -1;
-    overflow-y: hidden;
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  object-fit: fill;
+  z-index: -1;
+  overflow-y: hidden;
+  width: 100%;
+  height: 100%;
 }
 
 #centeredFormContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  box-sizing: border-box;
 }
 
 .loginFormBox {
-    height: 390px;
-    width: 484px;
-    border-radius: 5px;
-    background-color: #3c3e47;
-    box-shadow: 0px 1px 3px #5865F2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  height: 390px;
+  width: 484px;
+  border-radius: 5px;
+  background-color: #3c3e47;
+  box-shadow: 0px 1px 3px #5865f2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #form {
-    /* border: 1px solid black; */
-    box-sizing: border-box;
-    height: 100%;
-    width: 85%;
+  /* border: 1px solid black; */
+  box-sizing: border-box;
+  height: 100%;
+  width: 85%;
 }
 
 #header {
-    font-size: 22px;
-    margin-top: 25px;
-    margin-bottom: 5px;
-    font-weight: bold;
+  font-size: 22px;
+  margin-top: 25px;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
 #subheader {
-    font-size: 13px;
-    color: #b9bbc0;
-    margin-top: 3px;
+  font-size: 13px;
+  color: #b9bbc0;
+  margin-top: 3px;
 }
 
 .labelText {
-    color: #b9bbc0;
-    margin-top: 20px;
-    margin-bottom: 5px;
-    font-weight: 600;
-    font-size: 14px;
-    width: 100%;
-    /* border: 1px solid red; */
+  color: #b9bbc0;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 14px;
+  width: 100%;
+  /* border: 1px solid red; */
 }
 
 .inputContainer {
-    width: 99%;
-    /* border: #42464e 2px solid; */
+  width: 99%;
+  /* border: #42464e 2px solid; */
 }
 
 .inputBar {
-    all: revert;
-    width: 100%;
-    border-radius: 3px;
-    border: none;
-    padding: 2px;
-    background-color: #292b31;
-    color: #e2e3e8;
-    font-family: 'Varela Round', sans-serif;
-    height: 30px;
-    text-indent: 10px;
+  all: revert;
+  width: 100%;
+  border-radius: 3px;
+  border: none;
+  padding: 2px;
+  background-color: #292b31;
+  color: #e2e3e8;
+  font-family: "Varela Round", sans-serif;
+  height: 30px;
+  text-indent: 10px;
 }
 
 .inputBar:focus {
-    outline: none;
+  outline: none;
 }
 
 #buttonContainer {
-    width: 100%;
-    height: 100%;
-    margin-top: 30px;
+  width: 100%;
+  height: 100%;
+  margin-top: 30px;
 }
 
 #button {
-    width: 100%;
-    height: 40px;
-    background-color: #5865F2;
-    color: #e2e3e8;
-    font-family: 'Varela Round', sans-serif;
-    border: none;
-    border-radius: 3px;
-    transition: background-color 0.15s;
-    cursor: pointer;
+  width: 100%;
+  height: 40px;
+  background-color: #5865f2;
+  color: #e2e3e8;
+  font-family: "Varela Round", sans-serif;
+  border: none;
+  border-radius: 3px;
+  transition: background-color 0.15s;
+  cursor: pointer;
 }
 
 #button:hover {
-    background-color: #4b52a4;
+  background-color: #4b52a4;
 }
 
 #registerContainer {
-    font-size: 14px;
-    margin-top: 15px;
-    color: #b9bbc0;
+  font-size: 14px;
+  margin-top: 15px;
+  color: #b9bbc0;
 }
 
 #register {
-    color: #00AFF4;
-    cursor: pointer;
+  color: #00aff4;
+  cursor: pointer;
 }
 
 #register:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 #demo {
-    color: #00AFF4;
-    cursor: pointer;
+  color: #00aff4;
+  cursor: pointer;
 }
 
 #demo:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .asterisk {
-    color: #CA3F44;
+  color: #ca3f44;
 }
 
 /* SIGNUP PAGE STYLING */
 .signupFormBox {
-    height: 510px;
-    width: 436px;
-    border-radius: 5px;
-    background-color: #3c3e47;
-    box-shadow: 0px 1px 3px #5865F2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  height: 510px;
+  width: 436px;
+  border-radius: 5px;
+  background-color: #3c3e47;
+  box-shadow: 0px 1px 3px #5865f2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #bottomTextContainer {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }

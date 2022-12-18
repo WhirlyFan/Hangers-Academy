@@ -1,17 +1,17 @@
 .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-    padding-left: .5vw;
-    padding-right: .5vw;
-    /* width: 50%; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding-left: 0.5vw;
+  padding-right: 0.5vw;
+  /* width: 50%; */
 }
 
 .container:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .text {
-    color: #d83c3e
+  color: #d83c3e;
 }

@@ -19,16 +19,15 @@ export default function MessageView() {
   const allServers = useSelector((state) => state.server.allServers);
   const { serverId, channelId } = useParams();
   const messageRef = useRef(null);
-  const history = useHistory()
+  const history = useHistory();
 
-  
   useEffect(() => {
     if (!allServers[+serverId]) {
-      history.push('/main/friends')
+      history.push("/main/friends");
       return null;
     }
     messageRef.current?.scrollIntoView();
-  }, [dispatch, messages]);
+  }, [dispatch, messages, allServers, serverId, history]);
 
   useEffect(() => {
     dispatch(getAllUsers()).then((data) => {
@@ -88,7 +87,6 @@ export default function MessageView() {
     socket.emit("delete", { id: messageId, room: serverId + "-" + channelId });
   };
   const server = allServers[+serverId];
-  // console.log("HELLOOOOOOOOOOOOOOOOOOOOOOOO",server)
 
   return (
     <div className={styles.view}>

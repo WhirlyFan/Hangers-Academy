@@ -2,7 +2,7 @@
 // set === get
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
-const SET_ALL_USERS = "session/SET_ALL_USERS"
+const SET_ALL_USERS = "session/SET_ALL_USERS";
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -15,7 +15,7 @@ const removeUser = () => ({
 
 const setUsers = (users) => ({
   type: SET_ALL_USERS,
-  payload: users
+  payload: users,
 });
 
 const initialState = { user: null, allUsers: null };
@@ -102,68 +102,67 @@ export const signUp = (username, email, password) => async (dispatch) => {
 };
 
 export const getUserThunk = (id) => async (dispatch) => {
-  const response = await fetch(`/api/users/${id}`, {
-  });
+  const response = await fetch(`/api/users/${id}`, {});
 
   if (response.ok) {
-    const data = await response.json()
+    const data = await response.json();
     dispatch(setUser(data));
-    return data
+    return data;
   } else {
-    throw response
+    throw response;
   }
 };
 
 export const getAllUsers = () => async (dispatch) => {
-  const response = await fetch('/api/users/');
+  const response = await fetch("/api/users/");
 
   if (!response.ok) {
-    throw response
+    throw response;
   }
 
   const data = await response.json();
   dispatch(setUsers(data.users));
-  return data
-}
+  return data;
+};
 
 export const addFriendThunk = (user_id, friend_id) => async (dispatch) => {
   const response = await fetch("/api/friends", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      friend_id
-    })
+      friend_id,
+    }),
   });
 
   if (response.ok) {
     const data = await response.json();
-    dispatch(getUserThunk(user_id))
-    return data
+    dispatch(getUserThunk(user_id));
+    return data;
   }
-  throw response
+  throw response;
 };
 
 export const deleteFriendThunk = (user_id, friend_id) => async (dispatch) => {
   const response = await fetch(`/api/friends/${friend_id}`, {
     method: "DELETE",
     headers: {
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+    },
   });
 
   if (response.ok) {
-    const data = await response.json()
-    dispatch(getUserThunk(user_id))
-    return data
+    const data = await response.json();
+    dispatch(getUserThunk(user_id));
+    return data;
   } else {
-    throw response
+    throw response;
   }
-}
+};
 
 export default function reducer(state = initialState, action) {
-  let newState = { ...state }
+  let newState = { ...state };
   switch (action.type) {
     case SET_USER:
       return { ...newState, user: action.payload };

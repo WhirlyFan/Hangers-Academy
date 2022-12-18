@@ -1,115 +1,115 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    /* overflow-y: scroll; */
-    /* border: 3px solid red; */
+  display: flex;
+  flex-direction: column;
+  /* overflow-y: scroll; */
+  /* border: 3px solid red; */
 }
 
 .friend_label {
-    font-size: .8rem;
-    color: #b9bbbe;
-    margin-top: 2vh;
-    margin-left: 1vw;
-    font-weight: 500;
+  font-size: 0.8rem;
+  color: #b9bbbe;
+  margin-top: 2vh;
+  margin-left: 1vw;
+  font-weight: 500;
 }
 
-.friends_container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* overflow-y: scroll; */
-    /* overflow-x: hidden; */
-    /* height: 2%; */
-    /* border: 3px solid blue; */
-    overflow-y: scroll;
-    height: 90vh;
-    margin: .3vw;
+.friends_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* overflow-y: scroll; */
+  /* overflow-x: hidden; */
+  /* height: 2%; */
+  /* border: 3px solid blue; */
+  overflow-y: scroll;
+  height: 90vh;
+  margin: 0.3vw;
 }
 
 .friends_container::-webkit-scrollbar {
-    width: 0.45vw;
-    height: 90%;
+  width: 0.45vw;
+  height: 90%;
 }
 
 .friends_container::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: #202225;
-    position: relative;
-    left: -5px;
+  border-radius: 10px;
+  background-color: #202225;
+  position: relative;
+  left: -5px;
 }
 
 .friends_container::-webkit-scrollbar-track {
-    border-radius: 10px;
-    background-color: #2e3338;
+  border-radius: 10px;
+  background-color: #2e3338;
 }
 
 .friend_card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-top: 1px solid #42464d;
-    padding: 2vh;
-    width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #42464d;
+  padding: 2vh;
+  width: 95%;
 }
 
 .friend_card:hover {
-    background-color: #40444b;
+  background-color: #40444b;
 }
 
 .friend_card:hover .message_icon_container {
-    background-color: #202225;
+  background-color: #202225;
 }
 
 .left_half {
-    display: flex;
+  display: flex;
 }
 
 .friend {
-    display: flex;
-    flex-direction: column;
-    font-size: .9rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
 }
 
 .username {
-    color: #ffffff;
-    font-weight: 600;
+  color: #ffffff;
+  font-weight: 600;
 }
 
 .status {
-    color: #b0b2b7;
+  color: #b0b2b7;
 }
 
 .right_half {
-    display: flex;
+  display: flex;
 }
 
 .message_icon_container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #42464d;
-    width: 1.7vw;
-    height: 3.5vh;
-    border-radius: 50%;
-    margin-right: 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #42464d;
+  width: 1.7vw;
+  height: 3.5vh;
+  border-radius: 50%;
+  margin-right: 1vw;
 }
 
-.message_icon_container:hover{
-    cursor: pointer;
-    background-color: #202225;
+.message_icon_container:hover {
+  cursor: pointer;
+  background-color: #202225;
 }
 
-.message_icon{
-    padding: .5vh;
-    width: 1.2vw;
+.message_icon {
+  padding: 0.5vh;
+  width: 1.2vw;
 }
 
 .chat_bubble {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .no_friends {
-    text-align: center;
+  text-align: center;
 }

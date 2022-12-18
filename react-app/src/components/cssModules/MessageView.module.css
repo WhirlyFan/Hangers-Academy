@@ -14,11 +14,11 @@
 } */
 
 .button {
-    display: flex;
+  display: flex;
 }
 .message_stuff {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .created_at {
@@ -117,7 +117,7 @@
   background-color: #40444b;
   height: 30px;
   width: 100%;
-  border-radius: .4vw;
+  border-radius: 0.4vw;
   border: 3vw;
   color: #d5d6d8;
   text-indent: 10px;
