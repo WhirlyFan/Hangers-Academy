@@ -15,7 +15,6 @@
   margin-left: 17vw;
   margin-bottom: 5vh;
   cursor: pointer;
-  /* border: 3px solid red; */
 }
 
 .login_button:hover {
@@ -66,13 +65,14 @@
 
 .text2 {
   position: absolute;
-  top: 60%;
-  left: 50%;
   transform: translate(-50%, -50%);
   color: white;
   text-align: center;
   z-index: 5;
   width: 40vw;
+  height: 10vh;
+  margin-left: 41vw;
+  margin-bottom: 13vh;
 }
 
 .extra_pics {
@@ -181,16 +181,9 @@
   align-items: flex-start;
   gap: 1vw;
   margin: 4vw;
-  /* border: 3px solid blue; */
   height: 20vh;
   width: 60vw;
   border-bottom: 1px solid #5865f2;
-}
-
-.footer_card1 {
-  /* border: 3px solid red; */
-  display: flex;
-  flex-direction: column;
 }
 
 .footer_title {
@@ -227,4 +220,47 @@
   display: flex;
   align-items: center;
   gap: 0.25vw;
+}
+
+@media screen and (max-width: 1030px) {
+  .login_button {
+    margin-left: 34vw
+  }
+
+  .card1 {
+    width: 100vw;
+    display: flex;
+  }
+
+  .body1 img {
+    width: 48vw;
+  }
+
+  .body2 img {
+    width: 48vw;
+  }
+
+  .body3 img {
+    width: 48vw;
+  }
+
+  .card1_text {
+    height: 50vh;
+    width: 30vw;
+  }
+
+  .footer_content_container {
+    width: 110vw;
+  }
+
+  .footer_card1 {
+    width: 25vw;
+    font-size: 1.2rem;
+  }
+
+  .footer_title {
+    font-size: 1.25rem;
+    width: 25vw;
+  }
+
 }
