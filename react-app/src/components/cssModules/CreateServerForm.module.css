@@ -61,6 +61,16 @@
     font-size: 100%;
     padding: 0 2%;
     border-radius: 4px;
+    background-color: #292b31;
+    color: #e2e3e8;
+    font-family: 'Varela Round', sans-serif;
+    height: 30px;
+    text-indent: 5px;
+    border: none;
+}
+
+.formInput>input:focus {
+    outline: none;
 }
 
 .form>button {
@@ -72,10 +82,13 @@
     width: 100px;
     margin-top: 10%;
     margin-left: 70%;
+    transition: background-color 0.2s, box-shadow 0.2s;
 }
 
 .form>button:hover {
     cursor: pointer;
+    background-color: #414bb7;
+    box-shadow: 0px 1px 3px #292b31;
 }
 
 .editServerButtons {
@@ -92,10 +105,13 @@
     color: white;
     height: 40px;
     width: 100px;
+    transition: background-color 0.2s, box-shadow 0.2s;
 }
 
 .editServerButtons>button:hover {
     cursor: pointer;
+    background-color: #414bb7;
+    box-shadow: 0px 1px 3px #292b31;
 }
 
 .createChannelform>button {
@@ -107,10 +123,13 @@
     width: 130px;
     margin-top: 10%;
     margin-left: 60%;
+    transition: background-color 0.2s, box-shadow 0.2s;
 }
 
 .createChannelform>button:hover {
     cursor: pointer;
+    background-color: #414bb7;
+    box-shadow: 0px 1px 3px #292b31;
 }
 
 .errorMap {
