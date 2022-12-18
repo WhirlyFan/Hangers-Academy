@@ -21,7 +21,7 @@ export default function MessageView() {
   const messageRef = useRef(null);
   const history = useHistory()
 
-  
+
   useEffect(() => {
     if (!allServers[+serverId]) {
       history.push('/main/friends')
@@ -88,7 +88,6 @@ export default function MessageView() {
     socket.emit("delete", { id: messageId, room: serverId + "-" + channelId });
   };
   const server = allServers[+serverId];
-  // console.log("HELLOOOOOOOOOOOOOOOOOOOOOOOO",server)
 
   return (
     <div className={styles.view}>

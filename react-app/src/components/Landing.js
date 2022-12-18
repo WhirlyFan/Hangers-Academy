@@ -32,8 +32,8 @@ export default function Landing() {
           <p className={styles.text2}>
             ...where you can belong to a school club, a gaming group, or a
             worldwide art community. Where just you and a handful of friends can
-            spend time together. A place that makes it easy to talk every day and
-            hang out more often.
+            spend time together. A place that makes it easy to talk every day
+            and hang out more often.
           </p>
           <img src={landing_background} alt="landing_background"></img>
           <img
@@ -61,9 +61,9 @@ export default function Landing() {
                   Create an invite-only place where you belong
                 </span>
                 <span className={styles.card1_text_lower}>
-                  Discord servers are organized into topic-based 
-                  channels where you can collaborate, share, and 
-                  just talk about your day without clogging up a group chat.
+                  Discord servers are organized into topic-based channels where
+                  you can collaborate, share, and just talk about your day
+                  without clogging up a group chat.
                 </span>
               </div>
             </div>
@@ -75,9 +75,9 @@ export default function Landing() {
                   Where hanging out is easy
                 </span>
                 <span className={styles.card1_text_lower}>
-                  Grab a seat in a voice channel when you’re free. 
-                  Friends in your server can see you’re around and instantly 
-                  pop in to talk without having to call.
+                  Grab a seat in a voice channel when you’re free. Friends in
+                  your server can see you’re around and instantly pop in to talk
+                  without having to call.
                 </span>
               </div>
               <div className={styles.body2}>
@@ -86,7 +86,7 @@ export default function Landing() {
             </div>
           </div>
           <div className={styles.card1_container}>
-            <div className={styles.card1}> 
+            <div className={styles.card1}>
               <div className={styles.body3}>
                 <img src={body3} alt="body3"></img>
               </div>
@@ -95,9 +95,9 @@ export default function Landing() {
                   From few to a fandom
                 </span>
                 <span className={styles.card1_text_lower}>
-                  Get any community running with moderation tools and 
-                  custom member access. Give members special powers, 
-                  set up private channels, and more.
+                  Get any community running with moderation tools and custom
+                  member access. Give members special powers, set up private
+                  channels, and more.
                 </span>
               </div>
             </div>
@@ -109,14 +109,14 @@ export default function Landing() {
                   RELIABLE TECH FOR STAYING CLOSE
                 </span>
                 <span className={styles.card3_text_lower}>
-                  Low-latency voice and video feels like you’re in the same room. 
-                  Wave hello over video, watch friends stream their games, or gather 
-                  up and have a drawing session with screen share.
+                  Low-latency voice and video feels like you’re in the same
+                  room. Wave hello over video, watch friends stream their games,
+                  or gather up and have a drawing session with screen share.
                 </span>
               </div>
-            <div className={styles.body4}>
-              <img src={body4} alt="body4"></img>
-            </div>
+              <div className={styles.body4}>
+                <img src={body4} alt="body4"></img>
+              </div>
             </div>
           </div>
         </div>
@@ -130,8 +130,15 @@ export default function Landing() {
             <div className={styles.footer_card}>
               <span className={styles.names}>Linus Huynh</span>
               <div className={styles.link_container}>
-                <a className={styles.links} href="https://github.com/linushuynh" target="_blank">
-                  <img className={styles.githubImg} src="https://img.icons8.com/ios-glyphs/30/FFFFFF/github.png"/>
+                <a
+                  className={styles.links}
+                  href="https://github.com/linushuynh"
+                  target="_blank"
+                >
+                  <img
+                    className={styles.githubImg}
+                    src="https://img.icons8.com/ios-glyphs/30/FFFFFF/github.png"
+                  />
                   <span>Github</span>
                 </a>
               </div>
@@ -139,8 +146,15 @@ export default function Landing() {
             <div className={styles.footer_card}>
               <span className={styles.names}>Michael Lee</span>
               <div className={styles.link_container}>
-                <a className={styles.links} href="https://github.com/WhirlyFan" target="_blank">
-                  <img className={styles.githubImg} src="https://img.icons8.com/ios-glyphs/30/FFFFFF/github.png"/>
+                <a
+                  className={styles.links}
+                  href="https://github.com/WhirlyFan"
+                  target="_blank"
+                >
+                  <img
+                    className={styles.githubImg}
+                    src="https://img.icons8.com/ios-glyphs/30/FFFFFF/github.png"
+                  />
                   <span>Github</span>
                 </a>
               </div>
@@ -148,8 +162,15 @@ export default function Landing() {
             <div className={styles.footer_card}>
               <span className={styles.names}>Kevin Vu</span>
               <div className={styles.link_container}>
-                <a className={styles.links} href="https://github.com/kevintvu123" target="_blank">
-                  <img className={styles.githubImg} src="https://img.icons8.com/ios-glyphs/30/FFFFFF/github.png"/>
+                <a
+                  className={styles.links}
+                  href="https://github.com/kevintvu123"
+                  target="_blank"
+                >
+                  <img
+                    className={styles.githubImg}
+                    src="https://img.icons8.com/ios-glyphs/30/FFFFFF/github.png"
+                  />
                   <span>Github</span>
                 </a>
               </div>
@@ -157,8 +178,15 @@ export default function Landing() {
             <div className={styles.footer_card}>
               <span className={styles.names}>Preston Prince</span>
               <div className={styles.link_container}>
-                <a className={styles.links} href="https://github.com/prestonprince" target="_blank">
-                  <img className={styles.githubImg} src="https://img.icons8.com/ios-glyphs/30/FFFFFF/github.png"/>
+                <a
+                  className={styles.links}
+                  href="https://github.com/prestonprince"
+                  target="_blank"
+                >
+                  <img
+                    className={styles.githubImg}
+                    src="https://img.icons8.com/ios-glyphs/30/FFFFFF/github.png"
+                  />
                   <span>Github</span>
                 </a>
               </div>

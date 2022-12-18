@@ -170,7 +170,7 @@
 .footer {
   background-color: #23272a;
   /* border: 3px solid red; */
-  height: 60vh;
+  height: 30vh;
   display: flex;
   justify-content: center;
 }
@@ -182,7 +182,7 @@
   gap: 1vw;
   margin: 4vw;
   /* border: 3px solid blue; */
-  height: 40vh;
+  height: 20vh;
   width: 60vw;
   border-bottom: 1px solid #5865f2;
 }
