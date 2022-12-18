@@ -6,7 +6,7 @@ const DeleteMessage = ({ message, deleteMessage, setShowModal }) => {
             setShowModal(false)
             deleteMessage(message.id)
         }} className={styles.container}>
-            <span className={styles.text}>DeleteMessage</span>
+            <span className={styles.text}>Delete Message</span>
             <div className={styles.text}>
                 <span className="material-symbols-outlined">
                     delete
