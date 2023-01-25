@@ -69,12 +69,11 @@ function EditChannelForm({
 
     if (!errors.length) {
       setShowEditChannelModal(false);
-      setHasSubmitted((prevValue) => !prevValue);
       const deleteChannel = await dispatch(
         deleteServerChannelThunk(channelId)
       ).then(() =>
         history.push(`/main/servers/${serverId}/${server[0].Channels[0]["id"]}`)
-      );
+      ).then(() => setHasSubmitted((prevValue) => !prevValue));
       return deleteChannel;
     }
   };
