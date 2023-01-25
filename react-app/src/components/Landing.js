@@ -37,10 +37,10 @@ export default function Landing() {
               and hang out more often.
             </div>
             <button className={styles.login_button} onClick={openDiscord}>
-              Open Discord in your browser
+              Open Hangers Academy
             </button>
           </div>
-          <img src={landing_background} alt="landing_background"></img>
+          <img className={styles.background} src={landing_background} alt="landing_background"></img>
           <img
             className={styles.left}
             src={landing_left}
@@ -63,7 +63,7 @@ export default function Landing() {
                   Create an invite-only place where you belong
                 </span>
                 <span className={styles.card1_text_lower}>
-                  Discord servers are organized into topic-based channels where
+                  Servers are organized into topic-based channels where
                   you can collaborate, share, and just talk about your day
                   without clogging up a group chat.
                 </span>
