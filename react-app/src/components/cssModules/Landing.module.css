@@ -1,9 +1,9 @@
 .login_button {
   background-color: #23272a;
   transition-property: background-color, color, box-shadow;
-  transition-duration: 0.2s;
+  transition-duration: 0.15s;
   transition-timing-function: ease-in-out;
-  transform: translate(-50%, -50%);
+  /* transform: translate(-50%, 25%); */
   color: white;
   border-radius: 28px;
   font-size: 20px;
@@ -12,9 +12,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 17vw;
-  margin-bottom: 5vh;
+  /* margin-top: 2.5rem; */
+  /* margin-left: 17vw; */
+  /* margin-bottom: 10vh; */
   cursor: pointer;
+  z-index: 5;
 }
 
 .login_button:hover {
@@ -26,53 +28,67 @@
 
 .body0 {
   width: 100%;
-  height: 31rem;
+  height: 35rem;
   background-color: #404eed;
   position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
-.body0 > * {
+.body0 > img {
   position: absolute;
   max-width: 135%;
   height: auto;
   bottom: 0;
 }
 
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* border: #23272a 2px solid; */
+  justify-content: center;
+  margin-top: 8rem;
+  width: 40rem;
+  height: 19rem;
+  gap: 2rem;
+}
+
 .right {
-  margin-left: 70rem;
+  margin-left: 80rem;
   height: 55%;
   width: auto;
+  position: absolute;
 }
 
 .left {
-  margin-right: 70rem;
+  margin-right: 80rem;
   height: 55%;
   width: auto;
+  position: absolute;
 }
 
 .text1 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
+  z-index: 5;
+  /* transform: translate(-50%, -50%); */
   color: white;
   font-size: 3rem;
   font-weight: 600;
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .text2 {
-  position: absolute;
-  transform: translate(-50%, -50%);
+  position: relative;
   color: white;
   text-align: center;
   z-index: 5;
-  width: 40vw;
-  height: 10vh;
-  margin-left: 41vw;
-  margin-bottom: 13vh;
+  width: 44rem;
+  font-size: 19px;
+  line-height: 29px;
+  margin-top: 0.5rem;
 }
 
 .extra_pics {
@@ -224,7 +240,7 @@
 
 @media screen and (max-width: 1030px) {
   .login_button {
-    margin-left: 34vw
+    /* margin-left: 34vw */
   }
 
   .card1 {
