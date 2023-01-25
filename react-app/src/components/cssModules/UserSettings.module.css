@@ -54,13 +54,13 @@
   margin-right: 0.4vw;
   z-index: 2;
   position: absolute;
-  bottom: -4vh;
   margin-left: 1vw;
+  top: -1rem;
 }
 
 .icon {
   border: 7px solid #202225;
-  width: 3.5vw;
+  width: 4rem;
   border-radius: 50%;
 }
 
