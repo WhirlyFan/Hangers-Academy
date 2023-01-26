@@ -418,7 +418,7 @@
     display: block;
     margin-left: 52.5rem;
     width: 25rem;
-    transition: all 0.3s;
+    transition: margin-left 0.3s;
   }
 
   .card1_text {
