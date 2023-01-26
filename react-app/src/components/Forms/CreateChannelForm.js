@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { postServerChannelThunk } from "../../store/server";
-import styles from "../cssModules/CreateServerForm.module.css";
+import styles from "../cssModules/CreateChannelForm.module.css";
 
 function CreateChannelForm({
   setShowCreateChannelModal,
@@ -40,11 +40,13 @@ function CreateChannelForm({
       <div className={styles.formHeader}>Create Channel</div>
       <form onSubmit={handleSubmit} className={styles.createChannelform}>
         <div className={styles.formInput}>
+          <label htmlFor="channelNameInput">Channel Name</label>
           <input
+            id="channelNameInput"
             type="text"
             value={channelName}
             onChange={(e) => setChannelName(e.target.value)}
-            placeholder="Channel Name"
+            placeholder="new-channel"
             required
           />
         </div>
@@ -57,7 +59,9 @@ function CreateChannelForm({
             </div>
           )}
         </div>
-        <button type="submit">Create Channel</button>
+        <div className={styles.formButtonContainer}>
+          <button type="submit">Create Channel</button>
+        </div>
       </form>
     </div>
   );
