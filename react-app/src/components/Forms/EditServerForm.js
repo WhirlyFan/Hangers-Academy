@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { deleteServerThunk, editServerThunk } from "../../store/server";
-import styles from "../cssModules/CreateServerForm.module.css";
+import styles from "../cssModules/EditServerForm.module.css";
 
 function EditServerForm({
   setShowEditServerModal,
@@ -64,7 +64,9 @@ function EditServerForm({
       <div className={styles.formHeader}>Server Overview</div>
       <form onSubmit={handleSubmit} className={styles.editServerform}>
         <div className={styles.formInput}>
+          <label htmlFor="editServerNameInput">Server Name</label>
           <input
+            id="editServerNameInput"
             type="text"
             value={serverName}
             onChange={(e) => setServerName(e.target.value)}
@@ -82,7 +84,9 @@ function EditServerForm({
           )}
         </div>
         <div className={styles.formInput}>
+          <label htmlFor="editServerImgInput">Server Image</label>
           <input
+            id="editServerImgInput"
             type="url"
             value={serverImg}
             onChange={(e) => setServerImg(e.target.value)}
