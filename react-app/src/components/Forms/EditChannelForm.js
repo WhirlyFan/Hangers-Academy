@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { editServerChannelThunk } from "../../store/server";
 import { deleteServerChannelThunk } from "../../store/server";
-import styles from "../cssModules/CreateServerForm.module.css";
+import styles from "../cssModules/EditChannelForm.module.css";
 
 function EditChannelForm({
   setShowEditChannelModal,
@@ -83,7 +83,9 @@ function EditChannelForm({
       <div className={styles.formHeader}>Channel Overview</div>
       <form onSubmit={handleSubmit} className={styles.createChannelform}>
         <div className={styles.formInput}>
+          <label htmlFor="editChannelNameInput">Channel Name</label>
           <input
+            id="editChannelNameInput"
             type="text"
             value={channelName}
             onChange={(e) => setChannelName(e.target.value)}

@@ -1,0 +1,80 @@
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 6px;
+    width: 350px;
+    height: 240px;
+    padding: 2rem 1rem;
+}
+
+.formHeader {
+    /* border: 2px red solid; */
+    font-size: 20px;
+    margin-bottom: 1rem;
+}
+
+.createChannelform {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formInput {
+    width: 100%;
+}
+
+.formInput>label {
+    /* border: solid blue 1px; */
+    font-size: 14px;
+    color: white;
+
+}
+
+.formInput>input {
+    width: 100%;
+    height: 40px;
+    font-size: 100%;
+    margin-bottom: .5rem;
+    padding: 0 2%;
+    border-radius: 4px;
+    background-color: #202225;
+    color: white;
+    font-family: "Varela Round", sans-serif;
+    text-indent: 5px;
+    border: none;
+}
+
+.formInput>input:focus {
+    outline: none;
+}
+
+.editServerButtons {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+
+.editServerButtons>button {
+    background-color: #5865f2;
+    border-radius: 5px;
+    border: 1px;
+    color: white;
+    height: 40px;
+    width: 110px;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.editServerButtons>button:hover {
+    cursor: pointer;
+    background-color: #414bb7;
+    box-shadow: 0px 1px 3px #292b31;
+}
+
+.errorMap {
+    font-size: 12px;
+    text-align: center;
+    color: #ca3f44;
+}
