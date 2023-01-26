@@ -66,7 +66,6 @@
 .text1 {
   position: relative;
   z-index: 5;
-  /* transform: translate(-50%, -50%); */
   color: white;
   font-size: 3rem;
   font-weight: 600;
@@ -180,21 +179,22 @@
 
 .footer {
   background-color: #23272a;
-  /* border: 3px solid red; */
-  height: 30vh;
+  height: 20rem;
   display: flex;
   justify-content: center;
+
 }
 
 .footer_content_container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: flex-start;
-  gap: 1vw;
-  margin: 4vw;
-  height: 20vh;
-  width: 60vw;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  height: 15rem;
+  width: 70rem;
   border-bottom: 1px solid #5865f2;
+  padding-top: 3rem;
 }
 
 .footer_title {
@@ -203,8 +203,15 @@
   font-family: "Rubik Mono One", sans-serif;
   font-size: 1.5rem;
   font-weight: 200;
-  /* border: 3px solid yellow; */
-  width: 15vw;
+  width: 15rem;
+}
+
+.footer_card_container {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  gap: 1.5rem;
+  padding-top: 2rem;
 }
 
 .names {
@@ -216,7 +223,7 @@
 .footer_card {
   display: flex;
   flex-direction: column;
-  gap: 2vh;
+  gap: 0.5rem;
 }
 
 .links {
@@ -225,6 +232,10 @@
   display: flex;
   align-items: center;
   gap: 0.25vw;
+}
+
+.links:hover {
+  text-decoration: underline;
 }
 
 .link_container {
@@ -241,6 +252,16 @@
   .text2 {
     width: 40rem;
     font-size: 17px;
+  }
+
+  .right {
+    margin-left: 60rem;
+    width: 35rem;
+  }
+
+  .left {
+    margin-right: 68rem;
+    width: 40rem;
   }
 
   .card1 {
@@ -265,7 +286,6 @@
 
   .card1_text {
     height: 20rem;
-    width: 30vw;
   }
 
   .card3_text {
@@ -273,7 +293,7 @@
   }
 
   .footer_content_container {
-    width: 110vw;
+    width: 110rem;
   }
 
   .footer_card1 {
@@ -286,6 +306,9 @@
     width: 25vw;
   }
 
+  .footer_title {
+    width: 7rem;
+  }
 }
 
 @media screen and (max-width: 880px) {
@@ -308,13 +331,14 @@
   }
 
   .left {
-    display: none;
+    display: block;
+    margin-left: -50rem;
   }
 
   .right {
-    margin-left: 40rem;
-    width: 25rem;
-    transition: all 0.3s;
+    margin-right: 22.5rem;
+    width: 28rem;
+    transition: margin-right 0.5s;
   }
 
   .background {
@@ -359,11 +383,21 @@
     text-align: left;
   }
 
+  .footer_content_container {
+    /* align-items: flex-start; */
+    gap: 1rem;
+    margin-bottom: 4rem;
+    height: 15rem;
+    width: 70rem;
+    border-bottom: 1px solid #5865f2;
+    padding-top: 3rem;
+  }
 }
 
 @media screen and (max-width: 700px) {
   .textContainer {
     margin-left: 4rem;
+    margin-top: 4rem;
   }
 
   .text1 {
@@ -372,18 +406,19 @@
   }
 
   .text2 {
-    width: 25rem;
+    width: 90%;
     font-size: 14px;
   }
 
-  .left {
+  .right {
     display: none;
   }
 
-  .right {
-    margin-left: 20rem;
-    /* height: 15%; */
-    width: 20rem;
+  .left {
+    display: block;
+    margin-left: 52.5rem;
+    width: 25rem;
+    transition: all 0.3s;
   }
 
   .card1_text {
@@ -430,5 +465,14 @@
 
   .card3_container {
     height: 40rem;
+  }
+
+  .footer_content_container {
+    gap: 5rem;
+  }
+
+  .footer_card_container {
+    padding-top: 0;
+    width: 15rem;
   }
 }

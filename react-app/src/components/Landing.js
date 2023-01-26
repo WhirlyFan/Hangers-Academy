@@ -129,76 +129,78 @@ export default function Landing() {
                 <h2>IMAGINE A PLACE</h2>
               </div>
             </div>
-            <div className={styles.footer_card}>
-              <span className={styles.names}>Linus Huynh</span>
-              <div className={styles.link_container}>
-                <a
-                  className={styles.links}
-                  href="https://github.com/linushuynh"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img
-                    className={styles.githubImg}
-                    src="https://img.icons8.com/ios-glyphs/30/FFFFFF/github.png"
-                    alt="github_icon"
-                  />
-                  <span>Github</span>
-                </a>
+            <div className={styles.footer_card_container}>
+              <div className={styles.footer_card}>
+                <span className={styles.names}>Linus Huynh</span>
+                <div className={styles.link_container}>
+                  <a
+                    className={styles.links}
+                    href="https://github.com/linushuynh"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      className={styles.githubImg}
+                      src="https://img.icons8.com/ios-glyphs/30/FFFFFF/github.png"
+                      alt="github_icon"
+                    />
+                    <span>Github</span>
+                  </a>
+                </div>
               </div>
-            </div>
-            <div className={styles.footer_card}>
-              <span className={styles.names}>Michael Lee</span>
-              <div className={styles.link_container}>
-                <a
-                  className={styles.links}
-                  href="https://github.com/WhirlyFan"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img
-                    className={styles.githubImg}
-                    src="https://img.icons8.com/ios-glyphs/30/FFFFFF/github.png"
-                    alt="github_icon"
-                  />
-                  <span>Github</span>
-                </a>
+              <div className={styles.footer_card}>
+                <span className={styles.names}>Michael Lee</span>
+                <div className={styles.link_container}>
+                  <a
+                    className={styles.links}
+                    href="https://github.com/WhirlyFan"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      className={styles.githubImg}
+                      src="https://img.icons8.com/ios-glyphs/30/FFFFFF/github.png"
+                      alt="github_icon"
+                    />
+                    <span>Github</span>
+                  </a>
+                </div>
               </div>
-            </div>
-            <div className={styles.footer_card}>
-              <span className={styles.names}>Kevin Vu</span>
-              <div className={styles.link_container}>
-                <a
-                  className={styles.links}
-                  href="https://github.com/kevintvu123"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img
-                    className={styles.githubImg}
-                    src="https://img.icons8.com/ios-glyphs/30/FFFFFF/github.png"
-                    alt="github_icon"
-                  />
-                  <span>Github</span>
-                </a>
+              <div className={styles.footer_card}>
+                <span className={styles.names}>Kevin Vu</span>
+                <div className={styles.link_container}>
+                  <a
+                    className={styles.links}
+                    href="https://github.com/kevintvu123"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      className={styles.githubImg}
+                      src="https://img.icons8.com/ios-glyphs/30/FFFFFF/github.png"
+                      alt="github_icon"
+                    />
+                    <span>Github</span>
+                  </a>
+                </div>
               </div>
-            </div>
-            <div className={styles.footer_card}>
-              <span className={styles.names}>Preston Prince</span>
-              <div className={styles.link_container}>
-                <a
-                  className={styles.links}
-                  href="https://github.com/prestonprince"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img
-                    className={styles.githubImg}
-                    src="https://img.icons8.com/ios-glyphs/30/FFFFFF/github.png"
-                    alt="github_icon"
-                  />
-                  <span>Github</span>
-                </a>
+              <div className={styles.footer_card}>
+                <span className={styles.names}>Preston Prince</span>
+                <div className={styles.link_container}>
+                  <a
+                    className={styles.links}
+                    href="https://github.com/prestonprince"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      className={styles.githubImg}
+                      src="https://img.icons8.com/ios-glyphs/30/FFFFFF/github.png"
+                      alt="github_icon"
+                    />
+                    <span>Github</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
