@@ -3,6 +3,7 @@
   align-items: center;
   height: 4.5vh;
   margin-top: 1vh;
+  /* border: 3px solid red; */
 }
 
 .friend_btn_container:hover {
@@ -41,7 +42,7 @@
   display: flex;
   align-items: center;
   color: #cbccce;
-  height: 2vh;
+  height: fit-content;
   margin-top: 1vh;
 }
 
