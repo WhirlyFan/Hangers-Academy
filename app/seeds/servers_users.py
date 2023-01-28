@@ -50,13 +50,13 @@ def seed_servers_users():
 def undo_servers_users():
     if environment == "production":
         db.session.execute(
-            f"TRUNCATE table {SCHEMA}.servers_members RESTART IDENTITY CASCADE;")
+            f"TRUNCATE table {SCHEMA}.server_members RESTART IDENTITY CASCADE;")
         db.session.execute(
             f"TRUNCATE table {SCHEMA}.servers RESTART IDENTITY CASCADE;")
         db.session.execute(
             f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute("DELETE FROM servers_members")
+        db.session.execute("DELETE FROM server_members")
         db.session.execute("DELETE FROM servers")
         db.session.execute("DELETE FROM users")
 
