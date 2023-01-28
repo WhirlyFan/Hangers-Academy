@@ -1,9 +1,8 @@
 .login_button {
   background-color: #23272a;
   transition-property: background-color, color, box-shadow;
-  transition-duration: 0.2s;
+  transition-duration: 0.15s;
   transition-timing-function: ease-in-out;
-  transform: translate(-50%, -50%);
   color: white;
   border-radius: 28px;
   font-size: 20px;
@@ -12,67 +11,77 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 17vw;
-  margin-bottom: 5vh;
   cursor: pointer;
+  z-index: 5;
 }
 
 .login_button:hover {
   cursor: pointer;
-  /* border: 3px solid red; */
   background-color: #36393f;
   box-shadow: 0 8px 15px rgb(0 0 0 / 20%);
 }
 
 .body0 {
   width: 100%;
-  height: 31rem;
+  height: 35rem;
   background-color: #404eed;
   position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
-.body0 > * {
+.body0 > img {
   position: absolute;
   max-width: 135%;
   height: auto;
   bottom: 0;
 }
 
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8rem;
+  width: 40rem;
+  height: 19rem;
+  gap: 2rem;
+}
+
 .right {
-  margin-left: 70rem;
+  margin-left: 80rem;
   height: 55%;
   width: auto;
+  position: absolute;
 }
 
 .left {
-  margin-right: 70rem;
+  margin-right: 80rem;
   height: 55%;
   width: auto;
+  position: absolute;
 }
 
 .text1 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
+  z-index: 5;
   color: white;
   font-size: 3rem;
   font-weight: 600;
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .text2 {
-  position: absolute;
-  transform: translate(-50%, -50%);
+  position: relative;
   color: white;
   text-align: center;
   z-index: 5;
-  width: 40vw;
-  height: 10vh;
-  margin-left: 41vw;
-  margin-bottom: 13vh;
+  width: 44rem;
+  font-size: 19px;
+  line-height: 29px;
+  margin-top: 0.5rem;
 }
 
 .extra_pics {
@@ -88,24 +97,25 @@
 }
 
 .card1_container {
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
-  height: 70vh;
+  height: 40rem;
 }
 
 .card1 {
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-around;
-  width: 65vw;
+  width: 70rem;
 }
 
 .card1_text {
   display: flex;
   flex-direction: column;
-  width: 15vw;
-  height: 35vh;
+  justify-content: center;
+  width: 25rem;
+  height: 17rem;
   justify-content: space-evenly;
 }
 
@@ -125,7 +135,7 @@
   width: 100vw;
   display: flex;
   justify-content: center;
-  height: 70vh;
+  height: 40rem;
   background-color: #f6f6f6;
 }
 
@@ -133,7 +143,7 @@
   width: 100vw;
   display: flex;
   justify-content: center;
-  height: 95vh;
+  height: 50rem;
   background-color: #f6f6f6;
 }
 
@@ -141,15 +151,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 65vw;
+  width: 70rem;
 }
 
 .card3_text {
-  margin-top: 5vh;
+  margin-top: 4rem;
   display: flex;
   flex-direction: column;
-  width: 60vw;
-  height: 15vh;
+  width: 50rem;
+  height: 10rem;
   justify-content: space-evenly;
   align-items: center;
 }
@@ -169,21 +179,22 @@
 
 .footer {
   background-color: #23272a;
-  /* border: 3px solid red; */
-  height: 30vh;
+  height: 20rem;
   display: flex;
   justify-content: center;
+
 }
 
 .footer_content_container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: flex-start;
-  gap: 1vw;
-  margin: 4vw;
-  height: 20vh;
-  width: 60vw;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  height: 15rem;
+  width: 70rem;
   border-bottom: 1px solid #5865f2;
+  padding-top: 3rem;
 }
 
 .footer_title {
@@ -192,8 +203,15 @@
   font-family: "Rubik Mono One", sans-serif;
   font-size: 1.5rem;
   font-weight: 200;
-  /* border: 3px solid yellow; */
-  width: 15vw;
+  width: 15rem;
+}
+
+.footer_card_container {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  gap: 1.5rem;
+  padding-top: 2rem;
 }
 
 .names {
@@ -205,7 +223,7 @@
 .footer_card {
   display: flex;
   flex-direction: column;
-  gap: 2vh;
+  gap: 0.5rem;
 }
 
 .links {
@@ -216,41 +234,66 @@
   gap: 0.25vw;
 }
 
+.links:hover {
+  text-decoration: underline;
+}
+
 .link_container {
   display: flex;
   align-items: center;
   gap: 0.25vw;
 }
 
-@media screen and (max-width: 1030px) {
-  .login_button {
-    margin-left: 34vw
+@media screen and (max-width: 1150px) {
+  .textContainer {
+    gap: 1.5rem;
+  }
+
+  .text2 {
+    width: 40rem;
+    font-size: 17px;
+  }
+
+  .right {
+    margin-left: 60rem;
+    width: 35rem;
+  }
+
+  .left {
+    margin-right: 68rem;
+    width: 40rem;
   }
 
   .card1 {
-    width: 100vw;
-    display: flex;
+    width: 100%;
   }
 
-  .body1 img {
-    width: 48vw;
+  .body1 > img {
+    width: 35rem;
   }
 
-  .body2 img {
-    width: 48vw;
+  .body2 > img {
+    width: 35rem;
   }
 
-  .body3 img {
-    width: 48vw;
+  .body3 > img {
+    width: 35rem;
+  }
+
+  .body4 > img {
+    width: 35rem;
   }
 
   .card1_text {
-    height: 50vh;
-    width: 30vw;
+    height: 20rem;
+  }
+
+  .card3_text {
+    height: 13rem;
   }
 
   .footer_content_container {
-    width: 110vw;
+    width: 110rem;
   }
 
   .footer_card1 {
@@ -263,4 +306,173 @@
     width: 25vw;
   }
 
+  .footer_title {
+    width: 7rem;
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .textContainer {
+    gap: 1rem;
+    width: 100%;
+    align-items: flex-start;
+    margin-left: 8rem;
+  }
+
+  .text1 {
+    font-size: 3rem;
+    text-align: left;
+  }
+
+  .text2 {
+    width: 40rem;
+    font-size: 17px;
+    text-align: left;
+  }
+
+  .left {
+    display: block;
+    margin-left: -50rem;
+  }
+
+  .right {
+    margin-right: 22.5rem;
+    width: 28rem;
+    transition: margin-right 0.5s;
+  }
+
+  .background {
+    display: none;
+  }
+
+  .card1 {
+    flex-direction: column;
+  }
+
+  .card1_text {
+    width: 40rem;
+    gap: 1rem;
+    height: 7rem;
+  }
+
+  .card1_text_upper {
+    font-size: 1.45rem;
+  }
+
+  .body1 {
+    margin-top: 2rem;
+  }
+
+  .body3 {
+    margin-top: 2rem;
+  }
+
+  .card3_text {
+    height: 13rem;
+    width: 40rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .card3_text_upper {
+    font-size: 1.45rem;
+  }
+
+  .card3_text_lower {
+    text-align: left;
+  }
+
+  .footer_content_container {
+    /* align-items: flex-start; */
+    gap: 1rem;
+    margin-bottom: 4rem;
+    height: 15rem;
+    width: 70rem;
+    border-bottom: 1px solid #5865f2;
+    padding-top: 3rem;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .textContainer {
+    margin-left: 4rem;
+    margin-top: 4rem;
+  }
+
+  .text1 {
+    font-size: 2.5rem;
+    text-align: left;
+  }
+
+  .text2 {
+    width: 90%;
+    font-size: 14px;
+  }
+
+  .right {
+    display: none;
+  }
+
+  .left {
+    display: block;
+    margin-left: 52.5rem;
+    width: 25rem;
+    transition: margin-left 0.3s;
+  }
+
+  .card1_text {
+    width: 27rem;
+    justify-content: center;
+    gap: 1rem;
+    height: 7rem;
+  }
+
+  .card1 {
+    gap: 1.5rem;
+  }
+
+  .card3_text {
+    height: 13rem;
+    width: 27rem;
+    display: flex;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .card3_text_upper {
+    font-size: 1.45rem;
+  }
+  .card3_text_lower {
+    text-align: left;
+  }
+
+  .body1 > img {
+    width: 30rem;
+  }
+
+  .body2 > img {
+    width: 30rem;
+  }
+
+  .body3 > img {
+    width: 30rem;
+  }
+
+  .body4 > img {
+    width: 30rem;
+  }
+
+  .card3_container {
+    height: 40rem;
+  }
+
+  .footer_content_container {
+    gap: 5rem;
+  }
+
+  .footer_card_container {
+    padding-top: 0;
+    width: 15rem;
+  }
 }

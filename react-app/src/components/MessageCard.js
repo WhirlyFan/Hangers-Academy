@@ -2,21 +2,20 @@ import styles from "./cssModules/MessageCard.module.css";
 import DeleteMessage from "./DeleteMessage";
 
 const MessageCard = ({ message, allUsersObj, user, deleteMessage }) => {
-  const formatDateTime = (created_at) => {
-    let dateObj = new Date(created_at);
-    let month = dateObj.getMonth();
-    let day = dateObj.getDate();
-    let hour = dateObj.getHours();
-    let min = dateObj.getMinutes();
-    if (min < 10) min = "0" + min;
-    let PSThr = `${+hour + 8}`;
-    let amPM;
-    if (PSThr < 13) amPM = "AM";
-    if (+PSThr > 13) {
-      amPM = "PM";
-      PSThr -= 12;
+  // Convert the created_at timestamp into legible timestamp for users
+  const formatDateTime = (timestamp) => {
+    let dateObj = new Date(timestamp);
+    // Grab month, day, and year of dateObj then convert into string, do the same for time
+    let date = dateObj.toLocaleString("default", { month: "2-digit", day: "2-digit", year: "numeric" })
+    let time = dateObj.toLocaleString("default", { hour: "numeric", hour12: true, minute: "numeric", timeZone: 'UTC' });
+    //  Check if the message's date matches today and replace date with Today
+    let todayObj = new Date();
+    let todayDate = todayObj.toLocaleString("default", { month: "2-digit", day: "2-digit", year: "numeric" })
+    if (todayDate === date) {
+      date = "Today at"
     }
-    let formattedDate = `${month}/${day} at ${PSThr}:${min}${amPM}`;
+
+    let formattedDate = `${date} ${time}`;
     return formattedDate;
   };
 

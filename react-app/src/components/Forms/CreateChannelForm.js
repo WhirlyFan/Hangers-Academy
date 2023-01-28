@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { postServerChannelThunk } from "../../store/server";
-import styles from "../cssModules/CreateServerForm.module.css";
+import styles from "../cssModules/CreateChannelForm.module.css";
 
 function CreateChannelForm({
   setShowCreateChannelModal,
@@ -35,16 +35,33 @@ function CreateChannelForm({
     }
   };
 
+  const handleExit = (e) => {
+    e.preventDefault();
+    setShowCreateChannelModal(false)
+  };
+
   return (
     <div className={styles.formContainer}>
+      <div className={styles.xContainer}>
+        <span
+        style={{ fontSize: "1.6rem", fontWeight: "200", cursor: 'pointer' }}
+        id={styles.xBtn}
+        className="material-symbols-outlined exit"
+        onClick={(e) => handleExit(e)}
+        >
+          cancel
+        </span>
+      </div>
       <div className={styles.formHeader}>Create Channel</div>
       <form onSubmit={handleSubmit} className={styles.createChannelform}>
         <div className={styles.formInput}>
+          <label htmlFor="channelNameInput">Channel Name</label>
           <input
+            id="channelNameInput"
             type="text"
             value={channelName}
             onChange={(e) => setChannelName(e.target.value)}
-            placeholder="Channel Name"
+            placeholder="new-channel"
             required
           />
         </div>
@@ -57,7 +74,9 @@ function CreateChannelForm({
             </div>
           )}
         </div>
-        <button type="submit">Create Channel</button>
+        <div className={styles.formButtonContainer}>
+          <button type="submit">Create Channel</button>
+        </div>
       </form>
     </div>
   );

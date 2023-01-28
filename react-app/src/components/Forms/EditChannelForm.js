@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { editServerChannelThunk } from "../../store/server";
 import { deleteServerChannelThunk } from "../../store/server";
-import styles from "../cssModules/CreateServerForm.module.css";
+import styles from "../cssModules/EditChannelForm.module.css";
 
 function EditChannelForm({
   setShowEditChannelModal,
@@ -69,22 +69,38 @@ function EditChannelForm({
 
     if (!errors.length) {
       setShowEditChannelModal(false);
-      setHasSubmitted((prevValue) => !prevValue);
       const deleteChannel = await dispatch(
         deleteServerChannelThunk(channelId)
       ).then(() =>
         history.push(`/main/servers/${serverId}/${server[0].Channels[0]["id"]}`)
-      );
+      ).then(() => setHasSubmitted((prevValue) => !prevValue));
       return deleteChannel;
     }
   };
 
+  const handleExit = (e) => {
+    e.preventDefault();
+    setShowEditChannelModal(false)
+  };
+
   return (
     <div className={styles.formContainer}>
+      <div className={styles.xContainer}>
+        <span
+        style={{ fontSize: "1.6rem", fontWeight: "200", cursor: 'pointer' }}
+        id={styles.xBtn}
+        className="material-symbols-outlined exit"
+        onClick={(e) => handleExit(e)}
+        >
+          cancel
+        </span>
+      </div>
       <div className={styles.formHeader}>Channel Overview</div>
       <form onSubmit={handleSubmit} className={styles.createChannelform}>
         <div className={styles.formInput}>
+          <label htmlFor="editChannelNameInput">Channel Name</label>
           <input
+            id="editChannelNameInput"
             type="text"
             value={channelName}
             onChange={(e) => setChannelName(e.target.value)}

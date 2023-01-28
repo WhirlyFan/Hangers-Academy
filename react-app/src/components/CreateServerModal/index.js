@@ -8,9 +8,6 @@ function CreateServerModal({ setHasSubmitted }) {
 
   return (
     <>
-      {/* <button onClick={() => setShowModal(true)}>
-                Create Server
-            </button> */}
       <div id={styles.addBtn}>
         <span
           onClick={() => setShowModal(true)}

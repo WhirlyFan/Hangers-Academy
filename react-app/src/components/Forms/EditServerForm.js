@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { deleteServerThunk, editServerThunk } from "../../store/server";
-import styles from "../cssModules/CreateServerForm.module.css";
+import styles from "../cssModules/EditServerForm.module.css";
 
 function EditServerForm({
   setShowEditServerModal,
@@ -59,12 +59,29 @@ function EditServerForm({
     );
   };
 
+  const handleExit = (e) => {
+    e.preventDefault();
+    setShowEditServerModal(false)
+  };
+
   return (
     <div className={styles.formContainer}>
+      <div className={styles.xContainer}>
+        <span
+        style={{ fontSize: "1.6rem", fontWeight: "200", cursor: 'pointer' }}
+        id={styles.xBtn}
+        className="material-symbols-outlined exit"
+        onClick={(e) => handleExit(e)}
+        >
+          cancel
+        </span>
+      </div>
       <div className={styles.formHeader}>Server Overview</div>
       <form onSubmit={handleSubmit} className={styles.editServerform}>
         <div className={styles.formInput}>
+          <label htmlFor="editServerNameInput">Server Name</label>
           <input
+            id="editServerNameInput"
             type="text"
             value={serverName}
             onChange={(e) => setServerName(e.target.value)}
@@ -82,7 +99,9 @@ function EditServerForm({
           )}
         </div>
         <div className={styles.formInput}>
+          <label htmlFor="editServerImgInput">Server Image</label>
           <input
+            id="editServerImgInput"
             type="url"
             value={serverImg}
             onChange={(e) => setServerImg(e.target.value)}

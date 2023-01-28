@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { postServerThunk } from "../../store/server";
 import { useHistory } from "react-router-dom";
 import styles from "../cssModules/CreateServerForm.module.css";
@@ -8,7 +8,10 @@ function CreateServerForm({ setShowModal, setHasSubmitted }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [serverName, setServerName] = useState("");
+  const user = useSelector((state) => state.session.user);
+  const username = user.username
+
+  const [serverName, setServerName] = useState(`${username}'s Server`);
   const [serverImg, setServerImg] = useState("");
   const [errors, setErrors] = useState([]);
 
@@ -38,8 +41,23 @@ function CreateServerForm({ setShowModal, setHasSubmitted }) {
     }
   };
 
+  const handleExit = (e) => {
+    e.preventDefault();
+    setShowModal(false)
+  };
+
   return (
     <div className={styles.formContainer}>
+      <div className={styles.xContainer}>
+        <span
+        style={{ fontSize: "1.7rem", fontWeight: "200", cursor: 'pointer' }}
+        id={styles.xBtn}
+        className="material-symbols-outlined exit"
+        onClick={(e) => handleExit(e)}
+        >
+          cancel
+        </span>
+      </div>
       <div className={styles.formHeader}>Customize your server</div>
       <div className={styles.formSubText}>
         Give your new server a personality with a name and an icon. You can
@@ -47,7 +65,9 @@ function CreateServerForm({ setShowModal, setHasSubmitted }) {
       </div>
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.formInput}>
+          <label htmlFor="serverNameInput">Server Name</label>
           <input
+            id="serverNameInput"
             type="text"
             value={serverName}
             onChange={(e) => setServerName(e.target.value)}
@@ -65,14 +85,18 @@ function CreateServerForm({ setShowModal, setHasSubmitted }) {
           )}
         </div>
         <div className={styles.formInput}>
+          <label htmlFor="serverImgInput">Server Image</label>
           <input
+            id="serverImgInput"
             type="url"
             value={serverImg}
             onChange={(e) => setServerImg(e.target.value)}
             placeholder="Server Image URL (Optional)"
           />
         </div>
-        <button type="submit">Create</button>
+        <div className={styles.formButtonContainer}>
+          <button type="submit">Create</button>
+        </div>
       </form>
     </div>
   );

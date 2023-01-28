@@ -33,9 +33,24 @@ export default function AllServersView({ setShowModal }) {
     return !server.memberIds.includes(currentUser.id);
   });
 
+  const handleExit = (e) => {
+    e.preventDefault();
+    setShowModal(false)
+  };
+
   return (
     <div id={styles.outerContainer}>
       <div id={styles.allServersContainer}>
+      <div className={styles.xContainer}>
+        <span
+        style={{ fontSize: "2rem", fontWeight: "200", cursor: 'pointer' }}
+        id={styles.xBtn}
+        className="material-symbols-outlined exit"
+        onClick={(e) => handleExit(e)}
+        >
+          cancel
+        </span>
+      </div>
         <div className={styles.bannerContainer}>
           <div id={styles.welcomeText}>
             <span>Find your community on Discord</span>

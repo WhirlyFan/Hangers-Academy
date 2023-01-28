@@ -28,14 +28,19 @@ export default function Landing() {
     <div className={styles.landing}>
       <div className={styles.container}>
         <div className={styles.body0}>
-          <div className={styles.text1}>IMAGINE A PLACE...</div>
-          <p className={styles.text2}>
-            ...where you can belong to a school club, a gaming group, or a
-            worldwide art community. Where just you and a handful of friends can
-            spend time together. A place that makes it easy to talk every day
-            and hang out more often.
-          </p>
-          <img src={landing_background} alt="landing_background"></img>
+          <div className={styles.textContainer}>
+            <div className={styles.text1}>IMAGINE A PLACE...</div>
+            <div className={styles.text2}>
+              ...where you can belong to a school club, a gaming group, or a
+              worldwide art community. Where just you and a handful of friends can
+              spend time together. A place that makes it easy to talk every day
+              and hang out more often.
+            </div>
+            <button className={styles.login_button} onClick={openDiscord}>
+              Open Hangers Academy
+            </button>
+          </div>
+          <img className={styles.background} src={landing_background} alt="landing_background"></img>
           <img
             className={styles.left}
             src={landing_left}
@@ -46,9 +51,6 @@ export default function Landing() {
             src={landing_right}
             alt="landing-right"
           ></img>
-          <button className={styles.login_button} onClick={openDiscord}>
-            Open Discord in your browser
-          </button>
         </div>
         <div className={styles.extra_pics}>
           <div className={styles.card1_container}>
@@ -61,7 +63,7 @@ export default function Landing() {
                   Create an invite-only place where you belong
                 </span>
                 <span className={styles.card1_text_lower}>
-                  Discord servers are organized into topic-based channels where
+                  Servers are organized into topic-based channels where
                   you can collaborate, share, and just talk about your day
                   without clogging up a group chat.
                 </span>
@@ -127,76 +129,78 @@ export default function Landing() {
                 <h2>IMAGINE A PLACE</h2>
               </div>
             </div>
-            <div className={styles.footer_card}>
-              <span className={styles.names}>Linus Huynh</span>
-              <div className={styles.link_container}>
-                <a
-                  className={styles.links}
-                  href="https://github.com/linushuynh"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img
-                    className={styles.githubImg}
-                    src="https://img.icons8.com/ios-glyphs/30/FFFFFF/github.png"
-                    alt="github_icon"
-                  />
-                  <span>Github</span>
-                </a>
+            <div className={styles.footer_card_container}>
+              <div className={styles.footer_card}>
+                <span className={styles.names}>Linus Huynh</span>
+                <div className={styles.link_container}>
+                  <a
+                    className={styles.links}
+                    href="https://github.com/linushuynh"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      className={styles.githubImg}
+                      src="https://img.icons8.com/ios-glyphs/30/FFFFFF/github.png"
+                      alt="github_icon"
+                    />
+                    <span>Github</span>
+                  </a>
+                </div>
               </div>
-            </div>
-            <div className={styles.footer_card}>
-              <span className={styles.names}>Michael Lee</span>
-              <div className={styles.link_container}>
-                <a
-                  className={styles.links}
-                  href="https://github.com/WhirlyFan"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img
-                    className={styles.githubImg}
-                    src="https://img.icons8.com/ios-glyphs/30/FFFFFF/github.png"
-                    alt="github_icon"
-                  />
-                  <span>Github</span>
-                </a>
+              <div className={styles.footer_card}>
+                <span className={styles.names}>Michael Lee</span>
+                <div className={styles.link_container}>
+                  <a
+                    className={styles.links}
+                    href="https://github.com/WhirlyFan"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      className={styles.githubImg}
+                      src="https://img.icons8.com/ios-glyphs/30/FFFFFF/github.png"
+                      alt="github_icon"
+                    />
+                    <span>Github</span>
+                  </a>
+                </div>
               </div>
-            </div>
-            <div className={styles.footer_card}>
-              <span className={styles.names}>Kevin Vu</span>
-              <div className={styles.link_container}>
-                <a
-                  className={styles.links}
-                  href="https://github.com/kevintvu123"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img
-                    className={styles.githubImg}
-                    src="https://img.icons8.com/ios-glyphs/30/FFFFFF/github.png"
-                    alt="github_icon"
-                  />
-                  <span>Github</span>
-                </a>
+              <div className={styles.footer_card}>
+                <span className={styles.names}>Kevin Vu</span>
+                <div className={styles.link_container}>
+                  <a
+                    className={styles.links}
+                    href="https://github.com/kevintvu123"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      className={styles.githubImg}
+                      src="https://img.icons8.com/ios-glyphs/30/FFFFFF/github.png"
+                      alt="github_icon"
+                    />
+                    <span>Github</span>
+                  </a>
+                </div>
               </div>
-            </div>
-            <div className={styles.footer_card}>
-              <span className={styles.names}>Preston Prince</span>
-              <div className={styles.link_container}>
-                <a
-                  className={styles.links}
-                  href="https://github.com/prestonprince"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img
-                    className={styles.githubImg}
-                    src="https://img.icons8.com/ios-glyphs/30/FFFFFF/github.png"
-                    alt="github_icon"
-                  />
-                  <span>Github</span>
-                </a>
+              <div className={styles.footer_card}>
+                <span className={styles.names}>Preston Prince</span>
+                <div className={styles.link_container}>
+                  <a
+                    className={styles.links}
+                    href="https://github.com/prestonprince"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      className={styles.githubImg}
+                      src="https://img.icons8.com/ios-glyphs/30/FFFFFF/github.png"
+                      alt="github_icon"
+                    />
+                    <span>Github</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
