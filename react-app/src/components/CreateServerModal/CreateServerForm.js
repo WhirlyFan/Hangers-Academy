@@ -41,8 +41,23 @@ function CreateServerForm({ setShowModal, setHasSubmitted }) {
     }
   };
 
+  const handleExit = (e) => {
+    e.preventDefault();
+    setShowModal(false)
+  };
+
   return (
     <div className={styles.formContainer}>
+      <div className={styles.xContainer}>
+        <span
+        style={{ fontSize: "1.7rem", fontWeight: "200", cursor: 'pointer' }}
+        id={styles.xBtn}
+        className="material-symbols-outlined exit"
+        onClick={(e) => handleExit(e)}
+        >
+          cancel
+        </span>
+      </div>
       <div className={styles.formHeader}>Customize your server</div>
       <div className={styles.formSubText}>
         Give your new server a personality with a name and an icon. You can

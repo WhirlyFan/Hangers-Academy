@@ -82,3 +82,11 @@
     color: #ca3f44;
     margin-bottom: 10px;
 }
+
+.xContainer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    bottom: 2vh;
+}

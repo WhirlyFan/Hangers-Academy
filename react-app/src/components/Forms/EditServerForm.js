@@ -59,8 +59,23 @@ function EditServerForm({
     );
   };
 
+  const handleExit = (e) => {
+    e.preventDefault();
+    setShowEditServerModal(false)
+  };
+
   return (
     <div className={styles.formContainer}>
+      <div className={styles.xContainer}>
+        <span
+        style={{ fontSize: "1.6rem", fontWeight: "200", cursor: 'pointer' }}
+        id={styles.xBtn}
+        className="material-symbols-outlined exit"
+        onClick={(e) => handleExit(e)}
+        >
+          cancel
+        </span>
+      </div>
       <div className={styles.formHeader}>Server Overview</div>
       <form onSubmit={handleSubmit} className={styles.editServerform}>
         <div className={styles.formInput}>
