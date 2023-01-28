@@ -35,8 +35,23 @@ function CreateChannelForm({
     }
   };
 
+  const handleExit = (e) => {
+    e.preventDefault();
+    setShowCreateChannelModal(false)
+  };
+
   return (
     <div className={styles.formContainer}>
+      <div className={styles.xContainer}>
+        <span
+        style={{ fontSize: "1.6rem", fontWeight: "200", cursor: 'pointer' }}
+        id={styles.xBtn}
+        className="material-symbols-outlined exit"
+        onClick={(e) => handleExit(e)}
+        >
+          cancel
+        </span>
+      </div>
       <div className={styles.formHeader}>Create Channel</div>
       <form onSubmit={handleSubmit} className={styles.createChannelform}>
         <div className={styles.formInput}>

@@ -79,3 +79,11 @@
     text-align: center;
     color: #ca3f44;
 }
+
+.xContainer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    bottom:2vh;
+}
