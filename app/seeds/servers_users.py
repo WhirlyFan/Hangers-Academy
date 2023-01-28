@@ -3,18 +3,6 @@ from app.models import db, Server, User, environment, SCHEMA
 
 # Adds a demo user, you can add other users here if you want
 def seed_servers_users():
-    hangers = Server(
-        owner_id=2, name='Hangers', private=False)
-    bloxcraft = Server(
-        owner_id=2, name='BloxCraft', private=False)
-    app_academy = Server(
-        owner_id=1, name='App Academy', private=False)
-    Demo_marnie = Server(
-        owner_id=1, name='Demo_marnie', private=True, server_img="url")
-
-    db.session.add_all([hangers, bloxcraft, app_academy, Demo_marnie])
-    db.session.commit()
-
     demo = User(
         username='Demo', email='demo@aa.io', password='password')
     marnie = User(
@@ -31,6 +19,18 @@ def seed_servers_users():
         username='WhirlyFan', email='whirlyfan@aa.io', password='password')
 
     db.session.add_all([demo, marnie, bobbie, linus, preston, kevin, michael])
+    db.session.commit()
+
+    hangers = Server(
+        owner_id=2, name='Hangers', private=False)
+    bloxcraft = Server(
+        owner_id=2, name='BloxCraft', private=False)
+    app_academy = Server(
+        owner_id=1, name='App Academy', private=False)
+    Demo_marnie = Server(
+        owner_id=1, name='Demo_marnie', private=True, server_img="url")
+
+    db.session.add_all([hangers, bloxcraft, app_academy, Demo_marnie])
     db.session.commit()
 
     hangers.members.extend([demo, marnie, bobbie, linus, preston, kevin, michael])
